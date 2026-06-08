@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -31,12 +31,12 @@ const fadeIn = {
 };
 
 /* Fade-in-up for cards with stagger support */
-const cardVariants = {
+const cardVariants: Variants = {
     hidden: { opacity: 0, y: 14 },
     visible: (delay: number) => ({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, delay, ease: "easeOut" }
+        transition: { duration: 0.5, delay, ease: "easeOut" as const }
     })
 };
 
