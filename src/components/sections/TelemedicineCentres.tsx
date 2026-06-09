@@ -75,8 +75,8 @@ export function TelemedicineCentres() {
                                 <span className="text-[9px] font-black text-gray-500 uppercase tracking-wider">Active</span>
                             </div>
 
-                            <div className="mb-8 p-4 bg-primary-50 w-fit rounded-2xl group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
-                                <MapPin className="h-6 w-6 text-primary-600 group-hover:text-white transition-colors" />
+                            <div className="mb-6 p-2.5 bg-primary-50 w-fit rounded-xl group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                <MapPin className="h-4 w-4 text-primary-600 group-hover:text-white transition-colors" />
                             </div>
 
                             <div className="flex-grow">
