@@ -1,13 +1,6 @@
 {
   "projectImages": [
     {
-      "title": "Telemedicine Name",
-      "description": "Telemedicine Name",
-      "image": "/api/media/image/img_1788437296327_g6d4i7",
-      "category": "Rural Health Camp",
-      "createdAt": "2026-09-03T12:08:16.252Z"
-    },
-    {
       "title": "DigiSwasthya Team at DS1 Center",
       "description": "Our dedicated medical team consulting at the DS1 Telemedicine Center, providing quality healthcare to rural communities.",
       "image": "/images/resources/telemedicine-team.jpg",
@@ -39,13 +32,6 @@
     }
   ],
   "mediaCoverage": [
-    {
-      "title": "Name",
-      "description": "Name",
-      "image": "/api/media/image/img_1788437272415_s57lro",
-      "category": "National News",
-      "createdAt": "2026-09-03T12:07:52.286Z"
-    },
     {
       "title": "Ministry of Information and Broadcasting",
       "description": "@MIB_India - Stories that Inspire (May 19, 2023). Recognized for the groundbreaking telemedicine mission in rural India.",
@@ -127,11 +113,11 @@
   ],
   "videos": [
     {
-      "id": "dqs7ezVoR7A",
-      "title": "Webinar on Thyroid By Dr. Swapnil Saurabh Deka, MBBS",
+      "id": "h8XCUe24W6U",
+      "title": "Webinar on Hand Hygiene by Dr Snehgdha Biswas at DigiSwasthya Foundation",
       "category": "Documentary",
       "duration": "3 min",
-      "createdAt": "2026-09-03T12:06:55.661Z"
+      "createdAt": "2026-09-05T17:38:19.580Z"
     },
     {
       "id": "A-WMlwtqcX0",
