@@ -23,6 +23,8 @@ interface MilestoneRule {
     image: string;
     accentColor: string;
     badge: { en: string; hi: string };
+    /** Short 2-3 word category label for compact UI (e.g. "Patients Served") */
+    shortLabel: { en: string; hi: string };
     getHeadline: (count: string) => { en: string; hi: string };
     getDescription: (count: string) => { en: string; hi: string };
     getShareText: (count: string) => { en: string; hi: string };
@@ -40,6 +42,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "🌸 NEW MILESTONE",
             hi: "🌸 नया मील का पत्थर"
         },
+        shortLabel: { en: "Women Helped", hi: "महिलाओं की सहायता" },
         getHeadline: (count) => ({
             en: `We Just Crossed ${count} Lives Touched!`,
             hi: `हमने ${count} जीवन को छूने का कीर्तिमान पार किया!`
@@ -64,6 +67,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "✨ MAJOR MILESTONE",
             hi: "✨ प्रमुख मील का पत्थर"
         },
+        shortLabel: { en: "Patients Served", hi: "मरीजों की सेवा" },
         getHeadline: (count) => ({
             en: `We Just Crossed ${count} Rural Patients Served!`,
             hi: `हमने ${count} ग्रामीण मरीजों की सेवा का कीर्तिमान पार किया!`
@@ -88,6 +92,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "🩺 TELEMEDICINE MILESTONE",
             hi: "🩺 टेलीमेडिसिन मील का पत्थर"
         },
+        shortLabel: { en: "Teleconsultations", hi: "टेली-परामर्श" },
         getHeadline: (count) => ({
             en: `We Just Crossed ${count} Free Teleconsultations!`,
             hi: `हमने ${count} मुफ्त टेली-परामर्श का मील का पत्थर छुआ!`
@@ -112,6 +117,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "🏥 HEALTHCARE SANCTUARY",
             hi: "🏥 स्वास्थ्य केंद्र विस्तार"
         },
+        shortLabel: { en: "Active Centres", hi: "सक्रिय केंद्र" },
         getHeadline: (count) => ({
             en: `New Rural Telemedicine Hubs Active: ${count} Centres!`,
             hi: `नए ग्रामीण टेलीमेडिसिन केंद्र सक्रिय: अब ${count} केंद्र!`
@@ -136,6 +142,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "👨‍⚕️ SPECIALIST NETWORK",
             hi: "👨‍⚕️ विशेषज्ञ नेटवर्क"
         },
+        shortLabel: { en: "Specialist Doctors", hi: "विशेषज्ञ डॉक्टर" },
         getHeadline: (count) => ({
             en: `${count} Specialist Doctors Volunteering for Rural India!`,
             hi: `${count} विशेषज्ञ डॉक्टर अब ग्रामीण भारत की सेवा में समर्पित!`
@@ -160,6 +167,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "📍 EXPANDING HORIZONS",
             hi: "📍 नेटवर्क विस्तार"
         },
+        shortLabel: { en: "Districts Reached", hi: "जिलों तक पहुंच" },
         getHeadline: (count) => ({
             en: `Care Expanding Across ${count} Rural Districts!`,
             hi: `अब ${count} ग्रामीण जिलों तक पहुंचा हमारा स्वास्थ्य नेटवर्क!`
@@ -184,6 +192,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "🇮🇳 PAN-INDIA OUTREACH",
             hi: "🇮🇳 अखिल भारतीय पहुंच"
         },
+        shortLabel: { en: "States Reached", hi: "राज्यों तक पहुंच" },
         getHeadline: (count) => ({
             en: `Healing Reach Across Multiple Indian States!`,
             hi: `कई भारतीय राज्यों में फैली हमारी स्वास्थ्य सेवा!`
@@ -208,6 +217,7 @@ export const MILESTONE_RULES: MilestoneRule[] = [
             en: "🎪 MEGA HEALTH CAMPS",
             hi: "🎪 स्वास्थ्य शिविर"
         },
+        shortLabel: { en: "Health Camps", hi: "स्वास्थ्य शिविर" },
         getHeadline: (count) => ({
             en: `Conducting Life-Saving Health Camps in Remote Villages!`,
             hi: `दूरदराज के गांवों में जीवन रक्षक स्वास्थ्य शिविर!`
@@ -291,6 +301,7 @@ export function calculateAchievedMilestones(liveData?: LiveImpactData): Mileston
                 threshold: milestoneValue,
                 currentValue,
                 badge: rule.badge,
+                shortLabel: rule.shortLabel,
                 headline: rule.getHeadline(formatted),
                 description: rule.getDescription(formatted),
                 image: rule.image,
@@ -350,6 +361,7 @@ export function getMilestoneByCategory(category: MilestoneCategory, liveData?: L
         threshold: rule.minValue,
         currentValue: rule.minValue,
         badge: rule.badge,
+        shortLabel: rule.shortLabel,
         headline: rule.getHeadline(formatted),
         description: rule.getDescription(formatted),
         image: rule.image,

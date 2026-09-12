@@ -22,6 +22,8 @@ export interface Milestone {
     threshold: number;
     currentValue: number;
     badge: LocalizedString;
+    /** Short 2-3 word category label for compact UI (e.g. "Patients Served") */
+    shortLabel: LocalizedString;
     headline: LocalizedString;
     description: LocalizedString;
     image: string;

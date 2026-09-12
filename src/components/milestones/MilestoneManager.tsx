@@ -34,7 +34,7 @@ function MilestoneManagerContent() {
         fetchLiveData();
     }, []);
 
-    // Step 2: Listen for custom "open-milestone-modal" event (from Hero Star badge or elsewhere)
+    // Step 2: Listen for custom "open-milestone-modal" event (from the Hero live impact badge or elsewhere)
     useEffect(() => {
         const handleOpenEvent = (e: Event) => {
             const customEvent = e as CustomEvent<{ category?: MilestoneCategory }>;

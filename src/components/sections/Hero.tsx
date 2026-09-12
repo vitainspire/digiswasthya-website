@@ -152,7 +152,7 @@ export function Hero() {
                 ))}
             </div>
 
-            {/* Top-Right Latest Achievement Star Button */}
+            {/* Top-Right Live Impact Milestone Badge — shows a real, current stat and opens the milestone celebration + donate CTA */}
             <div className="absolute top-6 right-6 md:top-8 md:right-10 z-30">
                 <MilestoneHeroBadge />
             </div>
