@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { TeamCard } from "@/components/ui/cards";
@@ -10,6 +11,18 @@ import {
     doctors,
     onGroundTeam as onGround,
 } from "@/data/teamData";
+
+export const metadata: Metadata = {
+    title: "Our Team",
+    description:
+        "Meet the board, core team, doctors, and on-ground staff behind DigiSwasthya Foundation's rural healthcare mission. Join us as a volunteer.",
+    alternates: { canonical: "/our-team" },
+    openGraph: {
+        title: "Our Team | DigiSwasthya Foundation",
+        description: "Meet the people behind DigiSwasthya Foundation's rural healthcare mission.",
+        url: "/our-team",
+    },
+};
 
 
 function Section({ title, members }: { title: string, members: { name: string, role: string, image?: string }[] }) {

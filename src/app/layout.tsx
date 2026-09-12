@@ -11,9 +11,33 @@ import { LanguageProvider } from "@/context/LanguageContext";
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const lora = Lora({ subsets: ["latin"], variable: "--font-serif" });
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://digiswasthya.org";
+const defaultTitle = "DigiSwasthya Foundation | Accessible Healthcare";
+const defaultDescription =
+  "Making healthcare services affordable and accessible for rural communities across India by leveraging technology.";
+
 export const metadata: Metadata = {
-  title: "DigiSwasthya Foundation | Accessible Healthcare",
-  description: "Making healthcare services affordable and accessible for rural communities across India by leveraging technology.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: "%s | DigiSwasthya Foundation",
+  },
+  description: defaultDescription,
+  openGraph: {
+    title: defaultTitle,
+    description: defaultDescription,
+    url: siteUrl,
+    siteName: "DigiSwasthya Foundation",
+    images: [{ url: "/images/digiswasthya-logo-hero.png", width: 1000, height: 1000, alt: "DigiSwasthya Foundation" }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ["/images/digiswasthya-logo-hero.png"],
+  },
 };
 
 export default function RootLayout({

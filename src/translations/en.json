@@ -94,15 +94,6 @@
         "campaignDetail2": "Conducting free basic diagnostic checkups and health screenings on-the-ground.",
         "campaignDetail3": "Connecting patients directly to remote medical specialists via telemedicine."
     },
-    "donateSection": {
-        "title": "DONATE FOR THE CAUSE!",
-        "description": "As of January 2026, DigiSwasthya has been able to facilitate 117,644+ teleconsultations, and many of these have been financed by our valuable donors. You can join our patron program through which a monthly contribution from you would be directed towards funding a few consultations.",
-        "boxText": "You can sponsor teleconsultations for four patients by donating a sum of",
-        "boxHighlight": "₹1,000/-",
-        "boxTextAfter": "only.",
-        "donateNowLabel": "Donate Now",
-        "upiLabel": "UPI ID"
-    },
     "bmi": {
         "title": "BMI Health Assessment",
         "subtitle": "Understand your Body Mass Index and take informed steps toward better health.",
