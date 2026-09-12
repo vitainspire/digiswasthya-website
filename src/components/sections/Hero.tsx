@@ -8,7 +8,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ContactActions } from "@/components/features/ContactActions";
 
 import { useImpactData } from "@/hooks/useImpactData";
-import { MilestoneHeroBadge } from "@/components/milestones/MilestoneHeroBadge";
 
 function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
     const count = useSpring(0, { stiffness: 50, damping: 30 });
@@ -150,11 +149,6 @@ export function Hero() {
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
-            </div>
-
-            {/* Top-Right Live Impact Milestone Badge — shows a real, current stat and opens the milestone celebration + donate CTA */}
-            <div className="absolute top-6 right-6 md:top-8 md:right-10 z-30">
-                <MilestoneHeroBadge />
             </div>
 
             {/* Content — Left aligned */}
