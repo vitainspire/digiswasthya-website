@@ -26,6 +26,7 @@ export function Navbar() {
         { name: t("nav.media"), href: "/media" },
         { name: t("nav.healthTools"), href: "/health-tools" },
         { name: t("nav.privacy"), href: "/privacy-policy" },
+        { name: t("nav.whatsappPrivacy"), href: "/whatsapp-privacy-policy" },
         { name: t("nav.terms"), href: "/terms-and-conditions" },
     ];
 

@@ -136,6 +136,7 @@ export function Footer() {
                     <div>{t("footer.copyright")}</div>
                     <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
                         <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+                        <Link href="/whatsapp-privacy-policy" className="hover:text-gray-300 transition-colors">WhatsApp Privacy</Link>
                         <Link href="/terms-and-conditions" className="hover:text-gray-300 transition-colors">Terms</Link>
                     </div>
                 </div>
