@@ -33,7 +33,7 @@ export function StatsGrid() {
             <div
                 className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{
-                    backgroundImage: "radial-gradient(circle, #0f3a1f 1px, transparent 1px)",
+                    backgroundImage: "radial-gradient(circle, #003f3a 1px, transparent 1px)",
                     backgroundSize: "28px 28px"
                 }}
             />

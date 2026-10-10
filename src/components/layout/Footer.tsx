@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { websiteConfig } from "@/data/websiteConfig";
 import Link from "next/link";
 import { ContactActions } from "@/components/features/ContactActions";
 import { useLanguage } from "@/context/LanguageContext";
@@ -37,7 +38,7 @@ export function Footer() {
     };
 
     return (
-        <footer className="bg-gray-900 text-gray-300">
+        <footer className="bg-primary-950 text-primary-100">
             <div className="container py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
 
@@ -62,6 +63,23 @@ export function Footer() {
                             </div>
                         </div>
                         <ContactActions variant="compact" />
+                        <div className="flex gap-3 pt-1">
+                            {websiteConfig.socialLinks.map(({ name, href }) => {
+                                const Icon = { Facebook, Instagram, X: Twitter, LinkedIn: Linkedin, YouTube: Youtube }[name];
+                                return (
+                                    <a
+                                        key={name}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={name}
+                                        className="rounded-full bg-primary-900 p-2 text-gray-300 transition-colors hover:bg-primary-600 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400"
+                                    >
+                                        {Icon && <Icon className="h-4 w-4" aria-hidden="true" />}
+                                    </a>
+                                );
+                            })}
+                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -73,6 +91,7 @@ export function Footer() {
                             <li><Link href="/about-us" className="hover:text-primary-400">{t("nav.about")}</Link></li>
                             <li><Link href="/contact-us" className="hover:text-primary-400">{t("nav.contact")}</Link></li>
                             <li><Link href="/our-team" className="hover:text-primary-400">{t("nav.team")}</Link></li>
+                            <li><Link href="/join-us" className="hover:text-primary-400">{t("nav.joinUs")}</Link></li>
                             <li><Link href="/media" className="hover:text-primary-400">{t("nav.media")}</Link></li>
                         </ul>
                     </div>
@@ -90,26 +109,29 @@ export function Footer() {
                             <div>
                                 <input
                                     {...register("name", { required: true })}
+                                    aria-label={t("footer.form.name")}
                                     placeholder={t("footer.form.name")}
-                                    className="w-full rounded bg-gray-800 border-gray-700 text-sm p-2 focus:ring-primary-500 text-white"
+                                    className="w-full rounded bg-primary-900 border-primary-700 text-sm p-2 focus:ring-primary-400 text-white placeholder:text-primary-300"
                                 />
                                 {errors.name && <span className="text-xs text-red-400">{t("footer.form.nameRequired")}</span>}
                             </div>
                             <div>
                                 <input
                                     {...register("email", { required: true })}
+                                    aria-label={t("footer.form.email")}
                                     placeholder={t("footer.form.email")}
                                     type="email"
-                                    className="w-full rounded bg-gray-800 border-gray-700 text-sm p-2 focus:ring-primary-500 text-white"
+                                    className="w-full rounded bg-primary-900 border-primary-700 text-sm p-2 focus:ring-primary-400 text-white placeholder:text-primary-300"
                                 />
                                 {errors.email && <span className="text-xs text-red-400">{t("footer.form.emailRequired")}</span>}
                             </div>
                             <div>
                                 <textarea
                                     {...register("message", { required: true })}
+                                    aria-label={t("footer.form.message")}
                                     placeholder={t("footer.form.message")}
                                     rows={3}
-                                    className="w-full rounded bg-gray-800 border-gray-700 text-sm p-2 focus:ring-primary-500 text-white"
+                                    className="w-full rounded bg-primary-900 border-primary-700 text-sm p-2 focus:ring-primary-400 text-white placeholder:text-primary-300"
                                 />
                                 {errors.message && <span className="text-xs text-red-400">{t("footer.form.messageRequired")}</span>}
                             </div>
@@ -118,9 +140,9 @@ export function Footer() {
                                     type="checkbox"
                                     {...register("consent", { required: true })}
                                     id="consent"
-                                    className="mt-1 rounded border-gray-700 bg-gray-800"
+                                    className="mt-1 rounded border-primary-700 bg-primary-900"
                                 />
-                                <label htmlFor="consent" className="text-xs text-gray-400">{t("footer.form.consent")}</label>
+                                <label htmlFor="consent" className="text-xs text-primary-200">{t("footer.form.consent")}</label>
                             </div>
                             {errors.consent && <span className="text-xs text-red-400 block">{t("footer.form.consentRequired")}</span>}
 
@@ -132,12 +154,12 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <div className="border-t border-primary-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-200">
                     <div>{t("footer.copyright")}</div>
                     <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
-                        <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-                        <Link href="/whatsapp-privacy-policy" className="hover:text-gray-300 transition-colors">WhatsApp Privacy</Link>
-                        <Link href="/terms-and-conditions" className="hover:text-gray-300 transition-colors">Terms</Link>
+                        <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                        <Link href="/whatsapp-privacy-policy" className="hover:text-white transition-colors">WhatsApp Privacy</Link>
+                        <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms</Link>
                     </div>
                 </div>
             </div>

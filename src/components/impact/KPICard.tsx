@@ -54,9 +54,9 @@ export function KPICard({ data }: KPICardProps) {
                 className="transform-style-3d relative w-full h-full group"
             >
                 {/* ─── FRONT FACE (Rich Forest Green Card on Light BG) ─── */}
-                <div className="backface-hidden absolute inset-0 bg-gradient-to-br from-[#0f3a1f] via-[#144d29] to-[#0a2715] rounded-2xl border border-emerald-700/50 shadow-md hover:shadow-xl hover:border-emerald-500/80 transition-all duration-300 flex flex-col items-center justify-center gap-2.5 px-5 py-4 overflow-hidden">
+                <div className="backface-hidden absolute inset-0 bg-gradient-to-br from-[#003f3a] via-[#00524b] to-[#002b28] rounded-2xl border border-primary-500/50 shadow-md hover:shadow-xl hover:border-primary-300/80 transition-all duration-300 flex flex-col items-center justify-center gap-2.5 px-5 py-4 overflow-hidden">
                     {/* Glowing corner accent */}
-                    <div className="absolute top-0 right-0 w-16 h-16 rounded-bl-3xl bg-emerald-400/10 pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-16 h-16 rounded-bl-3xl bg-primary-300/10 pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-14 h-14 rounded-tr-3xl bg-amber-400/10 pointer-events-none" />
 
                     {/* Icon Container — Gold on Emerald */}
@@ -77,7 +77,7 @@ export function KPICard({ data }: KPICardProps) {
                 </div>
 
                 {/* ─── BACK FACE (Vivid Emerald/Gold Gradient) ─── */}
-                <div className="backface-hidden rotate-y-180 absolute inset-0 bg-gradient-to-br from-[#124525] via-[#0f3a1f] to-[#071d0e] rounded-2xl border border-amber-500/40 shadow-xl flex flex-col items-center justify-center gap-2 px-5 py-4 overflow-hidden">
+                <div className="backface-hidden rotate-y-180 absolute inset-0 bg-gradient-to-br from-[#00524b] via-[#003f3a] to-[#001a18] rounded-2xl border border-amber-500/40 shadow-xl flex flex-col items-center justify-center gap-2 px-5 py-4 overflow-hidden">
                     {/* Corner accent circle */}
                     <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-white/5 pointer-events-none" />
 
@@ -94,12 +94,12 @@ export function KPICard({ data }: KPICardProps) {
                     </div>
 
                     {/* Label */}
-                    <h3 className="relative z-10 text-[10px] font-black text-emerald-200 uppercase tracking-widest text-center leading-snug max-w-[170px]">
+                    <h3 className="relative z-10 text-[10px] font-black text-primary-200 uppercase tracking-widest text-center leading-snug max-w-[170px]">
                         {label[currentLang]}
                     </h3>
 
                     {/* Short description */}
-                    <p className="relative z-10 text-[10px] text-emerald-100/75 font-light text-center leading-relaxed line-clamp-2 max-w-[180px]">
+                    <p className="relative z-10 text-[10px] text-primary-100/75 font-light text-center leading-relaxed line-clamp-2 max-w-[180px]">
                         {description[currentLang]}
                     </p>
                 </div>

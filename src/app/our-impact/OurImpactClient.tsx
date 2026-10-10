@@ -2,6 +2,7 @@
 
 import { Navbar }                         from "@/components/layout/Navbar";
 import { Footer }                         from "@/components/layout/Footer";
+import { ClosingCta }                     from "@/components/layout/ClosingCta";
 import { ImpactHero }                     from "@/components/impact/ImpactHero";
 import { PortalKPICards }                 from "@/components/impact/PortalKPICards";
 import { PortalSmoothLineChart }          from "@/components/impact/PortalSmoothLineChart";
@@ -290,6 +291,7 @@ export default function OurImpact() {
                 <ImpactTimeline />
             </div>
 
+            <ClosingCta />
             <Footer />
         </main>
     );

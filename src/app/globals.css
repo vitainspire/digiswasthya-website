@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primary: Deep Forest Green — credible, health, trust, Indian NGO */
-  --color-primary-50: #eef6f0;
-  --color-primary-100: #d0e9d8;
-  --color-primary-200: #a1d3b1;
-  --color-primary-300: #6cb885;
-  --color-primary-400: #3d9b5e;
-  --color-primary-500: #1e7e42;
-  --color-primary-600: #1a6636;
-  --color-primary-700: #154f2a;
-  --color-primary-800: #0f3a1f;
-  --color-primary-900: #092614;
-  --color-primary-950: #04130a;
+  /* Primary: Dark Teal — brand palette (#00655D, #E8EFEE, #94B9B5, #FDFEFD); other shades interpolated */
+  --color-primary-50: #e8efee;
+  --color-primary-100: #d2e1df;
+  --color-primary-200: #b3cdc9;
+  --color-primary-300: #94b9b5;
+  --color-primary-400: #52928b;
+  --color-primary-500: #1d7a72;
+  --color-primary-600: #00655d;
+  --color-primary-700: #00524b;
+  --color-primary-800: #003f3a;
+  --color-primary-900: #002b28;
+  --color-primary-950: #001a18;
 
   /* Secondary: Rich Amber — action, warmth, Indian */
   --color-secondary-50: #fffbeb;
@@ -28,8 +28,11 @@
   --color-secondary-950: #27100a;
 
   /* Typography — DM Sans body, Lora serif headings */
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+
+  /* Page surface */
+  --color-surface: #fdfefd;
 
   /* Container */
 }
@@ -43,15 +46,8 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #fdfefd;
+  --foreground: #002b28;
 }
 
 body {

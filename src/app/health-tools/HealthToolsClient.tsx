@@ -1,7 +1,9 @@
 "use client";
 
+import { PageHero } from "@/components/layout/PageHero";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ClosingCta } from "@/components/layout/ClosingCta";
 import { BMICalculator } from "@/components/features/BMICalculator";
 import { useLanguage } from "@/context/LanguageContext";
 import { Activity } from "lucide-react";
@@ -10,35 +12,18 @@ export default function HealthToolsPage() {
     const { t } = useLanguage();
 
     return (
-        <main className="min-h-screen bg-[#f4f7f5]">
+        <main className="min-h-screen bg-surface">
             <Navbar />
 
-            {/* Page Hero */}
-            <section className="relative bg-gradient-to-br from-primary-700 via-primary-600 to-secondary-600 py-20 overflow-hidden">
-                {/* Decorative circles */}
-                <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/5 pointer-events-none" />
-                <div className="absolute -bottom-24 -left-20 w-96 h-96 rounded-full bg-white/5 pointer-events-none" />
-
-                <div className="container relative text-center">
-                    {/* Badge */}
-                    <span className="inline-flex items-center gap-2 bg-white/15 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-white/20">
-                        <Activity className="h-3.5 w-3.5" />
-                        Resources
-                    </span>
-
-                    <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-                        Health Tools
-                    </h1>
-                    <p className="text-primary-100 text-lg max-w-2xl mx-auto leading-relaxed">
-                        Simple health awareness tools designed to help you better understand your health and wellness.
-                    </p>
-                </div>
-            </section>
+            <PageHero
+                title="Health Tools"
+                subtitle="Simple health awareness tools designed to help you better understand your health and wellness."
+            />
 
             {/* Disclaimer Banner */}
-            <div className="bg-blue-50 border-b border-blue-100">
+            <div className="bg-primary-50 border-b border-primary-100">
                 <div className="container py-4">
-                    <p className="text-center text-sm text-blue-700 font-medium">
+                    <p className="text-center text-sm text-primary-900 font-medium">
                         <span className="font-bold">Disclaimer:</span>{" "}
                         These tools are provided for educational and awareness purposes only and do not replace professional medical advice. Please consult a qualified healthcare professional for personalised guidance.
                     </p>
@@ -82,6 +67,7 @@ export default function HealthToolsPage() {
                 </div>
             </section>
 
+            <ClosingCta />
             <Footer />
         </main>
     );

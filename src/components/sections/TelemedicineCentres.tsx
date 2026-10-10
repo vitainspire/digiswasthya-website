@@ -146,7 +146,7 @@ export function TelemedicineCentres() {
                                                 <div className="flex items-start gap-2.5">
                                                     <MapPin className="h-4 w-4 text-slate-400 group-hover:text-primary-600 transition-colors mt-0.5 flex-shrink-0" />
                                                     <p className="text-slate-600 text-sm leading-relaxed">
-                                                        {centre.district}, {centre.state} &ndash; {centre.pincode}
+                                                        {centre.address ? `${centre.address} – ` : ""}{centre.district}, {centre.state} &ndash; {centre.pincode}
                                                     </p>
                                                 </div>
                                                 <div className="flex items-center gap-2.5">

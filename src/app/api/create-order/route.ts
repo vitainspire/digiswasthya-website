@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
                 amount: Math.round(amount * 100),
                 currency: "INR",
                 receipt: `order_${crypto.randomBytes(4).toString("hex")}`,
-                notes: { ngo_reg: "U85300UP2020NPL130635" }
+                notes: { ngo_reg: "U85300UP2021NPL146867" }
             });
 
             return NextResponse.json({

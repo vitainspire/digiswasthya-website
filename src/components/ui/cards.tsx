@@ -40,7 +40,7 @@ export function TeamCard({
                         src={image}
                         alt={name}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                     />
                 ) : (
                     name.charAt(0)

@@ -26,8 +26,8 @@ export function GrowthTrends() {
         {
             title: { en: "Patients Served Growth", hi: "मरीजों की सेवा में वृद्धि" },
             data: trends.map(d => ({ label: d.year, value: d.patients })),
-            color: "#1e7e42",
-            gradientColor: "#d0e9d8",
+            color: "#1d7a72",
+            gradientColor: "#d2e1df",
             suffix: "+"
         },
         {
@@ -40,8 +40,8 @@ export function GrowthTrends() {
         {
             title: { en: "Health Camps Growth", hi: "स्वास्थ्य शिविरों में वृद्धि" },
             data: trends.map(d => ({ label: d.year, value: d.camps })),
-            color: "#0f3a1f",
-            gradientColor: "#eef6f0",
+            color: "#003f3a",
+            gradientColor: "#e8efee",
             suffix: ""
         },
         {

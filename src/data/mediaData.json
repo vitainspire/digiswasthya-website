@@ -17,6 +17,390 @@
       "description": "Bridging the gap between specialized doctors and remote patients through digital connectivity.",
       "image": "/images/resources/consultation.jpg",
       "category": "Consultation"
+    },
+    {
+      "title": "Team at a telemedicine centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-01.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Community outreach in the village",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-02.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Village health awareness gathering",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-03.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Health camp in the village",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-04.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Patients waiting at the centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-05.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Team presenting at the centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-06.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Consultation at the centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-07.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Centre visit",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-08.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Team with a certificate at the centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-09.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Women's health session in the village",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-10.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Centre inauguration",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-11.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Women's group meeting",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-12.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Health camp in the village",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-13.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Bharatwada centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-14.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Bharatwada centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-15.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Centre visit by Ramana Sir",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-16.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Interaction with the team",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-17.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Narsala centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-18.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Online consultation",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-19.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Patient consultation",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-20.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Ramana Sir with the team",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-21.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "Ramana Sir at the Narsala centre",
+      "description": "DigiSwasthya telemedicine centres and community outreach.",
+      "image": "/images/media/gallery/gallery-22.jpg",
+      "category": "Centre Gallery"
+    },
+    {
+      "title": "State-level consultative workshop on childhood cancer",
+      "description": "Uttar Pradesh Department of Health workshop, in partnership with CanKids, 4 April 2026.",
+      "image": "/images/media/conferences/conference-01.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Childhood cancer workshop, Uttar Pradesh",
+      "description": "Felicitation at the state-level consultative workshop, 4 April 2026.",
+      "image": "/images/media/conferences/conference-02.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Speaking at the childhood cancer workshop",
+      "description": "Sandeep Kumar addressing the state-level workshop, 4 April 2026.",
+      "image": "/images/media/conferences/conference-03.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Childhood cancer workshop group photo",
+      "description": "Participants at the state-level workshop, 4 April 2026.",
+      "image": "/images/media/conferences/conference-04.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "SPAGN conference, February 2026",
+      "description": "Participants' group photo at the SPAGN conference.",
+      "image": "/images/media/conferences/conference-05.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "SPAGN panel discussion",
+      "description": "Panel discussion at the SPAGN conference.",
+      "image": "/images/media/conferences/conference-06.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "SPAGN panel session",
+      "description": "Speakers at the SPAGN conference.",
+      "image": "/images/media/conferences/conference-07.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "SPAGN conference session",
+      "description": "Speakers on stage at the SPAGN conference.",
+      "image": "/images/media/conferences/conference-08.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "SPAGN conference delegates",
+      "description": "Delegates gathered at the SPAGN conference.",
+      "image": "/images/media/conferences/conference-09.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Recognition certificate",
+      "description": "Receiving a certificate at an international patient-advocacy conference.",
+      "image": "/images/media/conferences/conference-10.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Certificate presentation",
+      "description": "Presented with a certificate at the conference.",
+      "image": "/images/media/conferences/conference-11.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Certificate with conference organisers",
+      "description": "Photo with organisers after the certificate presentation.",
+      "image": "/images/media/conferences/conference-12.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Recognition at the conference",
+      "description": "Holding the recognition certificate with conference leaders.",
+      "image": "/images/media/conferences/conference-13.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Certificate with advocacy network leaders",
+      "description": "Photo with leaders of the Sarcoma patient-advocacy network.",
+      "image": "/images/media/conferences/conference-14.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Holding the conference certificate",
+      "description": "Recognition certificate at the Sarcoma Patient Advocacy Global Network event.",
+      "image": "/images/media/conferences/conference-15.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Presenting at the conference",
+      "description": "Sandeep Kumar presenting DigiSwasthya's work.",
+      "image": "/images/media/conferences/conference-16.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Sharing DigiSwasthya's model",
+      "description": "Presentation at the international conference.",
+      "image": "/images/media/conferences/conference-17.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Felicitation at a Maharashtra state event",
+      "description": "DigiSwasthya honoured at a state-level event in Maharashtra.",
+      "image": "/images/media/conferences/conference-18.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Rotary Club event",
+      "description": "DigiSwasthya team at a Rotary Club programme.",
+      "image": "/images/media/conferences/conference-19.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Rotary Club of Bombay",
+      "description": "Sandeep Kumar at the Rotary Club of Bombay.",
+      "image": "/images/media/conferences/conference-20.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "St. Jude Global South Asia gathering",
+      "description": "Participants at the St. Jude Global South Asia meeting.",
+      "image": "/images/media/conferences/conference-21.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "St. Jude Global South Asia meeting",
+      "description": "Stage and delegates at the St. Jude Global South Asia meeting.",
+      "image": "/images/media/conferences/conference-22.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "ALSAC regional advisory council call",
+      "description": "Online call with the ALSAC regional advisory council.",
+      "image": "/images/media/conferences/conference-23.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "With Dr. Catharine Young",
+      "description": "Meeting Dr. Catharine Young, Ph.D.",
+      "image": "/images/media/conferences/conference-24.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "ICCI meet",
+      "description": "Group photo of participants at the ICCI meet.",
+      "image": "/images/media/conferences/conference-25.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Visit to St. Jude Children's Research Hospital",
+      "description": "At the hospital's Every Gift Matters lobby.",
+      "image": "/images/media/conferences/conference-26.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Outside the Tamer-Rashid Building",
+      "description": "Visit to St. Jude Children's Research Hospital.",
+      "image": "/images/media/conferences/conference-27.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "At the Danny Thomas bust",
+      "description": "Visit to St. Jude Children's Research Hospital.",
+      "image": "/images/media/conferences/conference-28.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "St. Jude campus visit",
+      "description": "Evening view of the St. Jude campus.",
+      "image": "/images/media/conferences/conference-29.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Meeting with Carlos",
+      "description": "Photo with colleagues from the St. Jude network.",
+      "image": "/images/media/conferences/conference-30.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Regional advisory council meeting, USA",
+      "description": "Council members and DigiSwasthya representatives.",
+      "image": "/images/media/conferences/conference-31.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Visit, April 2025",
+      "description": "Photo with hosts during a visit in April 2025.",
+      "image": "/images/media/conferences/conference-32.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Together Advisory Board, St. Jude",
+      "description": "Advisory board members together.",
+      "image": "/images/media/conferences/conference-33.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Together Advisory Board welcome",
+      "description": "Members at the Welcome Together Advisory Board banner.",
+      "image": "/images/media/conferences/conference-34.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Together Advisory Board group photo",
+      "description": "Advisory board group photo.",
+      "image": "/images/media/conferences/conference-35.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Round-table discussion",
+      "description": "Participants in a round-table discussion.",
+      "image": "/images/media/conferences/conference-36.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Working group meeting",
+      "description": "Delegates in a working group meeting.",
+      "image": "/images/media/conferences/conference-37.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Conference visit",
+      "description": "Sandeep Kumar at a conference venue.",
+      "image": "/images/media/conferences/conference-38.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Acumen fellowship cohort",
+      "description": "Group photo with the Acumen cohort.",
+      "image": "/images/media/conferences/conference-39.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Acumen cohort gathering",
+      "description": "Informal moment with fellow Acumen participants.",
+      "image": "/images/media/conferences/conference-40.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "Visit to Acumen headquarters",
+      "description": "Sandeep Kumar with an Acumen colleague at their headquarters.",
+      "image": "/images/media/conferences/conference-41.jpg",
+      "category": "Conference"
+    },
+    {
+      "title": "With the Acumen team",
+      "description": "Group photo during the Acumen visit.",
+      "image": "/images/media/conferences/conference-42.jpg",
+      "category": "Conference"
     }
   ],
   "infographics": [
@@ -32,6 +416,72 @@
     }
   ],
   "mediaCoverage": [
+    {
+      "title": "Ayushman card camp held in Daharauli village, hundreds benefit",
+      "description": "Dainik Bhaskar, Lucknow (18 April 2026). A special camp in Gram Panchayat Daharauli, Nathnagar block, Sant Kabir Nagar, helped villagers register for Ayushman cards.",
+      "image": "/images/media/daharauli-ayushman-camp.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "New hope for rural women: breast cancer screening begins in Sant Kabir Nagar",
+      "description": "Hindi daily (6 April 2026). Screening launched at the Kathaicha centre, with a street play (nukkad natak) explaining breast cancer symptoms, checks and prevention.",
+      "image": "/images/media/breast-screening-street-play.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "DigiSwasthya Foundation starts breast cancer screening in rural Uttar Pradesh",
+      "description": "Dainik Bhaskar, Sant Kabir Nagar (5 April 2026). CSR-backed breast cancer screening project launched at the Kali Road, Kathaicha centre with IRCTC's Sanjay Gaur as chief guest.",
+      "image": "/images/media/breast-screening-launch-bhaskar.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "Free Ayushman camp at Gram Sabha Manpur Bhartolia draws hundreds of villagers",
+      "description": "Dainik Bhaskar, Sant Kabir Nagar. A free camp in Nathnagar block helped villagers make new Ayushman Bharat cards and update old ones.",
+      "image": "/images/media/manpur-bhartolia-ayushman-camp.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "Nagpur Municipal Corporation renews partnership with DigiSwasthya Foundation",
+      "description": "Dainik Mahasagar, Nagpur (26 February 2026). Three-year renewal to run eight telemedicine centres in the city, after 13,247 patients were checked last year.",
+      "image": "/images/media/nmc-agreement-mahasagar.jpeg",
+      "category": "Partnership"
+    },
+    {
+      "title": "Cycle rally mobilises villagers towards cancer awareness",
+      "description": "Times of India, Lucknow (World Cancer Day, 4 February 2026). Cycle rally and awareness programme by the DigiSwasthya Telemedicine Centre, Itaunja, with Rama College and local panchayats.",
+      "image": "/images/media/world-cancer-day-toi.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "Rama College holds cancer awareness programme with DigiSwasthya",
+      "description": "Vidhan Kesari, Lucknow (World Cancer Day 2026). Street play and cultural performances carried the message of timely treatment.",
+      "image": "/images/media/world-cancer-day-vidhan-kesari.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "World Cancer Day event at Kamala Kutir, Itaunja",
+      "description": "Sandauli Times, Lucknow (World Cancer Day 2026). Over 100 villagers, students and representatives joined the DigiSwasthya cycle rally and awareness programme.",
+      "image": "/images/media/world-cancer-day-sandauli-times.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "Cancer awareness campaign held by DigiSwasthya telemedicine centre in Itaunja",
+      "description": "KPPN, Lucknow (World Cancer Day 2026). Awareness campaign and cycle rally at the Karua Panchayat Bhawan.",
+      "image": "/images/media/world-cancer-day-kppn.jpeg",
+      "category": "News"
+    },
+    {
+      "title": "Telemedicine facility at Gorewada Primary Health Centre inaugurated",
+      "description": "The Hitavada, Nagpur (1 February 2025). Nagpur Municipal Corporation unveiled a telemedicine facility managed by DigiSwasthya Foundation, funded through WCL's CSR.",
+      "image": "/images/media/gorewada-hitavada.jpg",
+      "category": "News"
+    },
+    {
+      "title": "Specialist doctors' advice now at NMC dispensary: telemedicine launched at Gorewada",
+      "description": "Hindi daily, Nagpur (February 2025). Telemedicine service started at Gorewada health centre by DigiSwasthya Foundation with NMC.",
+      "image": "/images/media/gorewada-hindi-news.jpg",
+      "category": "News"
+    },
     {
       "title": "Ministry of Information and Broadcasting",
       "description": "@MIB_India - Stories that Inspire (May 19, 2023). Recognized for the groundbreaking telemedicine mission in rural India.",

@@ -96,7 +96,7 @@ const IconFreecharge = ({ size = 40 }: { size?: number }) => (
 
 /* Bank icon — generic, coloured by bank */
 const BankIcon = ({ abbr, color, text = "white" }: { abbr: string; color: string; text?: string }) => (
-    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-[11px] font-black flex-shrink-0"
+    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xs font-black flex-shrink-0"
         style={{ background: color, color: text, letterSpacing: "0.02em" }}>
         {abbr}
     </div>
@@ -183,7 +183,7 @@ function ProcessingView({ onDone }: { onDone: () => void }) {
                         <div className="relative w-16 h-16">
                             <svg className="w-16 h-16 animate-spin" viewBox="0 0 64 64" fill="none">
                                 <circle cx="32" cy="32" r="28" stroke="#e5f0e8" strokeWidth="6" />
-                                <path d="M32 4a28 28 0 0 1 28 28" stroke="#1a6b3a" strokeWidth="6" strokeLinecap="round" />
+                                <path d="M32 4a28 28 0 0 1 28 28" stroke="#00655d" strokeWidth="6" strokeLinecap="round" />
                             </svg>
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Lock size={18} className="text-primary-600" />
@@ -201,7 +201,7 @@ function ProcessingView({ onDone }: { onDone: () => void }) {
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ type: "spring", stiffness: 260, damping: 18 }}
                             className="w-16 h-16 rounded-full flex items-center justify-center"
-                            style={{ background: "linear-gradient(135deg,#1a6b3a,#27ae5f)" }}
+                            style={{ background: "linear-gradient(135deg,#00655d,#1d7a72)" }}
                         >
                             <CheckCircle2 size={32} className="text-white" strokeWidth={2.5} />
                         </motion.div>
@@ -233,7 +233,7 @@ function UpiQrModal({ amount, onConfirm, onClose }: { amount: number; onConfirm:
     };
 
     return (
-        <ModalShell onClose={onClose} accentGradient="linear-gradient(90deg,#1a6b3a,#27ae5f,#1a6b3a)">
+        <ModalShell onClose={onClose} accentGradient="linear-gradient(90deg,#00655d,#1d7a72,#00655d)">
             <AnimatePresence mode="wait">
                 {phase === "qr" ? (
                     <motion.div key="qr-view" {...slideIn()} className="px-6 pt-5 pb-7">
@@ -242,7 +242,7 @@ function UpiQrModal({ amount, onConfirm, onClose }: { amount: number; onConfirm:
                             <span className="w-5 h-5 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
                                 <Heart size={10} className="text-primary-600 fill-primary-600" />
                             </span>
-                            <span className="text-[10px] font-bold text-primary-700 uppercase tracking-widest">DigiSwasthya Foundation</span>
+                            <span className="text-xs font-bold text-primary-700 uppercase tracking-widest">DigiSwasthya Foundation</span>
                         </div>
                         <h2 className="font-serif text-[22px] font-bold text-gray-900 leading-tight mb-0.5">Scan &amp; Donate</h2>
                         <p className="text-xs text-gray-400 mb-4">Support DigiSwasthya Foundation using any UPI app</p>
@@ -263,7 +263,7 @@ function UpiQrModal({ amount, onConfirm, onClose }: { amount: number; onConfirm:
                         </div>
 
                         {/* UPI apps */}
-                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest text-center mb-3">Pay using</p>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest text-center mb-3">Pay using</p>
                         <div className="flex items-end justify-center gap-4 mb-4">
                             {[
                                 { Icon: IconPhonePe, label: "PhonePe" },
@@ -273,7 +273,7 @@ function UpiQrModal({ amount, onConfirm, onClose }: { amount: number; onConfirm:
                             ].map(({ Icon, label }) => (
                                 <div key={label} className="flex flex-col items-center gap-1">
                                     <Icon size={38} />
-                                    <span className="text-[10px] text-gray-400 font-medium">{label}</span>
+                                    <span className="text-xs text-gray-400 font-medium">{label}</span>
                                 </div>
                             ))}
                         </div>
@@ -282,19 +282,19 @@ function UpiQrModal({ amount, onConfirm, onClose }: { amount: number; onConfirm:
                         <button onClick={copy}
                             className="w-full flex items-center justify-between px-4 py-3 rounded-xl border border-dashed border-primary-200 bg-primary-50/60 mb-1 group transition-colors hover:bg-primary-100/60">
                             <div className="text-left">
-                                <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest">UPI ID</p>
+                                <p className="text-xs text-gray-400 font-semibold uppercase tracking-widest">UPI ID</p>
                                 <p className="text-sm font-bold text-primary-800 font-mono tracking-tight">{QR_UPI_ID}</p>
                             </div>
-                            <span className={`text-[11px] font-bold px-2.5 py-1 rounded-lg transition-colors ${copied ? "bg-green-100 text-green-700" : "bg-white text-primary-600 group-hover:text-primary-800 border border-gray-100"}`}>
+                            <span className={`text-xs font-bold px-2.5 py-1 rounded-lg transition-colors ${copied ? "bg-primary-100 text-primary-700" : "bg-white text-primary-600 group-hover:text-primary-800 border border-gray-100"}`}>
                                 {copied ? "Copied ✓" : "Copy"}
                             </span>
                         </button>
-                        <p className="text-center text-[11px] text-gray-400 mb-5">Scan with any UPI app to complete your donation</p>
+                        <p className="text-center text-xs text-gray-400 mb-5">Scan with any UPI app to complete your donation</p>
 
                         {/* buttons */}
                         <button onClick={handleConfirm}
                             className="w-full py-3.5 rounded-xl font-bold text-white text-sm mb-2.5 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
-                            style={{ background: "linear-gradient(135deg,#1a6b3a,#27ae5f)", boxShadow: "0 4px 18px rgba(26,107,58,0.32)" }}>
+                            style={{ background: "linear-gradient(135deg,#00655d,#1d7a72)", boxShadow: "0 4px 18px rgba(26,107,58,0.32)" }}>
                             <CheckCircle2 size={15} strokeWidth={2.5} /> I Have Donated
                         </button>
                         <button onClick={onClose}
@@ -367,7 +367,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                     <motion.div key="picker" {...slideIn()} className="px-6 pt-5 pb-7">
                         <div className="flex items-center gap-2 mb-1">
                             <Lock size={11} className="text-indigo-500" />
-                            <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">Secure Online Payment</span>
+                            <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest">Secure Online Payment</span>
                         </div>
                         <h2 className="font-serif text-[22px] font-bold text-gray-900 mb-0.5">Choose Payment Method</h2>
                         <p className="text-xs text-gray-400 mb-5">Choose your preferred payment method</p>
@@ -430,10 +430,10 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                                         <div className="flex items-center gap-2">
                                             <span className="text-sm font-semibold text-gray-800">{m.label}</span>
                                             {m.badge && (
-                                                <span className="text-[10px] font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full">{m.badge}</span>
+                                                <span className="text-xs font-bold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full">{m.badge}</span>
                                             )}
                                         </div>
-                                        <p className="text-[11px] text-gray-400 mt-0.5">{m.sub}</p>
+                                        <p className="text-xs text-gray-400 mt-0.5">{m.sub}</p>
                                     </div>
                                     <ArrowRight size={14} className="text-gray-300 group-hover:text-indigo-400 flex-shrink-0 transition-colors" />
                                 </motion.button>
@@ -444,7 +444,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                             className="w-full py-3 rounded-xl font-semibold text-gray-500 text-sm border border-gray-200 hover:bg-gray-50 transition-colors">
                             Close
                         </button>
-                        <div className="flex items-center justify-center gap-2 mt-4 text-gray-300 text-[10px] font-medium">
+                        <div className="flex items-center justify-center gap-2 mt-4 text-gray-300 text-xs font-medium">
                             <ShieldCheck size={11} /> <span>256-bit SSL Encrypted</span>
                             <span>·</span>
                             <Lock size={11} /> <span>PCI DSS Compliant</span>
@@ -462,7 +462,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                         <p className="text-xs text-gray-400 mb-5">Select your preferred UPI app or enter UPI ID</p>
 
                         {/* App grid */}
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Choose app</p>
+                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Choose app</p>
                         <div className="grid grid-cols-4 gap-3 mb-5">
                             {[
                                 { id: "phonepe", label: "PhonePe", Icon: IconPhonePe },
@@ -473,14 +473,14 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                                 <button key={id} onClick={() => setUpiApp(id)}
                                     className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border-2 transition-all ${upiApp === id ? "border-indigo-400 bg-indigo-50" : "border-gray-100 bg-gray-50 hover:border-indigo-200"}`}>
                                     <Icon size={38} />
-                                    <span className="text-[10px] text-gray-500 font-medium leading-tight text-center">{label}</span>
+                                    <span className="text-xs text-gray-500 font-medium leading-tight text-center">{label}</span>
                                 </button>
                             ))}
                         </div>
 
                         {/* UPI ID input */}
                         <div className="mb-5">
-                            <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                            <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
                                 Or enter UPI ID
                             </label>
                             <div className="relative">
@@ -493,13 +493,13 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                                 />
                                 {upiId && (
                                     <div className="absolute right-3 top-1/2 -translate-y-1/2">
-                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
-                                            <CheckCircle2 size={12} className="text-green-600" />
+                                        <div className="w-5 h-5 rounded-full bg-primary-100 flex items-center justify-center">
+                                            <CheckCircle2 size={12} className="text-primary-600" />
                                         </div>
                                     </div>
                                 )}
                             </div>
-                            <p className="text-[11px] text-gray-400 mt-1.5">Example: 9876543210@upi or yourname@okaxis</p>
+                            <p className="text-xs text-gray-400 mt-1.5">Example: 9876543210@upi or yourname@okaxis</p>
                         </div>
 
                         <button onClick={proceed}
@@ -540,13 +540,13 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                             </div>
                             <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
                                 <div>
-                                    <p className="text-[9px] text-blue-200 uppercase tracking-wider">Card Holder</p>
+                                    <p className="text-xs text-blue-200 uppercase tracking-wider">Card Holder</p>
                                     <p className="text-white text-xs font-semibold mt-0.5 uppercase tracking-wide truncate max-w-[140px]">
                                         {card.name || "Your Name"}
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-[9px] text-blue-200 uppercase tracking-wider">Expires</p>
+                                    <p className="text-xs text-blue-200 uppercase tracking-wider">Expires</p>
                                     <p className="text-white text-xs font-semibold mt-0.5">{card.expiry || "MM/YY"}</p>
                                 </div>
                             </div>
@@ -557,7 +557,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                         <div className="flex flex-col gap-4 mb-5">
                             {/* Card number */}
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Card Number</label>
+                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5">Card Number</label>
                                 <input
                                     type="text"
                                     inputMode="numeric"
@@ -570,7 +570,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                             </div>
                             {/* Name */}
                             <div>
-                                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Cardholder Name</label>
+                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5">Cardholder Name</label>
                                 <input
                                     type="text"
                                     value={card.name}
@@ -582,7 +582,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                             {/* Expiry + CVV */}
                             <div className="grid grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Expiry</label>
+                                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5">Expiry</label>
                                     <input
                                         type="text"
                                         inputMode="numeric"
@@ -594,7 +594,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">CVV</label>
+                                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-1.5">CVV</label>
                                     <div className="relative">
                                         <input
                                             type={showCvv ? "text" : "password"}
@@ -614,9 +614,9 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                         </div>
 
                         {/* security note */}
-                        <div className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-5">
-                            <ShieldCheck size={14} className="text-green-600 flex-shrink-0" />
-                            <p className="text-[11px] text-green-700 font-medium">Your card details are encrypted and never stored.</p>
+                        <div className="flex items-center gap-2 bg-primary-50 border border-primary-200 rounded-xl px-4 py-2.5 mb-5">
+                            <ShieldCheck size={14} className="text-primary-600 flex-shrink-0" />
+                            <p className="text-xs text-primary-700 font-medium">Your card details are encrypted and never stored.</p>
                         </div>
 
                         <button onClick={proceed}
@@ -659,7 +659,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                         </div>
 
                         {!bankSearch && (
-                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2.5">Popular Banks</p>
+                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2.5">Popular Banks</p>
                         )}
 
                         <div className="flex flex-col gap-2 mb-5 max-h-56 overflow-y-auto pr-1">
@@ -718,7 +718,7 @@ function RazorpayModal({ amount, isRecurring, onConfirm, onClose }: {
                                     <Icon size={40} />
                                     <div className="flex-1">
                                         <p className="text-sm font-semibold text-gray-800">{label}</p>
-                                        <p className="text-[11px] text-gray-400 mt-0.5">{sub}</p>
+                                        <p className="text-xs text-gray-400 mt-0.5">{sub}</p>
                                     </div>
                                     <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-all ${selectedWallet === id ? "border-indigo-600 bg-indigo-600" : "border-gray-300"}`}>
                                         {selectedWallet === id && (
@@ -836,7 +836,7 @@ function DonationSummaryModal({ amount, name, email, isRecurring, method, onConf
                 style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.08)" }}
             >
                 {/* Green top accent */}
-                <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg,#1a6b3a,#27ae5f,#1a6b3a)" }} />
+                <div className="h-1.5 w-full" style={{ background: "linear-gradient(90deg,#00655d,#1d7a72,#00655d)" }} />
 
                 {/* Close */}
                 <button
@@ -850,7 +850,7 @@ function DonationSummaryModal({ amount, name, email, isRecurring, method, onConf
                     {/* Header */}
                     <div className="flex items-center gap-2 mb-1">
                         <CheckCircle2 size={13} className="text-primary-600" />
-                        <span className="text-[10px] font-bold text-primary-700 uppercase tracking-widest">Review Your Donation</span>
+                        <span className="text-xs font-bold text-primary-700 uppercase tracking-widest">Review Your Donation</span>
                     </div>
                     <h2 className="font-serif text-xl font-bold text-gray-900 leading-tight mb-0.5">Donation Summary</h2>
                     <p className="text-xs text-gray-400 mb-4">Please confirm your details before proceeding to payment.</p>
@@ -864,7 +864,7 @@ function DonationSummaryModal({ amount, name, email, isRecurring, method, onConf
                                     {row.icon}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-none">{row.label}</p>
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-none">{row.label}</p>
                                     <p className={`text-sm font-bold mt-0.5 break-all leading-snug ${row.highlight ? "text-primary-700" : "text-gray-900"}`}>
                                         {row.value}
                                     </p>
@@ -874,9 +874,9 @@ function DonationSummaryModal({ amount, name, email, isRecurring, method, onConf
                     </div>
 
                     {/* 80G note */}
-                    <div className="flex items-start gap-2.5 bg-green-50 border border-green-200 rounded-xl px-4 py-2.5 mb-4">
-                        <ShieldCheck size={13} className="text-green-600 flex-shrink-0 mt-0.5" />
-                        <p className="text-xs text-green-700 font-semibold leading-snug">Eligible for 80G Tax Exemption · NGO Reg. U85300UP2020NPL130635</p>
+                    <div className="flex items-start gap-2.5 bg-primary-50 border border-primary-200 rounded-xl px-4 py-2.5 mb-4">
+                        <ShieldCheck size={13} className="text-primary-600 flex-shrink-0 mt-0.5" />
+                        <p className="text-xs text-primary-700 font-semibold leading-snug">Eligible for 80G Tax Exemption · NGO Reg. U85300UP2021NPL146867</p>
                     </div>
 
                     {/* Buttons */}
@@ -884,7 +884,7 @@ function DonationSummaryModal({ amount, name, email, isRecurring, method, onConf
                         onClick={onConfirm}
                         className="w-full py-3 rounded-xl font-bold text-white text-sm mb-2.5 flex items-center justify-center gap-2 transition-all active:scale-[0.98]"
                         style={{
-                            background: "linear-gradient(135deg,#1a6b3a,#27ae5f)",
+                            background: "linear-gradient(135deg,#00655d,#1d7a72)",
                             boxShadow: "0 4px 16px rgba(26,107,58,0.32)"
                         }}
                     >

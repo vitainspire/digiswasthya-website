@@ -31,7 +31,7 @@ export const partnerOrganizations: PartnerOrg[] = [
     {
         name: "Great Place to Work® Institute",
         category: "Certification & Workplace Partner",
-        description: "Certified DigiSwasthya Foundation as a Great Place to Work (2023–2024) in the Non-Profit & Charity category."
+        description: "Certified DigiSwasthya Foundation as a Great Place to Work (2025–2026) in the Non-Profit & Charity category."
     },
     {
         name: "Government Primary & Community Health Centers (PHCs/CHCs)",

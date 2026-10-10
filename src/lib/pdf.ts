@@ -82,7 +82,7 @@ export async function generate80GReceipt(
         color: rgb(0.06, 0.09, 0.16),
     });
     
-    page.drawText("Section 8 NGO | Registration No: U85300UP2020NPL130635", {
+    page.drawText("Section 8 NGO | Registration No: U85300UP2021NPL146867", {
         x: 50,
         y: height - 98,
         size: 8.5,
@@ -90,7 +90,7 @@ export async function generate80GReceipt(
         color: rgb(0.39, 0.45, 0.55),
     });
 
-    page.drawText("Registered Office: Sant Kabir Nagar, Uttar Pradesh, India", {
+    page.drawText("Registered Office: C/O Sandeep Kumar, Kathaicha, Nokta, Sant Kabir Nagar, Uttar Pradesh - 272176", {
         x: 50,
         y: height - 110,
         size: 8.5,

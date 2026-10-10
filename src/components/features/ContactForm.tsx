@@ -106,7 +106,7 @@ export function ContactForm() {
                         
                         <div className="hidden lg:flex flex-col gap-6">
                             <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex items-start gap-4 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
-                                <div className="bg-orange-50 p-4 rounded-2xl text-orange-600 group-hover:scale-110 transition-transform duration-300">
+                                <div className="bg-primary-50 p-4 rounded-2xl text-primary-600 group-hover:scale-110 transition-transform duration-300">
                                     <Phone className="w-6 h-6" />
                                 </div>
                                 <div className="pt-1">
@@ -115,7 +115,7 @@ export function ContactForm() {
                                 </div>
                             </div>
                             <div className="bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex items-start gap-4 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300 group">
-                                <div className="bg-orange-50 p-4 rounded-2xl text-orange-600 group-hover:scale-110 transition-transform duration-300">
+                                <div className="bg-primary-50 p-4 rounded-2xl text-primary-600 group-hover:scale-110 transition-transform duration-300">
                                     <Mail className="w-6 h-6" />
                                 </div>
                                 <div className="pt-1">
@@ -129,24 +129,24 @@ export function ContactForm() {
                     {/* Right Column: Form Container */}
                     <div className="w-full lg:w-2/3 bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(15,23,42,0.12)] border border-slate-200/90 p-6 sm:p-10 md:p-12 relative overflow-hidden ring-1 ring-slate-100">
                         {/* Top dark orange accent frame bar */}
-                        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600" />
+                        <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600" />
                         
                         {/* Decorative subtle ambient background */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
                         
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-7 relative z-10">
                             
                             {/* Contact Type Section */}
                             <div className="bg-slate-50/90 p-5 sm:p-6 rounded-3xl border-2 border-slate-200/80 space-y-3 shadow-sm">
                                 <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2.5">
-                                    <span className="p-1.5 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center">
+                                    <span className="p-1.5 rounded-lg bg-primary-100 text-primary-700 flex items-center justify-center">
                                         <HelpCircle className="w-4 h-4" />
                                     </span>
                                     {t("contactForm.contactingAs")}
                                 </label>
                                 <select
                                     {...register("contactType")}
-                                    className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 rounded-2xl p-4 text-slate-900 font-bold text-base sm:text-lg focus:border-orange-600 focus:ring-4 focus:ring-orange-500/10 transition-all outline-none shadow-sm cursor-pointer"
+                                    className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 rounded-2xl p-4 text-slate-900 font-bold text-base sm:text-lg focus:border-primary-600 focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm cursor-pointer"
                                 >
                                     <option value="General Inquiry">{t("contactForm.typeGeneral")}</option>
                                     <option value="Donor">{t("contactForm.typeDonor")}</option>
@@ -163,9 +163,9 @@ export function ContactForm() {
                                         exit={{ opacity: 0, height: 0, scale: 0.95 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-3xl p-6 mb-6 shadow-sm">
+                                        <div className="bg-gradient-to-br from-primary-50 to-primary-50 border-2 border-primary-200 rounded-3xl p-6 mb-6 shadow-sm">
                                             <div className="flex items-start gap-3 mb-4">
-                                                <HeartPulse className="w-6 h-6 text-orange-700 flex-shrink-0 mt-1" />
+                                                <HeartPulse className="w-6 h-6 text-primary-700 flex-shrink-0 mt-1" />
                                                 <p className="text-sm font-bold text-slate-950 leading-relaxed">{t("contactForm.patientHelpNote")}</p>
                                             </div>
                                             <ContactActions />
@@ -177,7 +177,7 @@ export function ContactForm() {
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-2.5">
                                     <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                                        <span className="p-1 rounded-md bg-orange-50 text-orange-700">
+                                        <span className="p-1 rounded-md bg-primary-50 text-primary-700">
                                             <User className="w-4 h-4" />
                                         </span>
                                         {t("contactForm.fullName")}
@@ -185,13 +185,13 @@ export function ContactForm() {
                                     <input
                                         {...register("name", { required: t("contactForm.nameRequired") })}
                                         placeholder={t("contactForm.namePlaceholder")}
-                                        className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-orange-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-orange-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
+                                        className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-primary-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
                                     />
                                     {errors.name && <p className="text-xs text-red-600 font-bold px-1">{errors.name.message}</p>}
                                 </div>
                                 <div className="space-y-2.5">
                                     <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                                        <span className="p-1 rounded-md bg-orange-50 text-orange-700">
+                                        <span className="p-1 rounded-md bg-primary-50 text-primary-700">
                                             <Mail className="w-4 h-4" />
                                         </span>
                                         {t("contactForm.email")}
@@ -207,7 +207,7 @@ export function ContactForm() {
                                         })}
                                         type="email"
                                         placeholder={t("contactForm.emailPlaceholder")}
-                                        className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-orange-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-orange-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
+                                        className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-primary-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
                                     />
                                     {errors.email && <p className="text-xs text-red-600 font-bold px-1">{errors.email.message}</p>}
                                 </div>
@@ -215,7 +215,7 @@ export function ContactForm() {
 
                             <div className="space-y-2.5">
                                 <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                                    <span className="p-1 rounded-md bg-orange-50 text-orange-700">
+                                    <span className="p-1 rounded-md bg-primary-50 text-primary-700">
                                         <Phone className="w-4 h-4" />
                                     </span>
                                     {t("contactForm.phone")} <span className="text-slate-500 font-medium ml-1 text-xs">({t("contactForm.phoneOptionalUnlessNoEmail")})</span>
@@ -229,7 +229,7 @@ export function ContactForm() {
                                         }
                                     })}
                                     placeholder={t("contactForm.phonePlaceholder")}
-                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-orange-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-orange-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
+                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-primary-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
                                 />
                                 {errors.phone && <p className="text-xs text-red-600 font-bold px-1">{errors.phone.message}</p>}
                             </div>
@@ -267,7 +267,7 @@ export function ContactForm() {
 
                             <div className="space-y-2.5">
                                 <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                                    <span className="p-1 rounded-md bg-orange-50 text-orange-700">
+                                    <span className="p-1 rounded-md bg-primary-50 text-primary-700">
                                         <MessageSquare className="w-4 h-4" />
                                     </span>
                                     {t("contactForm.subject")}
@@ -275,13 +275,13 @@ export function ContactForm() {
                                 <input
                                     {...register("subject")}
                                     placeholder={t("contactForm.subjectPlaceholder")}
-                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-orange-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-orange-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
+                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-primary-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-primary-500/10 transition-all outline-none shadow-sm text-sm sm:text-base"
                                 />
                             </div>
 
                             <div className="space-y-2.5">
                                 <label className="text-sm font-extrabold text-slate-900 flex items-center gap-2">
-                                    <span className="p-1 rounded-md bg-orange-50 text-orange-700">
+                                    <span className="p-1 rounded-md bg-primary-50 text-primary-700">
                                         <MessageSquare className="w-4 h-4" />
                                     </span>
                                     {t("contactForm.message")}
@@ -290,7 +290,7 @@ export function ContactForm() {
                                     {...register("message", { required: t("contactForm.messageRequired") })}
                                     placeholder={t("contactForm.messagePlaceholder")}
                                     rows={5}
-                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-orange-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-orange-500/10 transition-all outline-none resize-none shadow-sm text-sm sm:text-base"
+                                    className="w-full bg-slate-50/90 hover:bg-slate-50 focus:bg-white border-2 border-slate-200/90 hover:border-slate-300 focus:border-primary-600 rounded-2xl p-4 text-slate-950 font-bold placeholder:text-slate-500 placeholder:font-normal focus:ring-4 focus:ring-primary-500/10 transition-all outline-none resize-none shadow-sm text-sm sm:text-base"
                                 />
                                 {errors.message && <p className="text-xs text-red-600 font-bold px-1">{errors.message.message}</p>}
                             </div>
@@ -298,11 +298,11 @@ export function ContactForm() {
                             {isVolunteer && (
                                 <motion.div 
                                     initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                                    className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-5 shadow-sm"
+                                    className="bg-primary-50 border-2 border-primary-200 rounded-2xl p-5 shadow-sm"
                                 >
-                                    <p className="text-sm text-amber-900 font-semibold leading-relaxed">
+                                    <p className="text-sm text-primary-900 font-semibold leading-relaxed">
                                         {t("contactForm.volunteerNote")}{" "}
-                                        <a href={VOLUNTEER_FORM_URL} target="_blank" rel="noopener noreferrer" className="text-amber-950 font-extrabold underline decoration-amber-500 decoration-2 underline-offset-2 hover:text-primary-700 transition-colors">
+                                        <a href={VOLUNTEER_FORM_URL} target="_blank" rel="noopener noreferrer" className="text-primary-950 font-extrabold underline decoration-primary-500 decoration-2 underline-offset-2 hover:text-primary-700 transition-colors">
                                             {t("contactForm.volunteerNoteLink")}
                                         </a>
                                         {t("contactForm.volunteerNoteEnd")}
@@ -316,7 +316,7 @@ export function ContactForm() {
                                         {...register("consent", { required: true })}
                                         type="checkbox"
                                         id="consent-form"
-                                        className="h-5 w-5 text-orange-600 border-2 border-slate-300 rounded focus:ring-orange-500 transition-all cursor-pointer"
+                                        className="h-5 w-5 text-primary-600 border-2 border-slate-300 rounded focus:ring-primary-500 transition-all cursor-pointer"
                                     />
                                 </div>
                                 <label htmlFor="consent-form" className="text-sm text-slate-700 font-semibold cursor-pointer leading-tight pt-0.5">
@@ -344,7 +344,7 @@ export function ContactForm() {
                             >
                                 <Button
                                     disabled={isSubmitting}
-                                    className="w-full py-7 text-xl rounded-2xl font-black shadow-[0_10px_40px_-10px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_50px_-10px_rgba(234,88,12,0.55)] transition-all flex gap-3 items-center justify-center bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white border-0"
+                                    className="w-full py-7 text-xl rounded-2xl font-black shadow-[0_10px_40px_-10px_rgba(234,88,12,0.45)] hover:shadow-[0_15px_50px_-10px_rgba(234,88,12,0.55)] transition-all flex gap-3 items-center justify-center bg-gradient-to-r from-primary-600 to-primary-600 hover:from-primary-700 hover:to-primary-700 text-white border-0"
                                     type="submit"
                                 >
                                     {isSubmitting ? (

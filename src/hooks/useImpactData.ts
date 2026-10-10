@@ -31,12 +31,6 @@ export function useImpactData() {
                             if (kpi.id === "patients-served" && live.kpis.total_patients) {
                                 return { ...kpi, value: live.kpis.total_patients };
                             }
-                            if (kpi.id === "total-consultations" && live.kpis.total_teleconsultations) {
-                                return { ...kpi, value: live.kpis.total_teleconsultations };
-                            }
-                            if (kpi.id === "health-camps" && live.kpis.total_camps) {
-                                return { ...kpi, value: live.kpis.total_camps };
-                            }
                             if (kpi.id === "expert-doctors" && live.kpis.total_doctors) {
                                 return { ...kpi, value: live.kpis.total_doctors };
                             }

@@ -130,6 +130,36 @@ export async function saveInquiry(record: InquiryRecord) {
     }
 }
 
+export interface SignupRecord {
+    type: "donor" | "doctor";
+    name: string;
+    email: string;
+    phone?: string;
+    details: Record<string, string>;
+    newsletterOptIn?: boolean;
+}
+
+/**
+ * Saves a donor or doctor signup request from the Join Us page
+ */
+export async function saveSignup(record: SignupRecord) {
+    try {
+        const docRef = await addDoc(collection(db, "signups"), {
+            ...record,
+            phone: record.phone || null,
+            status: "new",
+            consent: true,
+            consentAt: serverTimestamp(),
+            createdAt: serverTimestamp()
+        });
+        console.log(`[Firestore] Saved ${record.type} signup: ${docRef.id}`);
+        return docRef.id;
+    } catch (error) {
+        console.error("[Firestore Error] Failed to save signup:", error);
+        throw error;
+    }
+}
+
 /**
  * Retrieves all active subscribers (isSubscribed === true)
  */

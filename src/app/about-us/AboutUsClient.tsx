@@ -3,8 +3,11 @@
 import { useState } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { websiteConfig } from "@/data/websiteConfig";
+import { donorLogos, partnerLogos } from "@/data/logosData";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ClosingCta } from "@/components/layout/ClosingCta";
 import {
     Users,
     Stethoscope,
@@ -94,15 +97,15 @@ const contentDict = {
         mission: {
             title: { en: "Our Mission", hi: "हमारा मिशन" },
             text: {
-                en: "To make quality healthcare accessible to every individual by leveraging technology, medical expertise, preventive care, and community-driven healthcare initiatives that improve health outcomes and promote well-being.",
-                hi: "प्रौद्योगिकी, चिकित्सा विशेषज्ञता, निवारक देखभाल और समुदाय-संचालित स्वास्थ्य पहलों का लाभ उठाकर हर व्यक्ति के लिए गुणवत्तापूर्ण स्वास्थ्य सेवा सुलभ बनाना जो स्वास्थ्य परिणामों में सुधार करती हैं और कल्याण को बढ़ावा देती हैं।"
+                en: "Making healthcare accessible to 1.4 billion people through technology by 2047.",
+                hi: "2047 तक प्रौद्योगिकी के माध्यम से 1.4 अरब लोगों तक स्वास्थ्य सेवा पहुँचाना।"
             }
         },
         vision: {
             title: { en: "Our Vision", hi: "हमारा विजन" },
             text: {
-                en: "To build a healthier and more inclusive India where every individual, regardless of geography or financial background, has access to timely, affordable, and quality healthcare.",
-                hi: "एक स्वस्थ और अधिक समावेशी भारत का निर्माण करना जहाँ हर व्यक्ति, चाहे वह किसी भी भूगोल या वित्तीय पृष्ठभूमि का हो, समय पर, किफायती और गुणवत्तापूर्ण स्वास्थ्य सेवा प्राप्त कर सके।"
+                en: "To create a world where quality healthcare is accessible and affordable for all.",
+                hi: "एक ऐसी दुनिया बनाना जहाँ गुणवत्तापूर्ण स्वास्थ्य सेवा सभी के लिए सुलभ और किफायती हो।"
             }
         }
     },
@@ -127,16 +130,13 @@ export default function AboutUs() {
     const [isStoryExpanded, setIsStoryExpanded] = useState(false);
 
     return (
-        <main className="min-h-screen bg-slate-50 selection:bg-primary-500 selection:text-white font-sans text-slate-800">
+        <main className="min-h-screen bg-surface selection:bg-primary-500 selection:text-white font-sans text-slate-800">
             <Navbar />
 
             {/* SECTION 1 — WHO WE ARE (Hero Section: Compact & Fitted) */}
-            <section className="relative bg-gradient-to-br from-[#f8fafc] via-[#edf7f0] to-[#fef9ee] border-b border-slate-200/80 py-8 sm:py-10 lg:py-12 overflow-hidden text-slate-900">
+            <section className="relative bg-primary-50 border-b border-primary-100 py-8 sm:py-10 lg:py-12 overflow-hidden text-slate-900">
                 {/* Soft ambient aura lighting */}
-                <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-200/30 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute bottom-0 left-10 w-72 h-72 bg-amber-200/30 rounded-full blur-[90px] pointer-events-none" />
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#059669_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
-
+                                                
                 <div className="container max-w-7xl relative z-10 px-4 sm:px-6">
                     <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center">
                         
@@ -145,10 +145,9 @@ export default function AboutUs() {
                             <motion.div
                                 initial={{ opacity: 0, y: -8 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 bg-white/95 border border-emerald-200/80 px-3.5 py-1 rounded-full shadow-sm backdrop-blur-sm"
+                                className="inline-flex items-center gap-2 bg-white border border-primary-200 px-3.5 py-1 rounded-full"
                             >
-                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-emerald-800 text-[11px] font-bold uppercase tracking-wider">
+                                <span className="text-primary-800 text-sm font-semibold">
                                     {contentDict.section1.title[currentLang]}
                                 </span>
                             </motion.div>
@@ -156,19 +155,19 @@ export default function AboutUs() {
                             <motion.h1
                                 initial={{ opacity: 0, y: 12 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight leading-tight text-slate-900"
+                                className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight leading-tight text-primary-900"
                             >
                                 {currentLang === "hi" ? (
                                     <>
                                         गुणवत्तापूर्ण स्वास्थ्य सेवा <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-amber-700">
+                                        <span>
                                             सभी के लिए सुलभ
                                         </span>
                                     </>
                                 ) : (
                                     <>
                                         Quality Healthcare <br />
-                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-amber-700">
+                                        <span>
                                             For Every Rural Family
                                         </span>
                                     </>
@@ -179,7 +178,7 @@ export default function AboutUs() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.12 }}
-                                className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal"
+                                className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0"
                             >
                                 {contentDict.section1.text[currentLang]}
                             </motion.p>
@@ -192,16 +191,16 @@ export default function AboutUs() {
                             >
                                 <a
                                     href="#sandeeps-story"
-                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-900 via-primary-800 to-emerald-800 hover:from-primary-950 hover:to-emerald-900 text-white font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-primary-950/20 hover:shadow-lg hover:-translate-y-0.5"
+                                    className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-primary-950/20 hover:shadow-lg hover:-translate-y-0.5"
                                 >
                                     <span>{currentLang === "hi" ? "संस्थापक की कहानी पढ़ें" : "Read Founder's Story"}</span>
                                     <ArrowRight className="w-3.5 h-3.5" />
                                 </a>
                                 <Link
                                     href="/donate"
-                                    className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary-500 to-amber-500 hover:from-secondary-600 hover:to-amber-600 text-white font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-amber-500/25 hover:shadow-lg hover:-translate-y-0.5"
+                                    className="inline-flex items-center gap-2 bg-secondary-400 hover:bg-secondary-300 text-primary-950 font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-amber-500/25 hover:shadow-lg hover:-translate-y-0.5"
                                 >
-                                    <Heart className="w-3.5 h-3.5 fill-white text-white" />
+                                    <Heart className="w-3.5 h-3.5 fill-current" />
                                     <span>{currentLang === "hi" ? "हमारे मिशन का समर्थन करें" : "Support Our Mission"}</span>
                                 </Link>
                             </motion.div>
@@ -770,10 +769,21 @@ export default function AboutUs() {
                             <div className="space-y-2.5">
                                 <div className="flex items-center gap-3 text-slate-800 bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
                                     <FileText className="text-emerald-600 w-4 h-4 shrink-0" />
-                                    <span className="text-xs sm:text-sm font-medium"><strong>NGO Registration:</strong> U85300UP2020NPL130635</span>
+                                    <span className="text-xs sm:text-sm font-medium"><strong>NPO Registration Number:</strong> U85300UP2021NPL146867</span>
                                 </div>
+                                {[
+                                    ["CIN (Corporate Identity Number)", "U85300UP2021NPL146867"],
+                                    ["80G Certificate No", "AAICD5332R25LK02"],
+                                    ["CSR Form 1", "CSR00016240"],
+                                    ["NGO Darpan ID", "UP/2021/0291277"],
+                                ].map(([label, value]) => (
+                                    <div key={label} className="flex items-center gap-3 text-slate-800 bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
+                                        <FileText className="text-emerald-600 w-4 h-4 shrink-0" />
+                                        <span className="text-xs sm:text-sm font-medium"><strong>{label}:</strong> {value}</span>
+                                    </div>
+                                ))}
                                 <p className="text-[11px] text-slate-400 italic">
-                                    Registered Section 8 NGO, compliant with applicable healthcare regulations in India.
+                                    DIGISWASTHYA FOUNDATION is incorporated under Section 8 of the Companies Act, 2013, and is compliant with applicable regulations in India.
                                 </p>
                             </div>
                         </div>
@@ -784,41 +794,19 @@ export default function AboutUs() {
                                 <h3 className="text-base font-black uppercase tracking-tight">Our Partners</h3>
                             </div>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
-                                {[
-                                    { id: "01", image: "/images/partner-1.png" },
-                                    { id: "02", image: "/images/partner-2.png" },
-                                    { id: "03", image: "/images/partner-3.png" },
-                                    { id: "04", image: "/images/partner-4.png" },
-                                    { id: "05", image: "/images/partner-5.png" },
-                                    { id: "06", image: "/images/partner-6.png" },
-                                    { id: "07", image: "/images/partner-7.png" },
-                                    { id: "08", image: "/images/partner-8.png" },
-                                    { id: "09", image: "/images/partner-9.png", link: "https://empowerpragati.in/" },
-                                    { id: "10", image: "/images/partner-10.png" },
-                                    { id: "11", image: "/images/partner-11.png" },
-                                    { id: "12", image: "/images/partner-12.png", link: "https://svpindia.org/" },
-                                    { id: "13", image: "/images/partner-13.jpg", link: "https://linktr.ee/teamspreadingsmilesofjoy" },
-                                    { id: "14", image: "/images/partner-14.jpg" },
-                                    { id: "15", image: "/images/partner-15.png" },
-                                    { id: "16", image: "/images/partner-16.png" }
-                                ].map((p, i) => {
+                                {partnerLogos.map((p, i) => {
                                     const CardContent = (
                                         <div className="h-16 bg-white rounded-xl border border-slate-200 flex items-center justify-center p-2.5 shadow-sm hover:border-emerald-200 transition-all">
                                             {p.image ? (
                                                 <div className="relative w-full h-full">
                                                     <Image
                                                         src={p.image}
-                                                        alt={`Partner ${p.id}`}
+                                                        alt={p.name}
                                                         fill
                                                         className="object-contain"
                                                     />
                                                 </div>
-                                            ) : (
-                                                <div className="text-center opacity-40">
-                                                    <div className="text-[7px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-0.5">Partner</div>
-                                                    <div className="text-[10px] font-black text-slate-500">ORG-{p.id}</div>
-                                                </div>
-                                            )}
+                                            ) : null}
                                         </div>
                                     );
 
@@ -839,6 +827,31 @@ export default function AboutUs() {
                                     );
                                 })}
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="pt-12">
+                        <div className="flex items-center gap-2 mb-4 text-slate-900 border-b border-slate-200 pb-2.5">
+                            <HeartHandshake className="text-emerald-600 w-5 h-5" />
+                            <h3 className="text-base font-black uppercase tracking-tight">Our Donors</h3>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
+                            {donorLogos.map((d) => {
+                                const card = (
+                                    <div className="h-20 bg-white rounded-xl border border-slate-200 flex items-center justify-center p-3 shadow-sm hover:border-emerald-200 transition-all">
+                                        <div className="relative w-full h-full">
+                                            <Image src={d.image} alt={d.name} fill sizes="160px" className="object-contain" />
+                                        </div>
+                                    </div>
+                                );
+                                return d.link ? (
+                                    <a key={d.name} href={d.link} target="_blank" rel="noopener noreferrer" className="block transition-transform hover:scale-[1.02]">
+                                        {card}
+                                    </a>
+                                ) : (
+                                    <div key={d.name} className="cursor-default">{card}</div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -862,11 +875,22 @@ export default function AboutUs() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
                             <a
-                                href="/annual-report.pdf"
+                                href={websiteConfig.annualReportsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full px-5 py-2.5 text-xs sm:text-sm transition-colors shadow-md shadow-emerald-500/25"
                             >
                                 <FileText className="w-3.5 h-3.5" />
-                                Download Annual Report 2021-22
+                                Annual Reports (FY 2021-22 to 2024-25)
+                            </a>
+                            <a
+                                href={websiteConfig.balanceSheetsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full px-5 py-2.5 text-xs sm:text-sm transition-colors shadow-md shadow-emerald-500/25"
+                            >
+                                <FileText className="w-3.5 h-3.5" />
+                                Audited Balance Sheets (FY 2022-23 to 2025-26)
                             </a>
                             <a
                                 href="/contact-us"
@@ -880,6 +904,7 @@ export default function AboutUs() {
                 </div>
             </section>
 
+            <ClosingCta />
             <Footer />
         </main>
     );

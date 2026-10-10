@@ -1,5 +1,7 @@
 "use client";
 
+import { websiteConfig } from "@/data/websiteConfig";
+import { PageHero } from "@/components/layout/PageHero";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { motion } from "framer-motion";
@@ -13,33 +15,12 @@ export default function ContactUs() {
         <main className="min-h-screen bg-white">
             <Navbar />
 
-            <section className="relative bg-gradient-to-br from-slate-900 via-primary-950 to-slate-900 text-white py-16 md:py-20 overflow-hidden">
-                {/* Decorative Background Elements */}
-                <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
-                    <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:28px_28px]" />
-                </div>
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[150%] rounded-full bg-primary-500/10 blur-[120px]" />
-                    <div className="absolute top-[20%] -left-[10%] w-[40%] h-[100%] rounded-full bg-secondary-400/5 blur-[100px]" />
-                </div>
-                
-                <div className="container relative z-10 mx-auto px-4 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 tracking-tight drop-shadow-lg">
-                            Let&apos;s Get in <span className="text-secondary-400 drop-shadow-[0_0_30px_rgba(251,191,36,0.4)]">Touch</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-primary-100 max-w-2xl mx-auto font-medium leading-relaxed">
-                            &quot;Making healthcare services affordable and accessible for rural communities across India.&quot;
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+            <PageHero
+                title="Let&apos;s Get in Touch"
+                subtitle="&quot;Making healthcare services affordable and accessible for rural communities across India.&quot;"
+            />
 
-            <div className="bg-gradient-to-b from-slate-50 to-white">
+            <div className="bg-surface">
                 <div className="container py-20 px-4">
                     {/* Prominent Contact Actions at the Top */}
                     <div className="mb-16 bg-white p-8 lg:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col md:flex-row items-center md:items-center justify-start gap-6 md:gap-10 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300">
@@ -76,8 +57,10 @@ export default function ContactUs() {
                                     <Phone className="h-5 w-5 text-primary-600" />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-xs font-bold text-gray-400 uppercase">Call / WhatsApp</span>
+                                    <span className="text-xs font-bold text-gray-400 uppercase">Call</span>
                                     <span className="font-bold text-gray-900">+91 83184 24800</span>
+                                    <span className="mt-1 text-xs font-bold text-gray-400 uppercase">WhatsApp</span>
+                                    <span className="font-bold text-gray-900">+91 99879 44391</span>
                                 </div>
                             </div>
                             <div className="flex items-start gap-4 group">
@@ -86,7 +69,9 @@ export default function ContactUs() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-xs font-bold text-gray-400 uppercase">Head Office</span>
-                                    <span className="font-bold text-gray-900 text-sm leading-relaxed">Kali Road, Kathaicha Chauraha, Nath Nagar, Sant Kabir Nagar, Uttar Pradesh - 272176</span>
+                                    <span className="font-bold text-gray-900 text-sm leading-relaxed">{websiteConfig.headOfficeAddress}</span>
+                                    <span className="mt-3 text-xs font-bold text-gray-400 uppercase">Registered Address</span>
+                                    <span className="font-bold text-gray-900 text-sm leading-relaxed">{websiteConfig.registeredAddress}</span>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +85,7 @@ export default function ContactUs() {
                     >
                         <Link
                             href="/network"
-                            className="group block h-full bg-slate-900 text-white p-8 sm:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.2)] transition-all duration-300 overflow-hidden relative"
+                            className="group block h-full bg-primary-900 text-white p-8 sm:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.2)] transition-all duration-300 overflow-hidden relative"
                         >
                             <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-primary-500/30 transition-colors duration-500" />
                             <div className="relative">

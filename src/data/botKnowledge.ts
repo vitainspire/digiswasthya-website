@@ -60,14 +60,15 @@ Rural and underserved communities face: shortage of specialist doctors, delayed 
 Why DigiSwasthya Exists:
 DigiSwasthya was established to reduce the gap between healthcare providers and underserved communities through technology-driven solutions, medical expertise, health camps, preventive screening programs, and awareness initiatives.
 
-Mission: To make quality healthcare accessible to every individual by leveraging technology, medical expertise, preventive care, and community-driven healthcare initiatives that improve health outcomes and promote well-being.
-Vision: To build a healthier and more inclusive India where every individual, regardless of geography or financial background, has access to timely, affordable, and quality healthcare.
+Mission: Making healthcare accessible to 1.4 billion people through technology by 2047.
+Vision: To create a world where quality healthcare is accessible and affordable for all.
+Values: Accountability, Benevolence, Compassion, Dignity.
 
 Founder's Story (Sandeep Kumar):
 In 2007, Sandeep Kumar was unwell and wandered from hospital to hospital in Sant Kabir Nagar, Uttar Pradesh, unable to get a correct diagnosis due to lack of qualified doctors. After 6 months, he was diagnosed with Ewing Sarcoma (a type of bone cancer) and his entire right humerus bone was replaced. Doctors said further delay would have left him immobilized. He recovered at Tata Memorial Hospital, Mumbai.
 From 2015–2020, he dedicated himself to supporting cancer patients and survivors. In July 2020, he invested his savings to establish DigiSwasthya's first telemedicine clinic in his home district (Sant Kabir Nagar), creating one of the state's first hybrid medical consultation facilities. DigiSwasthya = Digi (Digital) + Swasthya (Health).
 
-Certifications: Great Place to Work Certified (August 2023 – August 2024), Non-profit & Charity Organizations category.
+Certifications: Great Place to Work Certified (October 2025 – October 2026), Non-profit & Charity Organizations category.
 
 How We Work — 8 Pillars:
 1. Awareness Campaigns — Community outreach and health education in rural areas.
@@ -167,7 +168,10 @@ PAGE: DONATE
 ══════════════════════════════════════
 Headline: "Every Rupee Saves a Life"
 Tagline: Help us bring quality healthcare to underserved communities across rural India.
-NGO Registration Number: U85300UP2020NPL130635
+NGO Registration Number (CIN / NPO): U85300UP2021NPL146867
+80G Certificate No: AAICD5332R25LK02
+CSR Form 1: CSR00016240
+NGO Darpan ID: UP/2021/0291277
 Tax Benefit: Donations are 80G tax exempt.
 Minimum Donation: ₹100
 
@@ -212,13 +216,23 @@ DigiSwasthya publishes blog articles focused on healthcare topics. Articles focu
 PAGE: CONTACT US
 ══════════════════════════════════════
 General Support Email: info@digiswasthya.org
-Phone / WhatsApp / Helpline: ${websiteConfig.supportPhone}
+Phone / Helpline: ${websiteConfig.supportPhone}
+WhatsApp: ${websiteConfig.whatsappNumber}
 Centre Phone: +91 99879 44391
 Partnerships Email: partnerships@digiswasthya.org
-Head Office Address: Kali Road, Kathaicha Chauraha, Nath Nagar, Sant Kabir Nagar, Uttar Pradesh — 272176
+Head Office Address: ${websiteConfig.headOfficeAddress}
+Registered Address: ${websiteConfig.registeredAddress}
 Response Time: Team responds within 24–48 hours.
 
 Contact Types: General Inquiry, Donor/Supporter, Volunteer, Patient/Need Help.
+
+══════════════════════════════════════
+PAGE: JOIN US (/join-us)
+══════════════════════════════════════
+One page with two sign-up forms.
+- Donors and supporters: ask about giving once, giving monthly, sponsoring a centre or camp, or CSR partnerships. Optional tick box to receive impact updates by email.
+- Doctors: request to join the network by sharing medical registration number, council, qualification and speciality. The doctor onboarding team replies within 24–48 hours.
+Both forms need consent before they can be sent.
 
 ══════════════════════════════════════
 COLLABORATION & PARTNERS

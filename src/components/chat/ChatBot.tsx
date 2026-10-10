@@ -55,7 +55,7 @@ const CHAT_DATA: Record<string, ChatOption[]> = {
     'General Info': [
         {
             label: 'What is DigiSwasthya’s mission?',
-            response: 'Our mission is to make quality healthcare accessible and affordable to every rural family in India through the effective use of technology and community engagement.'
+            response: 'Our mission is making healthcare accessible to 1.4 billion people through technology by 2047. Our vision is a world where quality healthcare is accessible and affordable for all.'
         },
         {
             label: 'Impact numbers',
@@ -215,7 +215,7 @@ export default function ChatBot() {
     const currentOptions = currentCategory ? CHAT_DATA[currentCategory] : CHAT_DATA.initial;
 
     return (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end">
+        <div className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-40 flex flex-col items-end">
             {/* Chat Window */}
             <AnimatePresence>
                 {isOpen && (

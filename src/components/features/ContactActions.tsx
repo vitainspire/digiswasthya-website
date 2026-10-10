@@ -11,7 +11,7 @@ interface ContactActionProps {
 
 export function ContactActions({
     phone = "+91 83184 24800",
-    whatsapp = "918318424800",
+    whatsapp = "919987944391",
     variant = "default"
 }: ContactActionProps) {
     const whatsappLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent("Hello DigiSwasthya, I have a query.")}`;

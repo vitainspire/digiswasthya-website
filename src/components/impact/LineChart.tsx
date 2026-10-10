@@ -19,8 +19,8 @@ interface LineChartProps {
 export function LineChart({
     data,
     title,
-    color = "#1e7e42", // Default Primary 500
-    gradientColor = "#d0e9d8", // Default Primary 100
+    color = "#1d7a72", // Default Primary 500
+    gradientColor = "#d2e1df", // Default Primary 100
     valueSuffix = ""
 }: LineChartProps) {
     const containerRef = useRef<HTMLDivElement>(null);

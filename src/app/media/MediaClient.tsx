@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ClosingCta } from "@/components/layout/ClosingCta";
 import Image from "next/image";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,7 +45,7 @@ function MediaContent() {
     const tabs: { id: MediaTab; label: string; count: number; icon: string }[] = [
         { id: "all", label: "All", count: mediaCoverage.length + videos.length + projectImages.length, icon: "✨" },
         { id: "news", label: "News & Press Coverage", count: mediaCoverage.length, icon: "📰" },
-        { id: "photos", label: "Field Work Photos", count: projectImages.length + infographics.length, icon: "📸" },
+        { id: "photos", label: "Photos & Gallery", count: projectImages.length + infographics.length, icon: "📸" },
         { id: "videos", label: "Videos & Documentaries", count: videos.length, icon: "🎥" }
     ];
 
@@ -53,7 +54,7 @@ function MediaContent() {
     const showVideos = activeTab === "all" || activeTab === "videos";
 
     return (
-        <main className="min-h-screen bg-gradient-to-b from-[#e8edf2] via-[#e2e8f0] to-[#dbe4ec] text-slate-900 flex flex-col relative">
+        <main className="min-h-screen bg-surface text-primary-900 flex flex-col relative">
             <Navbar />
 
             {/* Hero Section */}
@@ -68,14 +69,14 @@ function MediaContent() {
                         className="object-cover object-center"
                     />
                     {/* Balanced contrast overlay */}
-                    <div className="absolute inset-0 bg-slate-950/45 backdrop-blur-[1px]" />
+                    <div className="absolute inset-0 bg-primary-950/60" />
                 </div>
 
                 <div className="container relative z-10 text-center px-4">
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 text-orange-200 border border-white/20 text-xs font-bold uppercase tracking-widest mb-3 backdrop-blur-md shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 text-white border border-white/30 text-sm font-semibold mb-3"
                     >
                         Official Media Center
                     </motion.span>
@@ -98,7 +99,7 @@ function MediaContent() {
             </section>
 
             {/* Sticky Interactive Filter Tabs Bar */}
-            <div className="sticky top-24 z-30 bg-[#e2e8f0]/85 backdrop-blur-xl border-b border-slate-300/80 shadow-sm py-3">
+            <div className="sticky top-20 z-30 bg-white/95 backdrop-blur border-b border-primary-100 py-3">
                 <div className="container max-w-6xl mx-auto px-4">
                     <div className="flex items-center justify-center gap-2 md:gap-3 flex-wrap">
                         {tabs.map((tab) => {
@@ -107,9 +108,9 @@ function MediaContent() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`relative px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-200 flex items-center gap-2 ${
+                                    className={`relative px-4 md:px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 flex items-center gap-2 ${
                                         isActive
-                                            ? "bg-orange-600 hover:bg-orange-700 text-white shadow-md shadow-orange-600/30 ring-2 ring-orange-600/30"
+                                            ? "bg-primary-600 hover:bg-primary-700 text-white shadow-md"
                                             : "bg-white/80 backdrop-blur-md text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-300/80 shadow-xs"
                                     }`}
                                 >
@@ -147,7 +148,7 @@ function MediaContent() {
                             <section className="py-16 md:py-20">
                                 <div className="container max-w-6xl mx-auto px-4">
                                     <div className="flex flex-col items-center mb-12 text-center">
-                                        <span className="px-4 py-1.5 bg-blue-100/90 text-blue-800 border border-blue-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                                        <span className="px-4 py-1.5 bg-primary-100/90 text-primary-800 border border-primary-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
                                             📰 News & Press Coverage
                                         </span>
                                         <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
@@ -162,7 +163,7 @@ function MediaContent() {
                                         {mediaCoverage.map((item, i) => (
                                             <div
                                                 key={i}
-                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-300/70 hover:border-blue-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
+                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-300/70 hover:border-primary-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
                                             >
                                                 <div className="relative h-56 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4 border-b border-slate-200/60">
                                                     <Image
@@ -172,14 +173,14 @@ function MediaContent() {
                                                         className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                                                     />
                                                     <div className="absolute top-3 left-3">
-                                                        <span className="px-3 py-1 bg-white/95 backdrop-blur-md text-blue-800 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-xs border border-blue-200">
+                                                        <span className="px-3 py-1 bg-white/95 backdrop-blur-md text-primary-800 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-xs border border-primary-200">
                                                             {item.category}
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div className="p-6 flex-grow flex flex-col justify-between">
                                                     <div>
-                                                        <h3 className="font-bold text-lg text-slate-900 mb-2.5 leading-snug group-hover:text-blue-700 transition-colors">
+                                                        <h3 className="font-bold text-lg text-slate-900 mb-2.5 leading-snug group-hover:text-primary-700 transition-colors">
                                                             {item.title}
                                                         </h3>
                                                         <p className="text-slate-600 font-normal text-sm leading-relaxed">
@@ -347,6 +348,7 @@ function MediaContent() {
                 </AnimatePresence>
             </div>
 
+            <ClosingCta />
             <Footer />
         </main>
     );

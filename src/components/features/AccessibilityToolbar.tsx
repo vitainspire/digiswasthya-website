@@ -40,11 +40,11 @@ export function AccessibilityToolbar() {
             <Button
                 variant="primary"
                 size="icon"
-                className="rounded-l-md rounded-r-none shadow-lg bg-blue-600 hover:bg-blue-700 h-10 w-10 sm:h-12 sm:w-12"
+                className="rounded-l-md rounded-r-none shadow-lg bg-primary-600 hover:bg-primary-700 h-10 w-10 sm:h-12 sm:w-12"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Accessibility Tools"
             >
-                <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white animate-spin-slow" />
+                <Settings className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
             </Button>
 
             {isOpen && (

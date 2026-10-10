@@ -30,7 +30,7 @@ function AnimatedBarRow({
     defaultColor?: string;
 }) {
     const percentage = Math.min((item.value / maxVal) * 100, 100);
-    const itemColor = item.color || defaultColor || "#1e7e42";
+    const itemColor = item.color || defaultColor || "#1d7a72";
 
     // Animated count up for values
     const motionValue = useMotionValue(0);

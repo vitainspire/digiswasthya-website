@@ -22,7 +22,7 @@ export function TranslationWidget() {
     };
 
     return (
-        <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col items-start">
+        <div className="fixed bottom-20 left-4 md:bottom-6 md:left-6 z-40 flex flex-col items-start">
             {isOpen && (
                 <div className="mb-3 w-48 sm:w-56 rounded-2xl sm:rounded-[1.5rem] border-2 sm:border-4 border-white bg-white/95 backdrop-blur-md shadow-2xl overflow-hidden max-h-[60vh] overflow-y-auto animate-in fade-in slide-in-from-bottom-5 duration-300 ring-1 ring-black/5">
                     <div className="px-4 py-3 sm:px-5 sm:py-4 bg-primary-600 text-white font-bold text-[11px] sm:text-xs uppercase tracking-widest text-center border-b border-white/10">

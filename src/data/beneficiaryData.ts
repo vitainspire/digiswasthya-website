@@ -46,19 +46,19 @@ export const testimonials: Testimonial[] = [
         name: "Balu Katale",
         problem: "Diabetic Foot Ulcers — DS3",
         body: "Encountered skin burns on leg due to agricultural chemicals. Learning about DigiSwasthya through a village health camp, sought timely intervention which saved both time and money.",
-        image: "/images/testimonials/balu-katale.png"
+        image: "/images/testimonials/avatars/balu-katale.jpg"
     },
     {
         name: "Jagruti",
         problem: "Weight Loss Problem — DS4",
         body: "Despite treatments from several hospitals, nothing worked. Introduced to DigiSwasthya and spent only Rs. 400 on initial prescription. A strict diet plan resulted in positive recovery.",
-        image: "/images/testimonials/jagruti.png"
+        image: "/images/testimonials/avatars/jagruti.jpg"
     },
     {
         name: "Manisha Kumari",
         problem: "Osteosarcoma Cancer — DS1",
         body: "Diagnosed with Osteosarcoma cancer and feeling hopeless, DigiSwasthya Foundation connected her with doctors in Mumbai. Thanks to financial assistance from the Ratan Tata Trust, surgery was successfully conducted.",
-        image: "/images/testimonials/manisha-kumari.png"
+        image: "/images/testimonials/avatars/manisha-kumari.jpg"
     },
     {
         name: "Sudhanshu Kumar",

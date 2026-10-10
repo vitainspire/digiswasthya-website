@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
                 receipt: `rcpt_${crypto.randomBytes(8).toString("hex")}`,
                 notes: {
                     isRecurring: isRecurring ? "true" : "false",
-                    ngo_reg: "U85300UP2020NPL130635"
+                    ngo_reg: "U85300UP2021NPL146867"
                 },
             };
 

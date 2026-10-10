@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
                                 <li>The Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Information) Rules, 2011.</li>
                             </ul>
                             <p className="text-gray-950">
-                                This Privacy Policy (“Privacy Policy”) applies to the collection, storage, processing, disclosure, and transfer of your Personal Information (defined below) as per the above-mentioned laws, particularly when you use the website of <a href="https://www.digiswashtya.org" className="text-primary-600 hover:underline">https://www.digiswashtya.org</a> (“Website”) operated by DIGISWASTHYA FOUNDATION for any information or services (“Services”).
+                                This Privacy Policy (“Privacy Policy”) applies to the collection, storage, processing, disclosure, and transfer of your Personal Information (defined below) as per the above-mentioned laws, particularly when you use the website of <a href="https://www.digiswasthya.org" className="text-primary-600 hover:underline">https://www.digiswasthya.org</a> (“Website”) operated by DIGISWASTHYA FOUNDATION for any information or services (“Services”).
                             </p>
                             <p className="text-gray-950">
                                 The terms ‘You’ or ‘Your’ refer to you as the User (registered or unregistered) of the Website and/or Services, and the terms ‘We’, ‘Us,” and ‘Our’ refer to DIGISWASTHYA FOUNDATION.

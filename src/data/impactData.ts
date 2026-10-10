@@ -112,29 +112,49 @@ export const impactData: ImpactPageData = {
     // ─── TOP 5 KPI CARDS (Matching Management Portal Header) ─────────────────────
     kpis: [
         {
-            id: "patients-served",
-            value: 42950,
-            label: { en: "Patients Served", hi: "मरीजों की सेवा की" },
-            icon: "Users",
-            description: {
-                en: "Total patients registered across all telemedicine centres.",
-                hi: "सभी टेलीमेडिसिन केंद्रों में पंजीकृत कुल मरीज।"
-            }
-        },
-        {
             id: "total-consultations",
-            value: 58894,
+            value: 144796,
             label: { en: "Teleconsultations", hi: "टेली-परामर्श" },
             icon: "Stethoscope",
             description: {
-                en: "Completed consultations with specialist doctors.",
-                hi: "विशेषज्ञ डॉक्टरों के साथ पूरे किए गए परामर्श।"
+                en: "Teleconsultations completed, July 2020 to September 2026.",
+                hi: "जुलाई 2020 से सितंबर 2026 तक पूरे किए गए टेली-परामर्श।"
+            }
+        },
+        {
+            id: "vitals-checkups",
+            value: 167667,
+            label: { en: "Vitals Checkups", hi: "वाइटल्स जांच" },
+            icon: "HeartPulse",
+            description: {
+                en: "Vitals checkups conducted, July 2020 to September 2026.",
+                hi: "जुलाई 2020 से सितंबर 2026 तक की गई वाइटल्स जांच।"
+            }
+        },
+        {
+            id: "villages-covered",
+            value: 2305,
+            label: { en: "Villages Covered", hi: "गाँव कवर किए" },
+            icon: "MapPin",
+            description: {
+                en: "Villages reached, July 2020 to September 2026.",
+                hi: "जुलाई 2020 से सितंबर 2026 तक पहुँचे गाँव।"
+            }
+        },
+        {
+            id: "ayushman-cards",
+            value: 46753,
+            label: { en: "Ayushman Cards Created", hi: "आयुष्मान कार्ड बनाए गए" },
+            icon: "IdCard",
+            description: {
+                en: "Ayushman Cards created for eligible families, till 10 October 2026.",
+                hi: "10 अक्टूबर 2026 तक पात्र परिवारों के लिए बनाए गए आयुष्मान कार्ड।"
             }
         },
         {
             id: "health-camps",
-            value: 5,
-            label: { en: "Health Camps", hi: "स्वास्थ्य शिविर" },
+            value: 2376,
+            label: { en: "Health Camps Conducted", hi: "स्वास्थ्य शिविर आयोजित" },
             icon: "Tent",
             description: {
                 en: "On-ground medical camps conducted for rural communities.",
@@ -142,13 +162,33 @@ export const impactData: ImpactPageData = {
             }
         },
         {
-            id: "expert-doctors",
-            value: 125,
-            label: { en: "Doctors", hi: "डॉक्टर" },
-            icon: "UserPlus",
+            id: "cancer-patients-served",
+            value: 687,
+            label: { en: "Cancer Patients Served", hi: "कैंसर रोगियों की सेवा" },
+            icon: "HeartHandshake",
             description: {
-                en: "Empanelled doctors and healthcare specialists.",
-                hi: "पैनल में शामिल डॉक्टर और स्वास्थ्य विशेषज्ञ।"
+                en: "Cancer patients supported through DigiSwasthya.",
+                hi: "डिजीस्वास्थ्य के माध्यम से सहायता प्राप्त कैंसर रोगी।"
+            }
+        },
+        {
+            id: "cancer-screenings",
+            value: 16338,
+            label: { en: "Cancer Screenings", hi: "कैंसर स्क्रीनिंग" },
+            icon: "ScanSearch",
+            description: {
+                en: "Oral, breast, and cervical cancer screenings.",
+                hi: "मुख, स्तन और गर्भाशय ग्रीवा कैंसर की स्क्रीनिंग।"
+            }
+        },
+        {
+            id: "cancer-screening-camps",
+            value: 132,
+            label: { en: "Cancer Screening Camps", hi: "कैंसर स्क्रीनिंग शिविर" },
+            icon: "Tent",
+            description: {
+                en: "Camps dedicated to cancer screening.",
+                hi: "कैंसर स्क्रीनिंग के लिए समर्पित शिविर।"
             }
         }
     ],
