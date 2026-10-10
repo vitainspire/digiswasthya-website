@@ -11,7 +11,7 @@ import {
     coreTeam as core,
     foundingTeam as founding,
     advisoryBoard as advisory,
-    doctors,
+    doctorGroups,
     onGroundTeam as onGround,
 } from "@/data/teamData";
 
@@ -40,6 +40,51 @@ function Section({ title, members }: { title: string, members: { name: string, r
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
                 {members.map((m, i) => (
                     <TeamCard key={i} name={m.name} role={m.role} image={m.image} />
+                ))}
+            </div>
+        </section>
+    );
+}
+
+function slug(value: string) {
+    return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function DoctorsSection({ groups }: { groups: typeof doctorGroups }) {
+    return (
+        <section id="doctors" className="py-6 sm:py-8 border-b border-gray-200/60">
+            <div className="text-center mb-5 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 border-b-2 border-primary-600/40 pb-2 inline-block mx-auto">
+                    Doctors Onboard
+                </h2>
+            </div>
+
+            <nav aria-label="Jump to a speciality" className="mb-8 flex flex-wrap justify-center gap-2">
+                {groups.map((group) => (
+                    <a
+                        key={group.speciality}
+                        href={`#${slug(group.speciality)}`}
+                        className="rounded-full border border-primary-200 bg-white px-3 py-1 text-sm font-medium text-primary-800 hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
+                    >
+                        {group.speciality}
+                    </a>
+                ))}
+            </nav>
+
+            <div className="space-y-10">
+                {groups.map((group) => (
+                    <div key={group.speciality} id={slug(group.speciality)} className="scroll-mt-28">
+                        <div className="mb-4 flex items-center gap-4">
+                            <h3 className="font-serif text-xl font-bold text-primary-900">{group.speciality}</h3>
+                            <span className="h-px flex-1 bg-primary-200" aria-hidden="true" />
+                            <span className="text-sm font-medium text-primary-700">{group.members.length}</span>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
+                            {group.members.map((m, i) => (
+                                <TeamCard key={i} name={m.name} role={m.role} image={m.image} />
+                            ))}
+                        </div>
+                    </div>
                 ))}
             </div>
         </section>
@@ -82,7 +127,7 @@ export default function OurTeam() {
                 <Section title="Core Team" members={core} />
                 <Section title="Founding Team" members={founding} />
                 <Section title="Advisory Board" members={advisory} />
-                <Section title="Doctors Onboard" members={doctors} />
+                <DoctorsSection groups={doctorGroups} />
                 <Section title="On-Ground Team" members={onGround} />
             </div>
 

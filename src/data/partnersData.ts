@@ -2,7 +2,6 @@
  * partnersData.ts — Single source of truth for all DigiSwasthya partner organizations and hospital collaborations.
  *
  * USED BY:
- *   - src/components/sections/PartnersStrip.tsx
  *   - src/data/botKnowledge.ts (chatbot context)
  */
 

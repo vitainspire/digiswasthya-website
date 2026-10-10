@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, Variants, AnimatePresence } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { websiteConfig } from "@/data/websiteConfig";
 import { donorLogos, partnerLogos } from "@/data/logosData";
@@ -30,8 +29,6 @@ import {
     Sparkles,
     Compass,
     Target,
-    ChevronDown,
-    ChevronUp,
     Heart
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -127,7 +124,6 @@ const contentDict = {
 export default function AboutUs() {
     const { t, language } = useLanguage();
     const currentLang = (language === "en" || language === "hi") ? language : "en";
-    const [isStoryExpanded, setIsStoryExpanded] = useState(false);
 
     return (
         <main className="min-h-screen bg-surface selection:bg-primary-500 selection:text-white font-sans text-slate-800">
@@ -189,13 +185,13 @@ export default function AboutUs() {
                                 transition={{ delay: 0.2 }}
                                 className="pt-2 flex flex-wrap gap-3 justify-center lg:justify-start"
                             >
-                                <a
-                                    href="#sandeeps-story"
+                                <Link
+                                    href="/#founders-story"
                                     className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-primary-950/20 hover:shadow-lg hover:-translate-y-0.5"
                                 >
                                     <span>{currentLang === "hi" ? "संस्थापक की कहानी पढ़ें" : "Read Founder's Story"}</span>
                                     <ArrowRight className="w-3.5 h-3.5" />
-                                </a>
+                                </Link>
                                 <Link
                                     href="/donate"
                                     className="inline-flex items-center gap-2 bg-secondary-400 hover:bg-secondary-300 text-primary-950 font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-amber-500/25 hover:shadow-lg hover:-translate-y-0.5"
@@ -423,117 +419,6 @@ export default function AboutUs() {
                         </div>
                     </div>
 
-                </div>
-            </section>
-
-            {/* SECTION 4 — SANDEEP'S STORY (Balanced 50/50 Layout with Larger Video & Lower Top Margin) */}
-            <section id="sandeeps-story" className="relative py-14 sm:py-18 bg-gradient-to-br from-[#fafcf8] via-[#f3f8f5] to-[#fdfaf5] border-b border-slate-200/80 scroll-mt-20 overflow-hidden">
-                {/* Soft ambient light glows */}
-                <div className="absolute -top-24 -left-20 w-80 h-80 bg-emerald-100/40 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute -bottom-20 right-1/4 w-80 h-80 bg-amber-100/40 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute inset-0 opacity-[0.025] pointer-events-none bg-[radial-gradient(#059669_1px,transparent_1px)] [background-size:24px_24px]" />
-
-                <div className="container max-w-7xl relative z-10 px-4 sm:px-6">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                            
-                            {/* Narrative Text Column */}
-                            <motion.div
-                                initial={{ opacity: 0, x: -15 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="lg:col-span-7 space-y-4"
-                            >
-                                <div>
-                                    <div className="inline-flex items-center gap-2 bg-white/95 border border-emerald-200/90 text-emerald-800 text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm backdrop-blur-sm mb-2.5">
-                                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                        <span>Founder Journey</span>
-                                    </div>
-                                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tight">
-                                        Sandeep's Story
-                                    </h3>
-                                </div>
-
-                                {/* Core Inspiring Opening (Always Visible) */}
-                                <div className="space-y-3.5 text-slate-700 leading-relaxed text-sm sm:text-[15px] font-normal border-l-2 border-emerald-500/40 pl-4">
-                                    <p>
-                                        In 2007, Sandeep was unwell. He wandered from one hospital to another but did not get the right diagnosis due to lack of qualified doctors and under-equipped hospitals in Sant-Kabir-Nagar, a small district in Uttar Pradesh. Lack of access to guidance of what needed to be done added to the worries.
-                                    </p>
-                                    <p>
-                                        After 6-months, he got a biopsy done and was diagnosed with Ewing-Sarcoma (a type of bone-cancer). His whole right-humerus-bone was replaced. Doctors later proclaimed that Sandeep would have become immobilized if diagnosis would have been delayed.
-                                    </p>
-                                    <p>
-                                        Over the next few months, he recovered slowly at Tata Memorial Hospital, Mumbai. However, the journey from being clueless as to what was the cause of his ailment to being detected with cancer, to gradually recovering, was nothing less than a miracle for him and his family.
-                                    </p>
-                                </div>
-
-                                {/* Expandable Additional Narrative (Preserves 100% Text) */}
-                                <AnimatePresence>
-                                    {isStoryExpanded && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: "auto" }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="space-y-3.5 text-slate-700 leading-relaxed text-sm sm:text-[15px] font-normal pt-2 border-l-2 border-emerald-500/40 pl-4"
-                                        >
-                                            <p>
-                                                Sandeep was determined to give back to the society and started working with social-sector organizations (health) from 2015 to 2020. He devoted himself to work for thousands of cancer patients, cancer-survivors, and their families, providing them guidance, emotional support, financial support for their diagnostics, treatment, care and education.
-                                            </p>
-                                            <p>
-                                                While his work created a positive impact on the lives of several patients, he realized that his ultimate calling was to go back to the grassroots and address the challenges from where they initiate – villages where there is lack of awareness of health issues and lack of access to healthcare infrastructure. Sandeep took a break from his job, and started conceiving an idea around how by leveraging technology, he can address the challenges he had earlier identified and make primary healthcare affordable and accessible in rural areas, where more than 65% of India's 1.4 Billion population live. After numerous interviews with people living in these areas, discussions with senior administrators of India's biggest hospitals, professors and government officials and evaluation of how other developing nations are handling the problem, Sandeep conceived the idea of DigiSwasthya (Digi=Digital, Swasthya = Health). He invested most of his savings till then to establish DigiSwasthya's 1st telemedicine clinic in July 2020 in his home district, Sant-Kabir-Nagar.
-                                            </p>
-                                            <p>
-                                                By creating a full stack primary healthcare platform, from creating a safe and hygienic physical space for patients to come, hiring trained nursing staff, creating tie-ups with doctors from prominent city hospitals, onboarding a tele-medicine software and hardware, to getting prescriptions fulfilled from adjoining pharmacies, Sandeep created one of the state's 1st hybrid medical consultation facility.
-                                            </p>
-                                            <p>
-                                                By creating a network of such standardized clinics across India, Sandeep and his motivated team is on a mission "to transform the country's primary healthcare system and make healthcare services affordable and accessible for rural communities by leveraging technology".
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                {/* Toggle Button */}
-                                <div className="pt-2">
-                                    <button
-                                        onClick={() => setIsStoryExpanded(!isStoryExpanded)}
-                                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-900 bg-white hover:bg-emerald-50 border border-emerald-200/90 px-5 py-2.5 rounded-full transition-all shadow-sm hover:-translate-y-0.5"
-                                    >
-                                        {isStoryExpanded ? (
-                                            <>Show Less <ChevronUp className="w-4 h-4" /></>
-                                        ) : (
-                                            <>Read Full Story <ChevronDown className="w-4 h-4" /></>
-                                        )}
-                                    </button>
-                                </div>
-                            </motion.div>
-
-                            {/* Balanced Video Column */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 15 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                className="lg:col-span-5 relative mt-4 sm:mt-6 lg:mt-2 flex flex-col justify-start"
-                            >
-                                <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden bg-white shadow-xl ring-1 ring-slate-900/10 p-2 sm:p-2.5 border border-slate-200/80">
-                                    <video
-                                        controls
-                                        className="w-full h-auto rounded-2xl aspect-[4/3] object-contain bg-black"
-                                        preload="metadata"
-                                    >
-                                        <source src="/Videos/Motive (Digiswasthya).mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                                <div className="mt-3.5 text-center">
-                                    <span className="inline-flex items-center gap-2 bg-white/95 border border-emerald-200/70 rounded-full px-3.5 py-1 text-xs font-semibold text-emerald-800 shadow-sm">
-                                        <span>🎥</span> Why Sandeep Started DigiSwasthya
-                                    </span>
-                                </div>
-                            </motion.div>
-
-                        </div>
-                    </div>
                 </div>
             </section>
 

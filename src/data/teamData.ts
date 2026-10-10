@@ -179,6 +179,59 @@ export const doctors: TeamMember[] = [
     { name: "Dr Swati Singh", role: "Specialist", image: "/images/dr-swati-singh.jpg" },
 ];
 
+const SPECIALITY_GROUPS: Record<string, string> = {
+    "General Physician": "General Medicine",
+    "General Medicine": "General Medicine",
+    "Oncologist": "Oncology",
+    "Medical Oncologist": "Oncology",
+    "Pediatric Hemato Oncology": "Oncology",
+    "Radiation Oncology": "Oncology",
+    "Surgical Oncology": "Oncology",
+    "Dentist": "Dentistry",
+    "Dermatologist": "Dermatology",
+    "Gynaecologist": "Gynaecology",
+    "Paediatrician": "Paediatrics",
+    "Psychologist": "Psychology & Psychiatry",
+    "Psychiatrist": "Psychology & Psychiatry",
+    "Nutritionist": "Nutrition",
+    "Clinical Nutritionist": "Nutrition",
+    "ENT": "ENT",
+    "Ophthalmologist": "Ophthalmology",
+    "Orthopaedic": "Orthopaedics",
+    "Physiotherapist": "Physiotherapy",
+    "Gastroenterologist": "Gastroenterology & Hepatology",
+    "Hepatologist": "Gastroenterology & Hepatology",
+    "Neurologist": "Neurology & Neurosurgery",
+    "Neurosurgeon": "Neurology & Neurosurgery",
+    "Nephrologist": "Nephrology & Urology",
+    "Urologist": "Nephrology & Urology",
+    "Cardiologist": "Cardiology",
+    "Pulmonologist": "Pulmonology",
+    "General Surgeon": "General Surgery",
+    "Diabetologist": "Diabetology",
+};
+
+export const OTHER_SPECIALISTS = "Other Specialists";
+
+export interface DoctorGroup {
+    speciality: string;
+    members: TeamMember[];
+}
+
+/** Doctors grouped by speciality (alphabetical, "Other Specialists" last). */
+export const doctorGroups: DoctorGroup[] = (() => {
+    const groups = new Map<string, TeamMember[]>();
+    for (const doctor of doctors) {
+        const speciality = SPECIALITY_GROUPS[doctor.role] ?? OTHER_SPECIALISTS;
+        groups.set(speciality, [...(groups.get(speciality) ?? []), doctor]);
+    }
+    return [...groups.entries()]
+        .map(([speciality, members]) => ({ speciality, members }))
+        .sort((a, b) =>
+            a.speciality === OTHER_SPECIALISTS ? 1 : b.speciality === OTHER_SPECIALISTS ? -1 : a.speciality.localeCompare(b.speciality)
+        );
+})();
+
 export const onGroundTeam: TeamMember[] = [
     { name: "Mr Ashish Tiwari",    role: "Specialist",                            image: "/images/ashish-tiwari.jpg" },
     { name: "Ms Shashvi Thakur",   role: "Specialist",                            image: "/images/team/shashvi-thakur.jpg" },

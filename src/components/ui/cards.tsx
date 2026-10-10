@@ -23,6 +23,11 @@ export function ServiceCard({
     );
 }
 
+function initialOf(name: string) {
+    const stripped = name.replace(/^((major|dr|mr|ms|mrs|km|shri|smt)\.?\s+)+/i, "").trim();
+    return (stripped || name).charAt(0).toUpperCase();
+}
+
 export function TeamCard({
     name,
     role,
@@ -43,7 +48,7 @@ export function TeamCard({
                         className="object-cover object-top"
                     />
                 ) : (
-                    name.charAt(0)
+                    initialOf(name)
                 )}
             </div>
             <h4 className="text-lg font-bold text-gray-900 text-center">{name}</h4>

@@ -324,7 +324,6 @@
         "trustAnnual": "Annual reports",
         "trustBalance": "Audited balance sheets",
         "foundersDonate": "Support this work",
-        "servicesMore": "See all our services",
         "giftsTitle": "How your gift helps",
         "giftsSubtitle": "Every amount reaches rural families through our telemedicine centres and health camps.",
         "giftsGive": "Give",
@@ -333,14 +332,7 @@
         "tier1000": "Helps run health camps and screenings in villages.",
         "tier2500": "Supports diagnostics and follow-up care for patients.",
         "tier5000": "Helps keep a telemedicine centre running for its community.",
-        "storiesDonate": "Help us reach more families",
-        "pressTitle": "DigiSwasthya in the news",
-        "pressSubtitle": "Recent coverage in newspapers across Maharashtra and Uttar Pradesh.",
-        "pressCta": "See all coverage",
-        "supportersTitle": "Supported by organisations that share the mission",
-        "donorsLabel": "Our donors",
-        "partnersLabel": "Our partners",
-        "supportersCta": "Meet our donors and partners"
+        "storiesDonate": "Help us reach more families"
     },
     "closingCta": {
         "heading": "Help us bring specialist care to every village",
