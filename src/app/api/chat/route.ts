@@ -23,7 +23,7 @@ LINK RULES (use ONLY these URLs):
 - /donate → donations, support, funding
 - /network → telemedicine centres, clinics, locations
 - /contact-us → contact info
-- /health-tools → BMI, health calculators
+- /health-tools → BMI calculator (Indian cut-offs), diabetes/BP risk check (CBAC), government health services and helplines
 - /blogs → articles, blogs
 
 KNOWLEDGE BASE RULES:
