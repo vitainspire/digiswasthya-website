@@ -49,12 +49,11 @@ export function ImpactTimeline() {
                 
                 {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <div className="inline-flex items-center gap-2 text-secondary-600 text-xs font-bold uppercase tracking-widest">
-                        <span className="h-px w-6 bg-secondary-400" />
+                    <p className="eyebrow">
                         {currentLang === "en" ? "Timeline Roadmap" : "समयरेखा रोडमैप"}
-                    </div>
+                    </p>
                     
-                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900">
                         {titleTranslations[currentLang]}
                     </h2>
                     
@@ -92,7 +91,7 @@ export function ImpactTimeline() {
                                         </div>
                                         
                                         {/* Year Badge */}
-                                        <span className="text-2xl font-black text-secondary-500 tracking-tighter">
+                                        <span className="text-2xl font-bold text-primary-600 tracking-tight">
                                             {item.year}
                                         </span>
                                     </div>
@@ -131,7 +130,7 @@ export function ImpactTimeline() {
                                         </div>
                                         
                                         {/* Year Badge */}
-                                        <span className="text-2xl font-black text-secondary-500 tracking-tighter">
+                                        <span className="text-2xl font-bold text-primary-600 tracking-tight">
                                             {item.year}
                                         </span>
                                     </div>

@@ -81,27 +81,27 @@ export function TelemedicineCentres() {
                             </div>
                         </div>
                         <div className="lg:col-span-5 flex justify-center">
-                            <div className="relative w-full max-w-[420px] aspect-[4/3] sm:aspect-[16/12] rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-900/10 group bg-slate-950">
+                            <div className="relative w-full max-w-[420px] aspect-[4/3] sm:aspect-[16/12] rounded-3xl overflow-hidden shadow-xl ring-1 ring-gray-900/10 group bg-gray-950">
                                 <Image
                                     src="/images/about/who-we-are.jpg"
                                     alt="DigiSwasthya Telemedicine Clinic Consultation in Action"
                                     fill
                                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/70 via-gray-950/15 to-transparent" />
                                 
                                 {/* Floating Live Badge */}
                                 <div className="absolute top-3.5 left-3.5">
-                                    <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-emerald-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm border border-white/50">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                    <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-md text-primary-800 text-xs font-bold px-3 py-1 rounded-full shadow-sm border border-white/50">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
                                         Live Clinic Desk
                                     </span>
                                 </div>
 
                                 {/* Bottom Caption Overlay */}
                                 <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                                    <p className="text-xs font-medium text-slate-100 flex items-center gap-1.5 drop-shadow">
-                                        <MapPin className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                                    <p className="text-xs font-medium text-gray-100 flex items-center gap-1.5 drop-shadow">
+                                        <MapPin className="w-3.5 h-3.5 text-primary-400 flex-shrink-0" />
                                         Nurse-assisted consultation with specialist doctors
                                     </p>
                                 </div>
@@ -127,7 +127,7 @@ export function TelemedicineCentres() {
                                         whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.99 }}
                                         transition={{ duration: 0.2 }}
-                                        className="group bg-white border border-slate-200/90 hover:border-primary-500 hover:ring-2 hover:ring-primary-500/15 shadow-sm hover:shadow-xl hover:shadow-slate-900/5 p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all duration-300 cursor-pointer"
+                                        className="group bg-white border border-gray-200/90 hover:border-primary-500 hover:ring-2 hover:ring-primary-500/15 shadow-sm hover:shadow-xl hover:shadow-gray-900/5 p-6 sm:p-7 rounded-2xl flex flex-col justify-between transition-all duration-300"
                                     >
                                         <div>
                                             <div className="flex items-start justify-between mb-3">
@@ -135,23 +135,23 @@ export function TelemedicineCentres() {
                                                     <span className="inline-block text-[11px] font-bold text-primary-700 bg-primary-50 border border-primary-100/80 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                                                         {centre.code}
                                                     </span>
-                                                    <h4 className="text-xl font-bold text-slate-900 group-hover:text-primary-800 transition-colors mt-2">
+                                                    <h4 className="text-xl font-bold text-primary-900 group-hover:text-primary-800 transition-colors mt-2">
                                                         {centre.name}
                                                     </h4>
                                                 </div>
-                                                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform duration-200 mt-2 flex-shrink-0" />
+                                                <span className="w-2.5 h-2.5 rounded-full bg-primary-500 group-hover:scale-125 transition-transform duration-200 mt-2 flex-shrink-0" />
                                             </div>
 
                                             <div className="space-y-2.5 my-5">
                                                 <div className="flex items-start gap-2.5">
-                                                    <MapPin className="h-4 w-4 text-slate-400 group-hover:text-primary-600 transition-colors mt-0.5 flex-shrink-0" />
-                                                    <p className="text-slate-600 text-sm leading-relaxed">
+                                                    <MapPin className="h-4 w-4 text-gray-400 group-hover:text-primary-600 transition-colors mt-0.5 flex-shrink-0" />
+                                                    <p className="text-gray-600 text-sm leading-relaxed">
                                                         {centre.address ? `${centre.address} – ` : ""}{centre.district}, {centre.state} &ndash; {centre.pincode}
                                                     </p>
                                                 </div>
                                                 <div className="flex items-center gap-2.5">
-                                                    <Phone className="h-4 w-4 text-slate-400 group-hover:text-primary-600 transition-colors flex-shrink-0" />
-                                                    <a href={`tel:${CENTRE_PHONE.replace(/\s/g, "")}`} className="text-sm text-slate-600 hover:text-primary-600 font-medium">{CENTRE_PHONE}</a>
+                                                    <Phone className="h-4 w-4 text-gray-400 group-hover:text-primary-600 transition-colors flex-shrink-0" />
+                                                    <a href={`tel:${CENTRE_PHONE.replace(/\s/g, "")}`} className="text-sm text-gray-600 hover:text-primary-600 font-medium">{CENTRE_PHONE}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,7 +160,7 @@ export function TelemedicineCentres() {
                                             href={mapHref(centre)}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-primary-600 group-hover:text-primary-700 text-sm font-bold border-t border-slate-100 pt-4 transition-colors"
+                                            className="inline-flex items-center gap-2 text-primary-600 group-hover:text-primary-700 text-sm font-bold border-t border-gray-100 pt-4 transition-colors"
                                         >
                                             {t("centres.viewOnMap")}{" "}
                                             <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

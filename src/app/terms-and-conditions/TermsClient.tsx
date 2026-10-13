@@ -39,7 +39,7 @@ export default function TermsAndConditions() {
                         <div className="space-y-4">
                             <h2 className="text-3xl font-black text-black uppercase tracking-tight border-b-2 border-primary-100 pb-2">Terms of Use</h2>
                             <div className="space-y-4">
-                                <p className="font-bold text-black border-l-4 border-secondary-500 pl-4 py-1">Acceptance of Terms</p>
+                                <p className="font-bold text-black border-l-4 border-primary-600 pl-4 py-1">Acceptance of Terms</p>
                                 <p>
                                     This Web- Site is offered to the user of the Service (User) on the condition that the User accepts the terms contained herein, without any modification whatsoever. For the purposes of this Terms of Use, ‘Service’ shall mean and include, without limitation, access to all, one or some of the following: – HTML Code, literature, information, software, products, tools and services including tools and information (which help persons take decisions to donate monies and/or give time to non-governmental organizations or for charitable causes), provided or made available on <a href="http://www.digiswasthya.org" className="text-primary-600 hover:underline">www.digiswasthya.org</a> whether pursuant to subscription or otherwise.
                                 </p>

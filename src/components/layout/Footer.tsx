@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, CheckCircle2, Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle2, Facebook, Instagram, Linkedin, Lock, Twitter, Youtube } from "lucide-react";
 import { websiteConfig } from "@/data/websiteConfig";
 import Link from "next/link";
 import { ContactActions } from "@/components/features/ContactActions";
@@ -85,14 +85,18 @@ export function Footer() {
                     {/* Quick Links */}
                     <div>
                         <h4 className="text-lg font-semibold text-white mb-4">{t("footer.quickLinks")}</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li><Link href="/donate" className="text-primary-400 font-bold hover:underline">{t("nav.donate")}</Link></li>
+                        <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                            <li className="col-span-2"><Link href="/donate" className="text-primary-400 font-bold hover:underline">{t("nav.donate")}</Link></li>
                             <li><Link href="/" className="hover:text-primary-400">{t("nav.home")}</Link></li>
                             <li><Link href="/about-us" className="hover:text-primary-400">{t("nav.about")}</Link></li>
-                            <li><Link href="/contact-us" className="hover:text-primary-400">{t("nav.contact")}</Link></li>
-                            <li><Link href="/our-team" className="hover:text-primary-400">{t("nav.team")}</Link></li>
+                            <li><Link href="/our-impact" className="hover:text-primary-400">{t("nav.impact")}</Link></li>
+                            <li><Link href="/network" className="hover:text-primary-400">{t("nav.network")}</Link></li>
+                            <li><Link href="/partner" className="hover:text-primary-400">{t("nav.partner")}</Link></li>
                             <li><Link href="/join-us" className="hover:text-primary-400">{t("nav.joinUs")}</Link></li>
+                            <li><Link href="/our-team" className="hover:text-primary-400">{t("nav.team")}</Link></li>
                             <li><Link href="/media" className="hover:text-primary-400">{t("nav.media")}</Link></li>
+                            <li><Link href="/health-tools" className="hover:text-primary-400">{t("nav.healthTools")}</Link></li>
+                            <li><Link href="/contact-us" className="hover:text-primary-400">{t("nav.contact")}</Link></li>
                         </ul>
                     </div>
 
@@ -160,6 +164,9 @@ export function Footer() {
                         <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/whatsapp-privacy-policy" className="hover:text-white transition-colors">WhatsApp Privacy</Link>
                         <Link href="/terms-and-conditions" className="hover:text-white transition-colors">Terms</Link>
+                        <a href="https://digiswasthya.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white transition-colors">
+                            <Lock className="h-3 w-3" aria-hidden="true" /> {t("footer.staffLogin")}
+                        </a>
                     </div>
                 </div>
             </div>

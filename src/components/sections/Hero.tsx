@@ -21,12 +21,15 @@ const SLIDES = [
 const HERO_STAT_IDS = ["total-consultations", "villages-covered", "health-camps", "cancer-screenings"];
 
 function Counter({ value }: { value: number }) {
+    const reduced = useReducedMotion();
     const count = useSpring(0, { stiffness: 50, damping: 30 });
     const display = useTransform(count, (latest) => Math.floor(latest).toLocaleString("en-IN"));
 
+    // Render the same markup on server and client; reduced-motion users just skip the count-up.
     useEffect(() => {
-        count.set(value);
-    }, [count, value]);
+        if (reduced) count.jump(value);
+        else count.set(value);
+    }, [count, value, reduced]);
 
     return <motion.span>{display}</motion.span>;
 }
@@ -79,7 +82,7 @@ export function Hero() {
                 <div className="relative z-10 container px-6 py-16 md:py-24">
                     <div className="max-w-2xl">
                         <motion.h1
-                            initial={reduced ? false : { opacity: 0, y: 14 }}
+                            initial={{ opacity: 0, y: 14 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             className="font-serif text-4xl font-bold leading-[1.1] text-white drop-shadow-lg md:text-5xl lg:text-6xl"
@@ -159,7 +162,7 @@ export function Hero() {
                         {stats.map((stat) => (
                             <div key={stat.id} className="border-l-2 border-primary-500 pl-4">
                                 <dd className="font-serif text-3xl font-bold tabular-nums text-white md:text-[2.75rem] md:leading-none">
-                                    {reduced ? stat.value.toLocaleString("en-IN") : <Counter value={stat.value} />}
+                                    <Counter value={stat.value} />
                                 </dd>
                                 <dt className="mt-2 text-sm font-medium text-primary-100 md:text-base">{stat.label}</dt>
                             </div>

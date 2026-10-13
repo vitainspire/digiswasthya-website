@@ -13,7 +13,10 @@
         "privacy": "Privacy Policy",
         "whatsappPrivacy": "WhatsApp Privacy Policy",
         "terms": "Terms and Conditions",
-        "donate": "Donate Now"
+        "donate": "Donate Now",
+        "aboutGroup": "About",
+        "ourWork": "Our Work",
+        "partner": "Partner With Us"
     },
     "footer": {
         "tagline": "Making healthcare services affordable and accessible for rural communities across India.",
@@ -35,7 +38,8 @@
         },
         "copyright": "© 2023 Digiswasthya - All Rights Reserved.",
         "success": "Thank you for your message!",
-        "error": "Something went wrong. Please try again, or reach us directly via call or WhatsApp."
+        "error": "Something went wrong. Please try again, or reach us directly via call or WhatsApp.",
+        "staffLogin": "Staff Login"
     },
     "hero": {
         "title": "A specialist doctor for every village, one video call away",

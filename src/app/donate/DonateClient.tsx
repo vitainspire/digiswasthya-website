@@ -16,6 +16,10 @@ import { useImpactData } from "@/hooks/useImpactData";
 import { useLanguage } from "@/context/LanguageContext";
 import { donationTiers } from "@/data/donationTiers";
 import { websiteConfig } from "@/data/websiteConfig";
+import { registrations } from "@/data/registrations";
+import { testimonials } from "@/data/beneficiaryData";
+
+const featuredStory = testimonials.find((item) => item.name === "Manisha Kumari");
 
 const MIN_AMOUNT = 100;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -194,12 +198,27 @@ export default function DonatePage() {
                                 </p>
                             </div>
 
+                            {featuredStory && (
+                                <figure className="flex flex-col gap-4 rounded-2xl bg-primary-900 p-6 sm:flex-row sm:items-center">
+                                    {featuredStory.image && (
+                                        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-4 ring-primary-600">
+                                            <Image src={featuredStory.image} alt={featuredStory.name} fill sizes="80px" className="object-cover" />
+                                        </div>
+                                    )}
+                                    <div>
+                                        <p className="eyebrow eyebrow-on-dark">{featuredStory.problem}</p>
+                                        <blockquote className="mt-2 font-serif text-lg leading-relaxed text-white">{featuredStory.body}</blockquote>
+                                        <figcaption className="mt-3 text-base font-semibold text-primary-100">{featuredStory.name}</figcaption>
+                                    </div>
+                                </figure>
+                            )}
+
                             <figure className="overflow-hidden rounded-2xl border border-primary-100 bg-white">
                                 <Image
-                                    src="/images/ds-medical-camp.jpg"
-                                    alt="DigiSwasthya Foundation medical camp"
-                                    width={720}
-                                    height={420}
+                                    src="/images/resources/consultation.jpg"
+                                    alt="DigiSwasthya Foundation telemedicine camp"
+                                    width={1024}
+                                    height={384}
                                     sizes="(min-width: 1024px) 58vw, 100vw"
                                     className="h-auto w-full object-cover"
                                 />
@@ -221,10 +240,11 @@ export default function DonatePage() {
                             <div className="rounded-2xl border border-primary-100 bg-white p-5">
                                 <h2 className="font-serif text-xl font-bold text-primary-900">Registration and transparency</h2>
                                 <ul className="mt-3 space-y-1.5 text-base text-gray-700">
-                                    <li>80G Certificate No: AAICD5332R25LK02</li>
-                                    <li>CIN / NPO Registration: U85300UP2021NPL146867</li>
-                                    <li>NGO Darpan ID: UP/2021/0291277</li>
-                                    <li>CSR Form 1: CSR00016240</li>
+                                    {registrations.map((reg) => (
+                                        <li key={reg.value}>
+                                            {reg.label.en}: <span className="font-mono font-semibold text-primary-900">{reg.value}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                                 <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-base font-semibold">
                                     <a href={websiteConfig.annualReportsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary-700 underline underline-offset-4 hover:text-primary-600">

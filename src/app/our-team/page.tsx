@@ -33,7 +33,7 @@ function Section({ title, members }: { title: string, members: { name: string, r
     return (
         <section className="py-6 sm:py-8 border-b border-gray-200/60 last:border-b-0">
             <div className="text-center mb-5 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 border-b-2 border-primary-600/40 pb-2 inline-block mx-auto">
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-primary-900 border-b-2 border-primary-600/40 pb-2 inline-block mx-auto">
                     {title}
                 </h2>
             </div>
@@ -54,7 +54,7 @@ function DoctorsSection({ groups }: { groups: typeof doctorGroups }) {
     return (
         <section id="doctors" className="py-6 sm:py-8 border-b border-gray-200/60">
             <div className="text-center mb-5 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl font-serif font-bold text-gray-900 border-b-2 border-primary-600/40 pb-2 inline-block mx-auto">
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-primary-900 border-b-2 border-primary-600/40 pb-2 inline-block mx-auto">
                     Doctors Onboard
                 </h2>
             </div>

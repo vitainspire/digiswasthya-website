@@ -68,7 +68,7 @@ function UnsubscribeContent() {
                     <button
                         onClick={handleResubscribe}
                         disabled={loading}
-                        className="inline-block w-full bg-amber-600 hover:bg-amber-500 disabled:bg-amber-300 text-white font-semibold py-3 px-6 cursor-pointer rounded-xl transition duration-200 shadow-lg shadow-amber-100 mb-4"
+                        className="inline-block w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-300 text-white font-semibold py-3 px-6 cursor-pointer rounded-xl transition duration-200 mb-4"
                     >
                         {loading ? "Re-subscribing..." : "Oops, subscribe me again!"}
                     </button>

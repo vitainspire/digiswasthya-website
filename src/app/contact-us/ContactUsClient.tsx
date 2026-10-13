@@ -87,12 +87,11 @@ export default function ContactUs() {
                             href="/network"
                             className="group block h-full bg-primary-900 text-white p-8 sm:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.2)] transition-all duration-300 overflow-hidden relative"
                         >
-                            <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl pointer-events-none group-hover:bg-primary-500/30 transition-colors duration-500" />
-                            <div className="relative">
-                                <div className="bg-white/10 backdrop-blur-md border border-white/10 h-14 w-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
+                                                        <div className="relative">
+                                <div className="bg-white/10 backdrop-blur-md border border-white/10 h-14 w-14 rounded-2xl flex items-center justify-center mb-6">
                                     <MapPin className="h-6 w-6 text-white" />
                                 </div>
-                                <h3 className="text-2xl font-black tracking-tight mb-2">Looking for a centre near you?</h3>
+                                <h3 className="font-serif text-2xl font-bold mb-2">Looking for a centre near you?</h3>
                                 <p className="text-primary-100 leading-relaxed mb-6">
                                     We run a growing network of telemedicine centres across Uttar Pradesh, Bihar and Maharashtra. Find your nearest one with directions on the map.
                                 </p>

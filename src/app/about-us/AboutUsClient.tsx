@@ -7,6 +7,7 @@ import { donorLogos, partnerLogos } from "@/data/logosData";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ClosingCta } from "@/components/layout/ClosingCta";
+import { LogoWall } from "@/components/sections/LogoWall";
 import {
     Users,
     Stethoscope,
@@ -126,12 +127,11 @@ export default function AboutUs() {
     const currentLang = (language === "en" || language === "hi") ? language : "en";
 
     return (
-        <main className="min-h-screen bg-surface selection:bg-primary-500 selection:text-white font-sans text-slate-800">
+        <main className="min-h-screen bg-surface selection:bg-primary-500 selection:text-white font-sans text-gray-800">
             <Navbar />
 
             {/* SECTION 1 — WHO WE ARE (Hero Section: Compact & Fitted) */}
-            <section className="relative bg-primary-50 border-b border-primary-100 py-8 sm:py-10 lg:py-12 overflow-hidden text-slate-900">
-                {/* Soft ambient aura lighting */}
+            <section className="relative bg-primary-50 border-b border-primary-100 py-8 sm:py-10 lg:py-12 overflow-hidden text-primary-900">
                                                 
                 <div className="container max-w-7xl relative z-10 px-4 sm:px-6">
                     <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center">
@@ -141,17 +141,15 @@ export default function AboutUs() {
                             <motion.div
                                 initial={{ opacity: 0, y: -8 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 bg-white border border-primary-200 px-3.5 py-1 rounded-full"
+                                className="eyebrow"
                             >
-                                <span className="text-primary-800 text-sm font-semibold">
-                                    {contentDict.section1.title[currentLang]}
-                                </span>
+                                {contentDict.section1.title[currentLang]}
                             </motion.div>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 12 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight leading-tight text-primary-900"
+                                className="text-4xl md:text-5xl font-serif font-bold tracking-tight leading-tight text-primary-900"
                             >
                                 {currentLang === "hi" ? (
                                     <>
@@ -187,14 +185,14 @@ export default function AboutUs() {
                             >
                                 <Link
                                     href="/#founders-story"
-                                    className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-primary-950/20 hover:shadow-lg hover:-translate-y-0.5"
+                                    className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-5.5 py-2.5 rounded-full text-sm sm:text-base transition-all shadow-md shadow-primary-950/20"
                                 >
                                     <span>{currentLang === "hi" ? "संस्थापक की कहानी पढ़ें" : "Read Founder's Story"}</span>
                                     <ArrowRight className="w-3.5 h-3.5" />
                                 </Link>
                                 <Link
                                     href="/donate"
-                                    className="inline-flex items-center gap-2 bg-secondary-400 hover:bg-secondary-300 text-primary-950 font-bold px-5.5 py-2.5 rounded-full text-xs sm:text-sm transition-all shadow-md shadow-amber-500/25 hover:shadow-lg hover:-translate-y-0.5"
+                                    className="inline-flex items-center gap-2 bg-secondary-400 hover:bg-secondary-300 text-primary-950 font-bold px-5.5 py-2.5 rounded-full text-sm sm:text-base transition-all shadow-sm"
                                 >
                                     <Heart className="w-3.5 h-3.5 fill-current" />
                                     <span>{currentLang === "hi" ? "हमारे मिशन का समर्थन करें" : "Support Our Mission"}</span>
@@ -208,17 +206,17 @@ export default function AboutUs() {
                                 initial={{ opacity: 0, scale: 0.96 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.15, duration: 0.4 }}
-                                className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-900/10 aspect-[16/10] sm:aspect-[4/3] group bg-white p-1.5 max-w-lg mx-auto lg:max-w-none"
+                                className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl ring-1 ring-gray-900/10 aspect-[16/10] sm:aspect-[4/3] group bg-white p-1.5 max-w-lg mx-auto lg:max-w-none"
                             >
                                 <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden">
                                     <Image
                                         src="/images/about/who-we-are.jpg"
                                         alt="DigiSwasthya Health Camp - Serving rural communities"
                                         fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="object-cover transition-transform duration-500"
                                         priority
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/25 via-transparent to-transparent" />
                                 </div>
                             </motion.div>
                         </div>
@@ -228,11 +226,7 @@ export default function AboutUs() {
             </section>
 
             {/* SECTION 2 — THE HEALTHCARE CHALLENGE (Compact 2-Col Height-Balanced) */}
-            <section className="relative py-12 sm:py-16 bg-gradient-to-b from-[#f8fafc] via-[#f1f7f4] to-[#f8fafc] border-b border-slate-200/80 overflow-hidden">
-                {/* Soft decorative aura glows */}
-                <div className="absolute -top-20 left-1/4 w-80 h-80 bg-emerald-100/35 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute bottom-0 right-10 w-80 h-80 bg-teal-100/35 rounded-full blur-[90px] pointer-events-none" />
-                <div className="absolute inset-0 opacity-[0.025] pointer-events-none bg-[radial-gradient(#059669_1px,transparent_1px)] [background-size:24px_24px]" />
+            <section className="relative py-12 sm:py-16 bg-white border-b border-primary-100 overflow-hidden">
 
                 <div className="container max-w-7xl relative z-10 px-4 sm:px-6">
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -244,15 +238,15 @@ export default function AboutUs() {
                             viewport={{ once: true }}
                             className="lg:col-span-5 relative"
                         >
-                            <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-slate-900/10 aspect-[16/10] sm:aspect-[4/3] group bg-white p-2">
+                            <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-gray-900/10 aspect-[16/10] sm:aspect-[4/3] group bg-white p-2">
                                 <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                     <Image
                                         src="/images/about/healthcare-challenge.jpg"
                                         alt="DigiSwasthya Health Awareness Camp at rural school"
                                         fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="object-cover transition-transform duration-500"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/25 via-transparent to-transparent" />
                                 </div>
                             </div>
                         </motion.div>
@@ -260,14 +254,14 @@ export default function AboutUs() {
                         {/* Right Side: Challenges Compact 2x2 */}
                         <div className="lg:col-span-7 space-y-5">
                             <div className="space-y-2 text-center lg:text-left">
-                                <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full shadow-sm">
-                                    <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+                                <span className="eyebrow inline-flex items-center gap-1.5">
+                                    <AlertTriangle className="w-3.5 h-3.5 text-primary-600" />
                                     {currentLang === "hi" ? "भारत में चुनौती" : "The Gap In India"}
                                 </span>
-                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 leading-tight">
                                     {contentDict.section2.title[currentLang]}
                                 </h2>
-                                <p className="text-slate-600 text-sm leading-relaxed max-w-xl">
+                                <p className="text-gray-700 text-base sm:text-lg leading-relaxed max-w-xl">
                                     {contentDict.section2.text[currentLang]}
                                 </p>
                             </div>
@@ -277,9 +271,9 @@ export default function AboutUs() {
                                 {contentDict.section2.challenges.map((challenge, index) => {
                                     const Icon = challenge.icon;
                                     const iconStyles = [
-                                        "bg-emerald-50 border-emerald-200 text-emerald-700",
-                                        "bg-amber-50 border-amber-200 text-amber-700",
-                                        "bg-teal-50 border-teal-200 text-teal-700",
+                                        "bg-primary-50 border-primary-200 text-primary-700",
+                                        "bg-primary-50 border-primary-200 text-primary-700",
+                                        "bg-primary-50 border-primary-200 text-primary-700",
                                         "bg-primary-50 border-primary-200 text-primary-700"
                                     ];
                                     const iconStyle = iconStyles[index % iconStyles.length];
@@ -287,16 +281,16 @@ export default function AboutUs() {
                                     return (
                                         <div 
                                             key={index} 
-                                            className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:shadow-md hover:border-emerald-300 hover:-translate-y-0.5 transition-all duration-200 flex items-start gap-3.5"
+                                            className="p-4 rounded-2xl bg-white border border-gray-200/90 hover:border-primary-300 transition-all duration-200 flex items-start gap-3.5"
                                         >
                                             <div className={`w-9 h-9 rounded-xl border flex items-center justify-center shrink-0 ${iconStyle}`}>
                                                 <Icon className="w-4 h-4" />
                                             </div>
                                             <div>
-                                                <h4 className="text-sm font-bold text-slate-900 leading-tight mb-1">
+                                                <h4 className="text-base font-semibold text-primary-900 leading-tight mb-1">
                                                     {challenge.title[currentLang]}
                                                 </h4>
-                                                <p className="text-xs text-slate-600 leading-relaxed">
+                                                <p className="text-sm text-gray-700 leading-relaxed">
                                                     {challenge.desc[currentLang]}
                                                 </p>
                                             </div>
@@ -311,20 +305,20 @@ export default function AboutUs() {
             </section>
 
             {/* SECTION 3 — WHY DIGISWASTHYA EXISTS & OUR MISSION/VISION */}
-            <section className="py-12 sm:py-16 bg-gradient-to-br from-emerald-50/30 via-white to-slate-50 border-b border-slate-200/60">
+            <section className="py-12 sm:py-16 bg-primary-50 border-b border-primary-100">
                 <div className="container max-w-7xl px-4 sm:px-6">
                     
                     {/* Top: Why We Exist */}
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-12">
                         <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
-                            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 border border-emerald-200/80 px-3 py-0.5 rounded-full">
-                                <Compass className="w-3 h-3 text-emerald-700" />
+                            <span className="eyebrow inline-flex items-center gap-1.5">
+                                <Compass className="w-3 h-3 text-primary-700" />
                                 {contentDict.section3.title[currentLang]}
                             </span>
-                            <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 leading-tight">
                                 {currentLang === "hi" ? "हमारा दृष्टिकोण" : "Bridging the Distance to Specialist Healthcare"}
                             </h2>
-                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                                 {contentDict.section3.text[currentLang]}
                             </p>
                         </div>
@@ -335,20 +329,20 @@ export default function AboutUs() {
                             viewport={{ once: true }}
                             className="lg:col-span-5 relative"
                         >
-                            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md ring-1 ring-slate-200 aspect-[16/10] sm:aspect-[4/3] group">
+                            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md ring-1 ring-gray-200 aspect-[16/10] sm:aspect-[4/3] group">
                                 <Image
                                     src="/images/about/why-digiswasthya-exists.jpg"
                                     alt="DigiSwasthya Telemedicine Consultation"
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="object-cover transition-transform duration-500"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent" />
                             </div>
                         </motion.div>
                     </div>
 
                     {/* Bottom: Mission & Vision (Dual Cards Compact) */}
-                    <div className="pt-8 border-t border-slate-200/70">
+                    <div className="pt-8 border-t border-gray-200/70">
                         <div className="grid lg:grid-cols-12 gap-8 items-center">
                             
                             <motion.div
@@ -357,14 +351,14 @@ export default function AboutUs() {
                                 viewport={{ once: true }}
                                 className="lg:col-span-5 relative"
                             >
-                                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md ring-1 ring-slate-200 aspect-[16/10] sm:aspect-[4/3] group">
+                                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-md ring-1 ring-gray-200 aspect-[16/10] sm:aspect-[4/3] group">
                                     <Image
                                         src="/images/about/healthy-communities.jpg"
                                         alt="DigiSwasthya Foundation community health camp"
                                         fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        className="object-cover transition-transform duration-500"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 via-transparent to-transparent" />
                                 </div>
                             </motion.div>
 
@@ -375,19 +369,19 @@ export default function AboutUs() {
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="p-4 sm:p-5 rounded-2xl bg-white border border-emerald-200 shadow-sm relative overflow-hidden"
+                                    className="p-4 sm:p-5 rounded-2xl bg-white border border-primary-200 shadow-sm relative overflow-hidden"
                                 >
-                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-emerald-500" />
+                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-primary-500" />
                                     <div className="flex items-center gap-2 mb-1.5">
-                                        <Target className="w-4 h-4 text-emerald-600" />
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">
+                                        <Target className="w-4 h-4 text-primary-600" />
+                                        <span className="eyebrow">
                                             {contentDict.section5_6.mission.title[currentLang]}
                                         </span>
                                     </div>
-                                    <h3 className="text-base sm:text-lg font-serif font-bold text-slate-900 mb-1">
+                                    <h3 className="text-base sm:text-lg font-serif font-bold text-primary-900 mb-1">
                                         {currentLang === "hi" ? "गुणवत्ता और समावेशी स्वास्थ्य सेवा" : "Accessible Quality Healthcare"}
                                     </h3>
-                                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                                         {contentDict.section5_6.mission.text[currentLang]}
                                     </p>
                                 </motion.div>
@@ -397,19 +391,19 @@ export default function AboutUs() {
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="p-4 sm:p-5 rounded-2xl bg-white border border-amber-200 shadow-sm relative overflow-hidden"
+                                    className="p-4 sm:p-5 rounded-2xl bg-white border border-primary-200 shadow-sm relative overflow-hidden"
                                 >
-                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500" />
+                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-primary-500" />
                                     <div className="flex items-center gap-2 mb-1.5">
-                                        <Sparkles className="w-4 h-4 text-amber-600" />
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded">
+                                        <Sparkles className="w-4 h-4 text-primary-600" />
+                                        <span className="eyebrow">
                                             {contentDict.section5_6.vision.title[currentLang]}
                                         </span>
                                     </div>
-                                    <h3 className="text-base sm:text-lg font-serif font-bold text-slate-900 mb-1">
+                                    <h3 className="text-base sm:text-lg font-serif font-bold text-primary-900 mb-1">
                                         {currentLang === "hi" ? "स्वस्थ एवं खुशहाल ग्रामीण भारत" : "Healthy & Happy Rural India"}
                                     </h3>
-                                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                                    <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                                         {contentDict.section5_6.vision.text[currentLang]}
                                     </p>
                                 </motion.div>
@@ -423,56 +417,52 @@ export default function AboutUs() {
             </section>
 
             {/* SECTION 5 — HOW WE WORK (Mobile Horizontal Swipe / Desktop Grid) */}
-            <section className="relative py-12 sm:py-16 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] border-b border-slate-200/80 overflow-hidden">
-                {/* Soft ambient lighting */}
-                <div className="absolute -top-24 right-1/4 w-80 h-80 bg-emerald-100/35 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute bottom-10 left-10 w-80 h-80 bg-blue-100/30 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute inset-0 opacity-[0.025] pointer-events-none bg-[radial-gradient(#059669_1px,transparent_1px)] [background-size:24px_24px]" />
+            <section className="relative py-12 sm:py-16 bg-white border-b border-primary-100 overflow-hidden">
 
                 <div className="container max-w-7xl relative z-10 px-4 sm:px-6">
                     
                     <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10 space-y-2">
-                        <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-3.5 py-1 rounded-full shadow-sm">
+                        <span className="eyebrow inline-flex items-center gap-1.5">
                             Process & Delivery
                         </span>
-                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tight">
+                        <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 tracking-tight">
                             How We Work
                         </h3>
-                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                             DigiSwasthya bridges the healthcare gap in underserved communities through a structured and technology-enabled support system.
                         </p>
-                        <p className="text-[10px] text-slate-400 sm:hidden italic">👉 Swipe left to explore all 8 pillars</p>
+                        <p className="text-sm text-gray-600 sm:hidden">👉 Swipe left to explore all 8 pillars</p>
                     </div>
 
                     {/* Horizontal Scroll on Mobile, 4-Col Grid on Desktop (Compact, Fitted Design) */}
                     <div className="flex overflow-x-auto pb-4 gap-3.5 snap-x sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:pb-0">
                         {[
-                            { num: "01", title: "Awareness Campaigns", icon: Megaphone, color: "text-blue-600", bg: "bg-blue-50", desc: "We conduct community outreach and health awareness initiatives to educate rural populations about preventive care and early detection." },
-                            { num: "02", title: "Accurate Information", icon: Info, color: "text-indigo-600", bg: "bg-indigo-50", desc: "Our trained coordinators provide reliable health information and guidance, reducing misinformation and promoting informed decisions." },
-                            { num: "03", title: "Electronic Medical Records", icon: Database, color: "text-purple-600", bg: "bg-purple-50", desc: "We assist in digitally recording patient health information to ensure continuity of care and better coordination with specialists." },
-                            { num: "04", title: "Primary Health Checkups", icon: ClipboardList, color: "text-emerald-600", bg: "bg-emerald-50", desc: "Basic health assessments are conducted at village centers to identify early symptoms and determine the need for further consultation." },
-                            { num: "05", title: "Expert Opinion", icon: Stethoscope, color: "text-cyan-600", bg: "bg-cyan-50", desc: "Through teleconsultation support, beneficiaries are connected with qualified medical professionals for specialist advice." },
-                            { num: "06", title: "Timely Diagnosis", icon: Clock, color: "text-amber-600", bg: "bg-amber-50", desc: "By facilitating quicker access to professional consultation, we help reduce delays in identifying health conditions." },
-                            { num: "07", title: "Referral Pathways", icon: ExternalLink, color: "text-orange-600", bg: "bg-orange-50", desc: "When necessary, we guide patients toward appropriate healthcare facilities or partner hospitals for advanced treatment." },
-                            { num: "08", title: "Follow-Ups", icon: RefreshCcw, color: "text-rose-600", bg: "bg-rose-50", desc: "We support follow-up coordination to encourage adherence to prescribed treatment plans and monitor recovery progress." }
+                            { num: "01", title: "Awareness Campaigns", icon: Megaphone, color: "text-primary-700", bg: "bg-primary-50", desc: "We conduct community outreach and health awareness initiatives to educate rural populations about preventive care and early detection." },
+                            { num: "02", title: "Accurate Information", icon: Info, color: "text-primary-700", bg: "bg-primary-50", desc: "Our trained coordinators provide reliable health information and guidance, reducing misinformation and promoting informed decisions." },
+                            { num: "03", title: "Electronic Medical Records", icon: Database, color: "text-primary-700", bg: "bg-primary-50", desc: "We assist in digitally recording patient health information to ensure continuity of care and better coordination with specialists." },
+                            { num: "04", title: "Primary Health Checkups", icon: ClipboardList, color: "text-primary-700", bg: "bg-primary-50", desc: "Basic health assessments are conducted at village centers to identify early symptoms and determine the need for further consultation." },
+                            { num: "05", title: "Expert Opinion", icon: Stethoscope, color: "text-primary-700", bg: "bg-primary-50", desc: "Through teleconsultation support, beneficiaries are connected with qualified medical professionals for specialist advice." },
+                            { num: "06", title: "Timely Diagnosis", icon: Clock, color: "text-primary-700", bg: "bg-primary-50", desc: "By facilitating quicker access to professional consultation, we help reduce delays in identifying health conditions." },
+                            { num: "07", title: "Referral Pathways", icon: ExternalLink, color: "text-primary-700", bg: "bg-primary-50", desc: "When necessary, we guide patients toward appropriate healthcare facilities or partner hospitals for advanced treatment." },
+                            { num: "08", title: "Follow-Ups", icon: RefreshCcw, color: "text-primary-700", bg: "bg-primary-50", desc: "We support follow-up coordination to encourage adherence to prescribed treatment plans and monitor recovery progress." }
                         ].map((item, i) => (
                             <div
                                 key={i}
-                                className="group min-w-[260px] sm:min-w-0 snap-center bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:shadow-lg hover:-translate-y-1 hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                                className="group min-w-[260px] sm:min-w-0 snap-center bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 hover:border-primary-300 transition-all duration-300 flex flex-col justify-between"
                             >
                                 <div>
                                     <div className="flex items-center justify-between mb-3">
-                                        <div className={`w-9 h-9 sm:w-10 sm:h-10 ${item.bg} rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6`}>
+                                        <div className={`w-9 h-9 sm:w-10 sm:h-10 ${item.bg} rounded-xl flex items-center justify-center transition-transform duration-300`}>
                                             <item.icon className={`${item.color} w-4 h-4 sm:w-5 sm:h-5`} />
                                         </div>
-                                        <span className="text-xs font-mono font-bold text-slate-300 group-hover:text-emerald-500 transition-colors">
+                                        <span className="text-sm font-mono font-bold text-primary-300">
                                             {item.num}
                                         </span>
                                     </div>
-                                    <h4 className="text-sm font-bold text-slate-900 mb-1.5 leading-snug group-hover:text-emerald-700 transition-colors">
+                                    <h4 className="text-base font-semibold text-primary-900 mb-1.5 leading-snug">
                                         {item.title}
                                     </h4>
-                                    <p className="text-xs text-slate-500 leading-relaxed font-normal">
+                                    <p className="text-sm text-gray-700 leading-relaxed">
                                         {item.desc}
                                     </p>
                                 </div>
@@ -481,46 +471,46 @@ export default function AboutUs() {
                     </div>
 
                     {/* Our Care Model (Mobile Horizontal Swipe / Desktop 4+3 Grid) */}
-                    <div className="border-t border-slate-200/70 pt-10 mt-10">
+                    <div className="border-t border-gray-200/70 pt-10 mt-10">
                         <div className="text-center max-w-2xl mx-auto mb-7 space-y-2">
-                            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-3.5 py-1 rounded-full shadow-sm">
+                            <span className="eyebrow inline-flex items-center gap-1.5">
                                 Rural Care Architecture
                             </span>
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-slate-900 tracking-tight">
+                            <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 tracking-tight">
                                 Our Care Model
                             </h3>
-                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                            <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                                 How every DigiSwasthya centre delivers safe, continuous, and trusted care — designed for the realities of rural India.
                             </p>
-                            <p className="text-[10px] text-slate-400 sm:hidden italic">👉 Swipe left to explore all 7 care pillars</p>
+                            <p className="text-sm text-gray-600 sm:hidden">👉 Swipe left to explore all 7 care pillars</p>
                         </div>
 
                         {/* Mobile Horizontal Swipe Carousel (Visible only on mobile < sm) */}
                         <div className="flex sm:hidden overflow-x-auto pb-4 gap-3.5 snap-x">
                             {[
-                                { title: "Bringing Healthcare Closer to Communities", lead: "Trusted care, within your community.", icon: Users, color: "text-blue-600", bg: "bg-blue-50", desc: "A trained coordinator welcomes each patient, records their history and vital signs, and connects them with a qualified doctor over live video — followed by a digital prescription, counselling, and a clear follow-up plan, all without travelling long distances." },
-                                { title: "Delivering Better Care Through Technology", lead: "Technology strengthens care — it never replaces it.", icon: Cpu, color: "text-indigo-600", bg: "bg-indigo-50", desc: "Doctors instantly review a patient's past consultations, diagnoses, and medications, while AI summarises histories, highlights key clinical information, and checks prescriptions for interactions before they are issued — so clinicians can focus on the patient. AI enhances clinical judgement; it never replaces it." },
-                                { title: "Caring Beyond a Single Consultation", lead: "Continuity, not isolated visits.", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50", desc: "Chronic conditions like diabetes and hypertension need ongoing care. Patients receive regular follow-ups and a complete longitudinal health record, and coordinators reach out to those who miss appointments — turning episodic visits into lasting care relationships." },
-                                { title: "Understanding the Whole Person", lead: "Health is shaped by more than symptoms.", icon: HeartHandshake, color: "text-teal-600", bg: "bg-teal-50", desc: "Our model considers family health history, household conditions, water and sanitation, and nutrition — giving clinicians a fuller picture, helping identify risks earlier within families, and supporting healthier communities." },
-                                { title: "Built for Rural India", lead: "Designed for real-world conditions.", icon: Smartphone, color: "text-cyan-600", bg: "bg-cyan-50", desc: "Our systems work reliably even where connectivity is limited — coordinators keep registering patients and recording information offline, with data securely synced once back online. The platform runs in English and Hindi on affordable Android devices." },
-                                { title: "Protecting Every Patient's Trust", lead: "Privacy is fundamental to how we work.", icon: ShieldCheck, color: "text-amber-600", bg: "bg-amber-50", desc: "Patient information is encrypted, securely stored, and accessible only to authorised healthcare professionals involved in a patient's care. Strong security and controlled access keep confidentiality and dignity central to every consultation." },
-                                { title: "Scaling Quality Healthcare", lead: "Every improvement reaches every community.", icon: TrendingUp, color: "text-purple-600", bg: "bg-purple-50", desc: "As our network grows, new clinical guidance, enhanced safety features, improved AI capabilities, and better workflows roll out across all centres — so patients receive a consistent standard of care wherever they seek treatment." }
+                                { title: "Bringing Healthcare Closer to Communities", lead: "Trusted care, within your community.", icon: Users, color: "text-primary-700", bg: "bg-primary-50", desc: "A trained coordinator welcomes each patient, records their history and vital signs, and connects them with a qualified doctor over live video — followed by a digital prescription, counselling, and a clear follow-up plan, all without travelling long distances." },
+                                { title: "Delivering Better Care Through Technology", lead: "Technology strengthens care — it never replaces it.", icon: Cpu, color: "text-primary-700", bg: "bg-primary-50", desc: "Doctors instantly review a patient's past consultations, diagnoses, and medications, while AI summarises histories, highlights key clinical information, and checks prescriptions for interactions before they are issued — so clinicians can focus on the patient. AI enhances clinical judgement; it never replaces it." },
+                                { title: "Caring Beyond a Single Consultation", lead: "Continuity, not isolated visits.", icon: Activity, color: "text-primary-700", bg: "bg-primary-50", desc: "Chronic conditions like diabetes and hypertension need ongoing care. Patients receive regular follow-ups and a complete longitudinal health record, and coordinators reach out to those who miss appointments — turning episodic visits into lasting care relationships." },
+                                { title: "Understanding the Whole Person", lead: "Health is shaped by more than symptoms.", icon: HeartHandshake, color: "text-primary-700", bg: "bg-primary-50", desc: "Our model considers family health history, household conditions, water and sanitation, and nutrition — giving clinicians a fuller picture, helping identify risks earlier within families, and supporting healthier communities." },
+                                { title: "Built for Rural India", lead: "Designed for real-world conditions.", icon: Smartphone, color: "text-primary-700", bg: "bg-primary-50", desc: "Our systems work reliably even where connectivity is limited — coordinators keep registering patients and recording information offline, with data securely synced once back online. The platform runs in English and Hindi on affordable Android devices." },
+                                { title: "Protecting Every Patient's Trust", lead: "Privacy is fundamental to how we work.", icon: ShieldCheck, color: "text-primary-700", bg: "bg-primary-50", desc: "Patient information is encrypted, securely stored, and accessible only to authorised healthcare professionals involved in a patient's care. Strong security and controlled access keep confidentiality and dignity central to every consultation." },
+                                { title: "Scaling Quality Healthcare", lead: "Every improvement reaches every community.", icon: TrendingUp, color: "text-primary-700", bg: "bg-primary-50", desc: "As our network grows, new clinical guidance, enhanced safety features, improved AI capabilities, and better workflows roll out across all centres — so patients receive a consistent standard of care wherever they seek treatment." }
                             ].map((item, i) => (
                                 <div
                                     key={i}
-                                    className="group min-w-[260px] snap-center bg-white p-4 rounded-2xl border border-slate-200/80 shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:shadow-lg hover:-translate-y-1 hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                                    className="group min-w-[260px] snap-center bg-white p-4 rounded-2xl border border-gray-200/80 hover:border-primary-300 transition-all duration-300 flex flex-col justify-between"
                                 >
                                     <div>
-                                        <div className={`w-9 h-9 ${item.bg} rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200 group-hover:scale-105 shadow-2xs`}>
+                                        <div className={`w-9 h-9 ${item.bg} rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200`}>
                                             <item.icon className={`${item.color} w-4 h-4`} />
                                         </div>
-                                        <h4 className="text-[13.5px] font-bold text-slate-900 mb-0.5 leading-snug group-hover:text-emerald-700 transition-colors">
+                                        <h4 className="text-base font-semibold text-primary-900 mb-0.5 leading-snug">
                                             {item.title}
                                         </h4>
-                                        <p className={`text-[10px] font-bold mb-1.5 ${item.color} tracking-wide uppercase`}>
+                                        <p className={`text-xs font-semibold mb-1.5 ${item.color} tracking-wide uppercase`}>
                                             {item.lead}
                                         </p>
-                                        <p className="text-[11.5px] text-slate-600 leading-relaxed font-normal">
+                                        <p className="text-sm text-gray-700 leading-relaxed">
                                             {item.desc}
                                         </p>
                                     </div>
@@ -533,26 +523,26 @@ export default function AboutUs() {
                             {/* Row 1: 4 Cards */}
                             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 mb-3 sm:mb-3.5">
                                 {[
-                                    { title: "Bringing Healthcare Closer to Communities", lead: "Trusted care, within your community.", icon: Users, color: "text-blue-600", bg: "bg-blue-50", desc: "A trained coordinator welcomes each patient, records their history and vital signs, and connects them with a qualified doctor over live video — followed by a digital prescription, counselling, and a clear follow-up plan, all without travelling long distances." },
-                                    { title: "Delivering Better Care Through Technology", lead: "Technology strengthens care — it never replaces it.", icon: Cpu, color: "text-indigo-600", bg: "bg-indigo-50", desc: "Doctors instantly review a patient's past consultations, diagnoses, and medications, while AI summarises histories, highlights key clinical information, and checks prescriptions for interactions before they are issued — so clinicians can focus on the patient. AI enhances clinical judgement; it never replaces it." },
-                                    { title: "Caring Beyond a Single Consultation", lead: "Continuity, not isolated visits.", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50", desc: "Chronic conditions like diabetes and hypertension need ongoing care. Patients receive regular follow-ups and a complete longitudinal health record, and coordinators reach out to those who miss appointments — turning episodic visits into lasting care relationships." },
-                                    { title: "Understanding the Whole Person", lead: "Health is shaped by more than symptoms.", icon: HeartHandshake, color: "text-teal-600", bg: "bg-teal-50", desc: "Our model considers family health history, household conditions, water and sanitation, and nutrition — giving clinicians a fuller picture, helping identify risks earlier within families, and supporting healthier communities." }
+                                    { title: "Bringing Healthcare Closer to Communities", lead: "Trusted care, within your community.", icon: Users, color: "text-primary-700", bg: "bg-primary-50", desc: "A trained coordinator welcomes each patient, records their history and vital signs, and connects them with a qualified doctor over live video — followed by a digital prescription, counselling, and a clear follow-up plan, all without travelling long distances." },
+                                    { title: "Delivering Better Care Through Technology", lead: "Technology strengthens care — it never replaces it.", icon: Cpu, color: "text-primary-700", bg: "bg-primary-50", desc: "Doctors instantly review a patient's past consultations, diagnoses, and medications, while AI summarises histories, highlights key clinical information, and checks prescriptions for interactions before they are issued — so clinicians can focus on the patient. AI enhances clinical judgement; it never replaces it." },
+                                    { title: "Caring Beyond a Single Consultation", lead: "Continuity, not isolated visits.", icon: Activity, color: "text-primary-700", bg: "bg-primary-50", desc: "Chronic conditions like diabetes and hypertension need ongoing care. Patients receive regular follow-ups and a complete longitudinal health record, and coordinators reach out to those who miss appointments — turning episodic visits into lasting care relationships." },
+                                    { title: "Understanding the Whole Person", lead: "Health is shaped by more than symptoms.", icon: HeartHandshake, color: "text-primary-700", bg: "bg-primary-50", desc: "Our model considers family health history, household conditions, water and sanitation, and nutrition — giving clinicians a fuller picture, helping identify risks earlier within families, and supporting healthier communities." }
                                 ].map((item, i) => (
                                     <div
                                         key={i}
-                                        className="group bg-white p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/80 shadow-[0_2px_10px_rgba(15,23,42,0.03)] hover:shadow-md hover:-translate-y-0.5 hover:border-emerald-300 transition-all duration-200 flex flex-col justify-between cursor-pointer"
+                                        className="group bg-white p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-gray-200/80 hover:border-primary-300 transition-all duration-200 flex flex-col justify-between"
                                     >
                                         <div>
-                                            <div className={`w-8 h-8 sm:w-8.5 sm:h-8.5 ${item.bg} rounded-lg sm:rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200 group-hover:scale-105 shadow-2xs`}>
+                                            <div className={`w-8 h-8 sm:w-8.5 sm:h-8.5 ${item.bg} rounded-lg sm:rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200`}>
                                                 <item.icon className={`${item.color} w-4 h-4`} />
                                             </div>
-                                            <h4 className="text-xs sm:text-[13.5px] font-bold text-slate-900 mb-0.5 leading-snug group-hover:text-emerald-700 transition-colors">
+                                            <h4 className="text-base font-semibold text-primary-900 mb-0.5 leading-snug">
                                                 {item.title}
                                             </h4>
-                                            <p className={`text-[9.5px] sm:text-[10px] font-bold mb-1.5 ${item.color} tracking-wide uppercase`}>
+                                            <p className={`text-xs font-semibold mb-1.5 ${item.color} tracking-wide uppercase`}>
                                                 {item.lead}
                                             </p>
-                                            <p className="text-[11px] sm:text-[11.5px] text-slate-600 leading-relaxed font-normal">
+                                            <p className="text-sm text-gray-700 leading-relaxed">
                                                 {item.desc}
                                             </p>
                                         </div>
@@ -563,25 +553,25 @@ export default function AboutUs() {
                             {/* Row 2: 3 Cards Centered */}
                             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5 lg:w-[75%] lg:mx-auto">
                                 {[
-                                    { title: "Built for Rural India", lead: "Designed for real-world conditions.", icon: Smartphone, color: "text-cyan-600", bg: "bg-cyan-50", desc: "Our systems work reliably even where connectivity is limited — coordinators keep registering patients and recording information offline, with data securely synced once back online. The platform runs in English and Hindi on affordable Android devices." },
-                                    { title: "Protecting Every Patient's Trust", lead: "Privacy is fundamental to how we work.", icon: ShieldCheck, color: "text-amber-600", bg: "bg-amber-50", desc: "Patient information is encrypted, securely stored, and accessible only to authorised healthcare professionals involved in a patient's care. Strong security and controlled access keep confidentiality and dignity central to every consultation." },
-                                    { title: "Scaling Quality Healthcare", lead: "Every improvement reaches every community.", icon: TrendingUp, color: "text-purple-600", bg: "bg-purple-50", desc: "As our network grows, new clinical guidance, enhanced safety features, improved AI capabilities, and better workflows roll out across all centres — so patients receive a consistent standard of care wherever they seek treatment." }
+                                    { title: "Built for Rural India", lead: "Designed for real-world conditions.", icon: Smartphone, color: "text-primary-700", bg: "bg-primary-50", desc: "Our systems work reliably even where connectivity is limited — coordinators keep registering patients and recording information offline, with data securely synced once back online. The platform runs in English and Hindi on affordable Android devices." },
+                                    { title: "Protecting Every Patient's Trust", lead: "Privacy is fundamental to how we work.", icon: ShieldCheck, color: "text-primary-700", bg: "bg-primary-50", desc: "Patient information is encrypted, securely stored, and accessible only to authorised healthcare professionals involved in a patient's care. Strong security and controlled access keep confidentiality and dignity central to every consultation." },
+                                    { title: "Scaling Quality Healthcare", lead: "Every improvement reaches every community.", icon: TrendingUp, color: "text-primary-700", bg: "bg-primary-50", desc: "As our network grows, new clinical guidance, enhanced safety features, improved AI capabilities, and better workflows roll out across all centres — so patients receive a consistent standard of care wherever they seek treatment." }
                                 ].map((item, i) => (
                                     <div
                                         key={i + 4}
-                                        className={`group bg-white p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/80 shadow-[0_2px_10px_rgba(15,23,42,0.03)] hover:shadow-md hover:-translate-y-0.5 hover:border-emerald-300 transition-all duration-200 flex flex-col justify-between cursor-pointer ${i === 2 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:col-span-1" : ""}`}
+                                        className={`group bg-white p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-gray-200/80 hover:border-primary-300 transition-all duration-200 flex flex-col justify-between ${i === 2 ? "sm:col-span-2 sm:max-w-md sm:mx-auto sm:w-full lg:col-span-1" : ""}`}
                                     >
                                         <div>
-                                            <div className={`w-8 h-8 sm:w-8.5 sm:h-8.5 ${item.bg} rounded-lg sm:rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200 group-hover:scale-105 shadow-2xs`}>
+                                            <div className={`w-8 h-8 sm:w-8.5 sm:h-8.5 ${item.bg} rounded-lg sm:rounded-xl flex items-center justify-center mb-2.5 transition-transform duration-200`}>
                                                 <item.icon className={`${item.color} w-4 h-4`} />
                                             </div>
-                                            <h4 className="text-xs sm:text-[13.5px] font-bold text-slate-900 mb-0.5 leading-snug group-hover:text-emerald-700 transition-colors">
+                                            <h4 className="text-base font-semibold text-primary-900 mb-0.5 leading-snug">
                                                 {item.title}
                                             </h4>
-                                            <p className={`text-[9.5px] sm:text-[10px] font-bold mb-1.5 ${item.color} tracking-wide uppercase`}>
+                                            <p className={`text-xs font-semibold mb-1.5 ${item.color} tracking-wide uppercase`}>
                                                 {item.lead}
                                             </p>
-                                            <p className="text-[11px] sm:text-[11.5px] text-slate-600 leading-relaxed font-normal">
+                                            <p className="text-sm text-gray-700 leading-relaxed">
                                                 {item.desc}
                                             </p>
                                         </div>
@@ -595,16 +585,16 @@ export default function AboutUs() {
             </section>
 
             {/* SECTION 6 — WHY OUR WORK MATTERS */}
-            <section className="py-12 sm:py-16 bg-white border-b border-slate-200/60">
+            <section className="py-12 sm:py-16 bg-primary-50 border-b border-primary-100">
                 <div className="container max-w-7xl px-4 sm:px-6">
                     <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-                        <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200 px-3 py-0.5 rounded-full">
+                        <span className="eyebrow inline-flex items-center gap-1.5">
                             {contentDict.section7.title[currentLang]}
                         </span>
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black text-slate-900 leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 leading-tight">
                             {currentLang === "hi" ? "हमारा काम क्यों मायने रखता है" : "The Core of Our Mission"}
                         </h2>
-                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                        <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                             {contentDict.section7.text[currentLang]}
                         </p>
                     </div>
@@ -617,16 +607,16 @@ export default function AboutUs() {
                             return (
                                 <div
                                     key={index}
-                                    className="group bg-slate-50/80 p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-emerald-300 hover:bg-white transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                                    className="group bg-gray-50/80 p-4 sm:p-5 rounded-2xl border border-gray-200 shadow-sm hover:border-primary-300 hover:bg-white transition-all duration-300 flex flex-col justify-between"
                                 >
                                     <div>
-                                        <div className="w-9 h-9 bg-emerald-50 border border-emerald-100 rounded-xl flex items-center justify-center mb-3 text-emerald-700 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 shadow-sm">
+                                        <div className="w-9 h-9 bg-primary-50 border border-primary-100 rounded-xl flex items-center justify-center mb-3 text-primary-700 transition-transform duration-300 shadow-sm">
                                             <Icon className="w-4 h-4" />
                                         </div>
-                                        <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1 leading-tight group-hover:text-emerald-700 transition-colors">
+                                        <h3 className="text-base font-semibold text-primary-900 mb-1 leading-tight">
                                             {card.title[currentLang]}
                                         </h3>
-                                        <p className="text-slate-500 text-[11px] sm:text-xs leading-normal font-normal">
+                                        <p className="text-sm text-gray-700 leading-relaxed">
                                             {card.desc[currentLang]}
                                         </p>
                                     </div>
@@ -638,23 +628,23 @@ export default function AboutUs() {
             </section>
 
             {/* SECTION 7 — CREDENTIALS, PARTNERS & TRANSPARENCY */}
-            <section id="our-partners" className="py-12 sm:py-16 bg-gradient-to-b from-slate-50 to-white scroll-mt-24">
+            <section id="our-partners" className="py-12 sm:py-16 bg-white scroll-mt-24">
                 <div className="container max-w-6xl px-4 sm:px-6">
-                    <div className="grid lg:grid-cols-2 gap-10 items-start border-b border-slate-200/60 pb-12">
+                    <div className="grid lg:grid-cols-2 gap-10 items-start border-b border-gray-200/60 pb-12">
                         <div>
-                            <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-full mb-2.5">
+                            <span className="eyebrow inline-flex items-center gap-1.5 mb-2.5">
                                 Trust & Governance
                             </span>
-                            <h2 className="text-2xl sm:text-3xl font-serif font-black text-slate-900 mb-3">
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-3">
                                 Transparency & Legitimacy
                             </h2>
-                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
                                 DigiSwasthya is a registered non-profit committed to the highest standards of accountability and regulatory compliance.
                             </p>
                             <div className="space-y-2.5">
-                                <div className="flex items-center gap-3 text-slate-800 bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
-                                    <FileText className="text-emerald-600 w-4 h-4 shrink-0" />
-                                    <span className="text-xs sm:text-sm font-medium"><strong>NPO Registration Number:</strong> U85300UP2021NPL146867</span>
+                                <div className="flex items-center gap-3 text-gray-800 bg-white p-4 rounded-xl border border-primary-100 shadow-sm">
+                                    <FileText className="text-primary-600 w-4 h-4 shrink-0" />
+                                    <span className="text-sm sm:text-base"><strong>NPO Registration Number:</strong> U85300UP2021NPL146867</span>
                                 </div>
                                 {[
                                     ["CIN (Corporate Identity Number)", "U85300UP2021NPL146867"],
@@ -662,108 +652,58 @@ export default function AboutUs() {
                                     ["CSR Form 1", "CSR00016240"],
                                     ["NGO Darpan ID", "UP/2021/0291277"],
                                 ].map(([label, value]) => (
-                                    <div key={label} className="flex items-center gap-3 text-slate-800 bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
-                                        <FileText className="text-emerald-600 w-4 h-4 shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium"><strong>{label}:</strong> {value}</span>
+                                    <div key={label} className="flex items-center gap-3 text-gray-800 bg-white p-4 rounded-xl border border-primary-100 shadow-sm">
+                                        <FileText className="text-primary-600 w-4 h-4 shrink-0" />
+                                        <span className="text-sm sm:text-base"><strong>{label}:</strong> {value}</span>
                                     </div>
                                 ))}
-                                <p className="text-[11px] text-slate-400 italic">
+                                <p className="text-sm text-gray-600 italic">
                                     DIGISWASTHYA FOUNDATION is incorporated under Section 8 of the Companies Act, 2013, and is compliant with applicable regulations in India.
                                 </p>
                             </div>
                         </div>
 
                         <div>
-                            <div className="flex items-center gap-2 mb-4 text-slate-900 border-b border-slate-200 pb-2.5">
-                                <HeartHandshake className="text-emerald-600 w-5 h-5" />
-                                <h3 className="text-base font-black uppercase tracking-tight">Our Partners</h3>
+                            <div className="flex items-center gap-2 mb-4 text-primary-900 border-b border-gray-200 pb-2.5">
+                                <HeartHandshake className="text-primary-600 w-5 h-5" />
+                                <h3 className="text-lg font-semibold">Our Partners</h3>
                             </div>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
-                                {partnerLogos.map((p, i) => {
-                                    const CardContent = (
-                                        <div className="h-16 bg-white rounded-xl border border-slate-200 flex items-center justify-center p-2.5 shadow-sm hover:border-emerald-200 transition-all">
-                                            {p.image ? (
-                                                <div className="relative w-full h-full">
-                                                    <Image
-                                                        src={p.image}
-                                                        alt={p.name}
-                                                        fill
-                                                        className="object-contain"
-                                                    />
-                                                </div>
-                                            ) : null}
-                                        </div>
-                                    );
-
-                                    return p.link ? (
-                                        <a
-                                            key={i}
-                                            href={p.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="block transition-transform hover:scale-[1.02]"
-                                        >
-                                            {CardContent}
-                                        </a>
-                                    ) : (
-                                        <div key={i} className="cursor-default">
-                                            {CardContent}
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                            <LogoWall logos={partnerLogos} variant="grid" className="justify-start" />
                         </div>
                     </div>
 
                     <div className="pt-12">
-                        <div className="flex items-center gap-2 mb-4 text-slate-900 border-b border-slate-200 pb-2.5">
-                            <HeartHandshake className="text-emerald-600 w-5 h-5" />
-                            <h3 className="text-base font-black uppercase tracking-tight">Our Donors</h3>
+                        <div className="flex items-center gap-2 mb-4 text-primary-900 border-b border-gray-200 pb-2.5">
+                            <HeartHandshake className="text-primary-600 w-5 h-5" />
+                            <h3 className="text-lg font-semibold">Our Donors</h3>
                         </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
-                            {donorLogos.map((d) => {
-                                const card = (
-                                    <div className="h-20 bg-white rounded-xl border border-slate-200 flex items-center justify-center p-3 shadow-sm hover:border-emerald-200 transition-all">
-                                        <div className="relative w-full h-full">
-                                            <Image src={d.image} alt={d.name} fill sizes="160px" className="object-contain" />
-                                        </div>
-                                    </div>
-                                );
-                                return d.link ? (
-                                    <a key={d.name} href={d.link} target="_blank" rel="noopener noreferrer" className="block transition-transform hover:scale-[1.02]">
-                                        {card}
-                                    </a>
-                                ) : (
-                                    <div key={d.name} className="cursor-default">{card}</div>
-                                );
-                            })}
-                        </div>
+                        <LogoWall logos={donorLogos} variant="grid" className="justify-start" />
                     </div>
                 </div>
             </section>
 
             {/* SECTION 8 — TRANSPARENCY & ANNUAL REPORT */}
-            <section className="py-12 sm:py-16 bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white relative overflow-hidden">
+            <section className="py-12 sm:py-16 bg-primary-50 relative">
                 <div className="container px-4 sm:px-6">
                     <motion.div
                         {...fadeIn}
-                        className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/15 rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden shadow-2xl"
+                        className="max-w-3xl mx-auto bg-white border border-primary-100 rounded-3xl p-6 sm:p-10 text-center"
                     >
-                        <div className="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4 text-emerald-300">
+                        <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center mx-auto mb-4 text-primary-700">
                             <ShieldCheck className="w-6 h-6" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-serif font-black mb-3">
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-900 mb-3">
                             Our Promise of Accountability
                         </h2>
-                        <p className="text-slate-300 text-xs sm:text-sm mb-6 max-w-xl mx-auto leading-relaxed">
+                        <p className="text-gray-700 text-base sm:text-lg mb-6 max-w-xl mx-auto leading-relaxed">
                             We are committed to ethical healthcare delivery and transparent use of funds. Every contribution is tracked to ensure maximum impact in our rural communities.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center items-center">
                             <a
                                 href={websiteConfig.annualReportsUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full px-5 py-2.5 text-xs sm:text-sm transition-colors shadow-md shadow-emerald-500/25"
+                                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl px-5 py-2.5 text-sm sm:text-base sm:whitespace-nowrap transition-colors"
                             >
                                 <FileText className="w-3.5 h-3.5" />
                                 Annual Reports (FY 2021-22 to 2024-25)
@@ -772,14 +712,14 @@ export default function AboutUs() {
                                 href={websiteConfig.balanceSheetsUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full px-5 py-2.5 text-xs sm:text-sm transition-colors shadow-md shadow-emerald-500/25"
+                                className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl px-5 py-2.5 text-sm sm:text-base sm:whitespace-nowrap transition-colors"
                             >
                                 <FileText className="w-3.5 h-3.5" />
                                 Audited Balance Sheets (FY 2022-23 to 2025-26)
                             </a>
                             <a
                                 href="/contact-us"
-                                className="inline-flex items-center gap-2 text-white font-bold hover:text-emerald-300 transition-colors border border-white/20 hover:border-emerald-300 rounded-full px-5 py-2.5 text-xs sm:text-sm hover:bg-white/5"
+                                className="inline-flex items-center gap-2 text-primary-700 font-semibold transition-colors border-2 border-primary-600 rounded-xl px-5 py-2.5 text-sm sm:text-base sm:whitespace-nowrap hover:bg-primary-50"
                             >
                                 Contact Our Ethics Office
                                 <ExternalLink className="w-3.5 h-3.5" />

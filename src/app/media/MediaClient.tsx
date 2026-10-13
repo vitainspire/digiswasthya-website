@@ -76,14 +76,14 @@ function MediaContent() {
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 text-white border border-white/30 text-sm font-semibold mb-3"
+                        className="eyebrow eyebrow-on-dark inline-block mb-3"
                     >
                         Official Media Center
                     </motion.span>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-3xl md:text-4xl lg:text-5xl font-black mb-3 tracking-tight text-white drop-shadow-md"
+                        className="font-serif text-4xl md:text-5xl font-bold mb-3 text-white drop-shadow-md"
                     >
                         Media & Resources
                     </motion.h1>
@@ -91,7 +91,7 @@ function MediaContent() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-base md:text-lg text-slate-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-xs"
+                        className="text-base md:text-lg text-gray-100 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-xs"
                     >
                         Discover our stories, press coverage, patient documentaries, and field work across rural India.
                     </motion.p>
@@ -111,7 +111,7 @@ function MediaContent() {
                                     className={`relative px-4 md:px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 flex items-center gap-2 ${
                                         isActive
                                             ? "bg-primary-600 hover:bg-primary-700 text-white shadow-md"
-                                            : "bg-white/80 backdrop-blur-md text-slate-700 hover:bg-white hover:text-slate-900 border border-slate-300/80 shadow-xs"
+                                            : "bg-white/80 backdrop-blur-md text-gray-700 hover:bg-white hover:text-primary-900 border border-gray-300/80 shadow-xs"
                                     }`}
                                 >
                                     <span>{tab.icon}</span>
@@ -120,7 +120,7 @@ function MediaContent() {
                                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                                             isActive
                                                 ? "bg-white/25 text-white"
-                                                : "bg-slate-200 text-slate-700"
+                                                : "bg-gray-200 text-gray-700"
                                         }`}
                                     >
                                         {tab.count}
@@ -148,13 +148,13 @@ function MediaContent() {
                             <section className="py-16 md:py-20">
                                 <div className="container max-w-6xl mx-auto px-4">
                                     <div className="flex flex-col items-center mb-12 text-center">
-                                        <span className="px-4 py-1.5 bg-primary-100/90 text-primary-800 border border-primary-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                                        <span className="eyebrow mb-3">
                                             📰 News & Press Coverage
                                         </span>
-                                        <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900">
                                             DigiSwasthya in the News
                                         </h2>
-                                        <p className="text-slate-600 text-sm md:text-base mt-2 max-w-xl font-medium">
+                                        <p className="text-gray-700 text-base md:text-lg mt-3 max-w-xl">
                                             Recognized across national newspapers, government ministries, and international platforms.
                                         </p>
                                     </div>
@@ -163,9 +163,9 @@ function MediaContent() {
                                         {mediaCoverage.map((item, i) => (
                                             <div
                                                 key={i}
-                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-300/70 hover:border-primary-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
+                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-300/70 hover:border-primary-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
                                             >
-                                                <div className="relative h-56 overflow-hidden bg-slate-100/80 flex items-center justify-center p-4 border-b border-slate-200/60">
+                                                <div className="relative h-56 overflow-hidden bg-gray-100/80 flex items-center justify-center p-4 border-b border-gray-200/60">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.title}
@@ -180,10 +180,10 @@ function MediaContent() {
                                                 </div>
                                                 <div className="p-6 flex-grow flex flex-col justify-between">
                                                     <div>
-                                                        <h3 className="font-bold text-lg text-slate-900 mb-2.5 leading-snug group-hover:text-primary-700 transition-colors">
+                                                        <h3 className="font-bold text-lg text-primary-900 mb-2.5 leading-snug group-hover:text-primary-700 transition-colors">
                                                             {item.title}
                                                         </h3>
-                                                        <p className="text-slate-600 font-normal text-sm leading-relaxed">
+                                                        <p className="text-gray-600 font-normal text-sm leading-relaxed">
                                                             {item.description}
                                                         </p>
                                                     </div>
@@ -197,16 +197,16 @@ function MediaContent() {
 
                         {/* 2. FIELD WORK PHOTOS & INFOGRAPHICS (SECOND) */}
                         {showPhotos && (
-                            <section className="py-16 md:py-20 border-t border-slate-300/80">
+                            <section className="py-16 md:py-20 border-t border-gray-300/80">
                                 <div className="container max-w-6xl mx-auto px-4">
                                     <div className="flex flex-col items-center mb-12 text-center">
-                                        <span className="px-4 py-1.5 bg-orange-100/90 text-orange-800 border border-orange-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                                        <span className="eyebrow mb-3">
                                             📸 Field Work & Infographics
                                         </span>
-                                        <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900">
                                             Our Work on the Ground
                                         </h2>
-                                        <p className="text-slate-600 text-sm md:text-base mt-2 max-w-xl font-medium">
+                                        <p className="text-gray-700 text-base md:text-lg mt-3 max-w-xl">
                                             Glimpses of daily consultations, doctor visits, and healthcare model frameworks.
                                         </p>
                                     </div>
@@ -216,9 +216,9 @@ function MediaContent() {
                                         {projectImages.map((item, i) => (
                                             <div
                                                 key={i}
-                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-300/70 hover:border-orange-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
+                                                className="bg-white/85 backdrop-blur-xl rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-300/70 hover:border-primary-400/60 group transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
                                             >
-                                                <div className="relative h-60 overflow-hidden bg-slate-900">
+                                                <div className="relative h-60 overflow-hidden bg-gray-900">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.title}
@@ -232,10 +232,10 @@ function MediaContent() {
                                                     </div>
                                                 </div>
                                                 <div className="p-6 flex-grow">
-                                                    <h3 className="font-bold text-lg text-slate-900 mb-2 leading-snug group-hover:text-orange-600 transition-colors">
+                                                    <h3 className="font-bold text-lg text-primary-900 mb-2 leading-snug group-hover:text-orange-600 transition-colors">
                                                         {item.title}
                                                     </h3>
-                                                    <p className="text-slate-600 text-sm leading-relaxed">
+                                                    <p className="text-gray-600 text-sm leading-relaxed">
                                                         {item.description}
                                                     </p>
                                                 </div>
@@ -244,17 +244,17 @@ function MediaContent() {
                                     </div>
 
                                     {/* Infographics Sub-Grid */}
-                                    <div className="pt-8 border-t border-slate-300/80">
-                                        <h3 className="text-xl font-bold text-slate-900 text-center mb-8">
+                                    <div className="pt-8 border-t border-gray-300/80">
+                                        <h3 className="text-xl font-bold text-primary-900 text-center mb-8">
                                             Healthcare Models & Mission Frameworks
                                         </h3>
                                         <div className="grid md:grid-cols-2 gap-8">
                                             {infographics.map((item, i) => (
                                                 <div
                                                     key={i}
-                                                    className="bg-white/85 backdrop-blur-xl p-6 rounded-3xl shadow-md border border-slate-300/70 hover:border-orange-400/60 group hover:shadow-2xl transition-all duration-300"
+                                                    className="bg-white/85 backdrop-blur-xl p-6 rounded-3xl shadow-md border border-gray-300/70 hover:border-primary-400/60 group hover:shadow-2xl transition-all duration-300"
                                                 >
-                                                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-slate-200 bg-slate-100/80 flex items-center justify-center p-4">
+                                                    <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 border border-gray-200 bg-gray-100/80 flex items-center justify-center p-4">
                                                         <Image
                                                             src={item.image}
                                                             alt={item.title}
@@ -264,10 +264,10 @@ function MediaContent() {
                                                         />
                                                     </div>
                                                     <div className="text-center">
-                                                        <h4 className="font-bold text-xl text-slate-900 mb-2">
+                                                        <h4 className="font-bold text-xl text-primary-900 mb-2">
                                                             {item.title}
                                                         </h4>
-                                                        <p className="text-slate-600 text-sm max-w-md mx-auto">
+                                                        <p className="text-gray-600 text-sm max-w-md mx-auto">
                                                             {item.description}
                                                         </p>
                                                     </div>
@@ -281,16 +281,16 @@ function MediaContent() {
 
                         {/* 3. YOUTUBE VIDEOS & DOCUMENTARIES (THIRD) */}
                         {showVideos && (
-                            <section className="py-16 md:py-20 border-t border-slate-300/80">
+                            <section className="py-16 md:py-20 border-t border-gray-300/80">
                                 <div className="container max-w-6xl mx-auto px-4">
                                     <div className="flex flex-col items-center mb-12 text-center">
-                                        <span className="px-4 py-1.5 bg-red-100/90 text-red-800 border border-red-200 rounded-full text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                                        <span className="eyebrow mb-3">
                                             🎥 Videos & Documentaries
                                         </span>
-                                        <h2 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900">
+                                        <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900">
                                             Watch DigiSwasthya in Action
                                         </h2>
-                                        <p className="text-slate-600 text-sm md:text-base mt-2 max-w-xl font-medium">
+                                        <p className="text-gray-700 text-base md:text-lg mt-3 max-w-xl">
                                             Real patient recoveries, doctor interviews, and on-ground telemedicine camps.
                                         </p>
                                     </div>
@@ -299,7 +299,7 @@ function MediaContent() {
                                         {videos.map((vid, i) => (
                                             <div
                                                 key={i}
-                                                className="group bg-white/85 backdrop-blur-xl rounded-3xl p-4 border border-slate-300/70 hover:border-red-400 hover:shadow-2xl transition-all duration-300 shadow-md flex flex-col"
+                                                className="group bg-white/85 backdrop-blur-xl rounded-3xl p-4 border border-gray-300/70 hover:border-red-400 hover:shadow-2xl transition-all duration-300 shadow-md flex flex-col"
                                             >
                                                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-sm bg-black">
                                                     <iframe
@@ -315,11 +315,11 @@ function MediaContent() {
                                                         <span className="text-[11px] font-bold text-red-600 uppercase tracking-wider block mb-1">
                                                             {vid.category}
                                                         </span>
-                                                        <h3 className="text-base md:text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors">
+                                                        <h3 className="text-base md:text-lg font-bold text-primary-900 group-hover:text-red-600 transition-colors">
                                                             {vid.title}
                                                         </h3>
                                                     </div>
-                                                    <span className="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium shrink-0 border border-slate-200">
+                                                    <span className="px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium shrink-0 border border-gray-200">
                                                         ⏱️ {vid.duration}
                                                     </span>
                                                 </div>

@@ -19,8 +19,8 @@ export default function NetworkPage() {
             <section className="relative bg-primary-950 overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
-                        src="/images/ds-medical-camp-hd.webp"
-                        alt="DigiSwasthya Rural Telemedicine Camps & Health Centres"
+                        src="/images/hero/hero-4.webp"
+                        alt="Villagers gathered at a DigiSwasthya health camp"
                         fill
                         quality={95}
                         className="object-cover object-center"
@@ -33,7 +33,7 @@ export default function NetworkPage() {
 
                 <div className="relative z-10 container px-4 py-16 sm:py-20 md:py-24">
                     <div className="max-w-2xl">
-                        <p className="mb-3 text-base font-semibold text-primary-100">{t("centres.badge")}</p>
+                        <p className="eyebrow eyebrow-on-dark mb-3">{t("centres.badge")}</p>
                         <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
                             {t("network.heroTitle")}
                         </h1>
