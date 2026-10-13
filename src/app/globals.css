@@ -27,14 +27,17 @@
   --color-secondary-900: #451a03;
   --color-secondary-950: #27100a;
 
-  /* Typography — DM Sans body, Lora serif headings */
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
-
   /* Page surface */
   --color-surface: #fdfefd;
 
   /* Container */
+}
+
+/* Typography — DM Sans body, Lora serif headings.
+   `inline` is required: next/font defines --font-dm-sans / --font-lora on <body>, so they don't exist at :root. */
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
 }
 
 /* Custom Container Utility Override */
@@ -43,6 +46,42 @@
   padding-inline: 1rem;
   max-width: 1400px;
   /* Custom 2xl override simulation */
+}
+
+/* Small uppercase label above section headings. On dark backgrounds pair with `eyebrow-on-dark`. */
+@utility eyebrow {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--eyebrow-color, var(--color-primary-600));
+}
+
+@utility eyebrow-on-dark {
+  --eyebrow-color: var(--color-primary-200);
+}
+
+/* Standard vertical rhythm for page sections */
+@utility section-y {
+  padding-block: 4rem;
+  @media (width >= 48rem) {
+    padding-block: 6rem;
+  }
+}
+
+/* Logo wall marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 60s linear infinite;
 }
 
 :root {

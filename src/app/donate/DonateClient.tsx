@@ -32,7 +32,7 @@ export default function DonatePage() {
 
     const [amount, setAmount] = useState<number | "">(requestedAmount >= MIN_AMOUNT ? requestedAmount : 1000);
     const [method, setMethod] = useState<"upi_qr" | "razorpay">("razorpay");
-    const [isRecurring, setIsRecurring] = useState(false);
+    const [isRecurring, setIsRecurring] = useState(searchParams.get("frequency") === "monthly");
     const [donorName, setDonorName] = useState("");
     const [donorEmail, setDonorEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "processing" | "success" | "error">("idle");

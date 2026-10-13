@@ -38,13 +38,15 @@
         "error": "Something went wrong. Please try again, or reach us directly via call or WhatsApp."
     },
     "hero": {
-        "title": "Making Quality Healthcare Reach Every Rural Family",
+        "title": "A specialist doctor for every village, one video call away",
         "subtitle": "Bridging the gap between rural India and modern medicine through expert teleconsultation and essential diagnostics at your doorstep.",
         "donateNote": "80G tax-exempt. Secure payment.",
         "bookConsultation": "Find care near you",
         "joinUs": "Join us as a donor or doctor",
         "whatsapp": "Chat on WhatsApp",
-        "seeImpact": "See our full impact"
+        "seeImpact": "See detailed impact data (January 2025 onwards)",
+        "partner": "Partner with us",
+        "joinDoctor": "Join as a doctor"
     },
     "stats": {
         "patientsServed": "Patients Served",
@@ -227,7 +229,7 @@
     "collaboration": {
         "badge": "Partner With Us",
         "heading": "Help us fulfil our mission",
-        "subheading": "Here are some of the ways you can collaborate with DigiSwasthya Foundation.",
+        "subheading": "For CSR teams, foundations and impact investors: sponsor a centre, fund a screening campaign, or back the next stage of growth.",
         "card1Title": "Impact Investors",
         "card1Desc": "We are looking for social/impact investors to provide capital and guidance to scale up. Apart from patient capital, we seek know-how in emerging medical technologies and experiences in implementing public-private partnerships.",
         "card2Title": "Centre Sponsors",
@@ -236,7 +238,9 @@
         "card3Desc": "Companies, trusts, and individuals with a thrust to sponsor specific interventions like breast care detections, girls screening for anemia, newborn baby screening, diabetic screening, and heart screening programs.",
         "ctaHeading": "Together, we can reach the last mile",
         "ctaText": "Interested in partnering with us? Let's talk about how we can work together.",
-        "ctaButton": "Get in Touch"
+        "ctaButton": "Get in Touch",
+        "explore": "See how this works",
+        "dueDiligence": "Ready for your due diligence"
     },
     "ourTeam": {
         "volunteerCta": {
@@ -332,7 +336,35 @@
         "tier1000": "Helps run health camps and screenings in villages.",
         "tier2500": "Supports diagnostics and follow-up care for patients.",
         "tier5000": "Helps keep a telemedicine centre running for its community.",
-        "storiesDonate": "Help us reach more families"
+        "storiesDonate": "Help us reach more families",
+        "trustCsr": "CSR-1 registered",
+        "supportedBy": "Supported by",
+        "modelEyebrow": "The gap we close",
+        "modelTitle": "How DigiSwasthya works",
+        "modelLead": "Rural communities face shortages of specialist doctors, delayed diagnosis and limited health infrastructure. Our model brings the specialist to the village in four steps.",
+        "model1Title": "Screen in the village",
+        "model1Desc": "Health camps and our centres check vitals and symptoms on site, so problems are caught early.",
+        "model2Title": "Consult a specialist by video",
+        "model2Desc": "Trained staff connect the patient with a specialist doctor from a city hospital by video consultation.",
+        "model3Title": "Treat, refer and enrol",
+        "model3Desc": "Patients get a treatment plan, prescriptions from nearby pharmacies, a referral to a partner hospital when needed, and help getting an Ayushman card.",
+        "model4Title": "Follow up and support",
+        "model4Desc": "Digital health records keep care continuous, and patients facing serious illness such as cancer get guidance and support through treatment.",
+        "modelCentres": "Telemedicine centres",
+        "modelFindCentre": "Find a centre near you",
+        "modelSeeData": "Explore our impact data",
+        "founderReadFull": "Read full story",
+        "founderShowLess": "Show less",
+        "founderVideoCaption": "Why Sandeep started DigiSwasthya",
+        "founderQuote": "To transform the country's primary healthcare system and make healthcare services affordable and accessible for rural communities by leveraging technology.",
+        "storiesMore": "More lives changed",
+        "giftsEyebrow": "Your gift at work",
+        "giftFrequency": "Donation frequency",
+        "giftOneTime": "One-time",
+        "giftMonthly": "Monthly",
+        "giftMonthlyNote": "A monthly gift helps us plan and keep our centres running.",
+        "perMonth": "/month",
+        "gptw": "Great Place To Work® Certified, 2025–26"
     },
     "closingCta": {
         "heading": "Help us bring specialist care to every village",
@@ -343,5 +375,12 @@
         "english": "English",
         "hindi": "Hindi (हिंदी)",
         "tagline": "Jahan Kam, Wahan Hum!"
+    },
+    "impactNotice": {
+        "title": "These figures cover January 2025 onwards",
+        "body": "The live charts and numbers on this page come from our patient management portal, which holds records from January 2025.",
+        "allTime": "Our all-time totals since July 2020, such as {value} teleconsultations, include earlier records and are shown on the home page.",
+        "allTimeLink": "See all-time totals",
+        "updated": "Last updated:"
     }
 }

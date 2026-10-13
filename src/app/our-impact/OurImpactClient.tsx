@@ -13,6 +13,7 @@ import { PortalDonutPair }                from "@/components/impact/PortalDonutP
 import { PortalDoctorsSpecialtyChart }    from "@/components/impact/PortalDoctorsSpecialtyChart";
 import { ImpactTimeline }                 from "@/components/impact/ImpactTimeline";
 import { InteractiveReachMap }            from "@/components/impact/InteractiveReachMap";
+import { DataPeriodNotice }               from "@/components/impact/DataPeriodNotice";
 import { useImpactData }                  from "@/hooks/useImpactData";
 export default function OurImpact() {
     const { data, rawLiveStore } = useImpactData();
@@ -241,6 +242,9 @@ export default function OurImpact() {
                 <ImpactHero />
 
                 <div className="container max-w-7xl mx-auto px-4 pt-6">
+
+                    {/* Data period notice: portal figures start Jan 2025, unlike the all-time home page totals */}
+                    <DataPeriodNotice updatedAt={rawLiveStore?.timestamp} />
 
                     {/* Top 5 KPI Summary Cards (Image 1) */}
                     <PortalKPICards data={kpiData} />

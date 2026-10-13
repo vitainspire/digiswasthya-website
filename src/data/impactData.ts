@@ -93,6 +93,12 @@ export interface ImpactPageData {
     patientTypeDistribution: PatientTypeItem[];
 }
 
+// Caption shown under headline KPI figures. Update when the signed-off KPIs are refreshed.
+export const impactAsOf: LocalizedString = {
+    en: "Totals since July 2020, as of October 2026",
+    hi: "जुलाई 2020 से अब तक के कुल आँकड़े, अक्टूबर 2026 तक"
+};
+
 export const impactData: ImpactPageData = {
     hero: {
         badge: {

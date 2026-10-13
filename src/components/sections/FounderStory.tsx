@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ChevronDown, ChevronUp, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const PARAGRAPHS = [
@@ -16,46 +14,37 @@ const PARAGRAPHS = [
     "By creating a network of such standardized clinics across India, Sandeep and his motivated team is on a mission \"to transform the country's primary healthcare system and make healthcare services affordable and accessible for rural communities by leveraging technology\".",
 ];
 
-const VISIBLE_PARAGRAPHS = 3;
-
 export function FounderStory() {
     const { t } = useLanguage();
     const [expanded, setExpanded] = useState(false);
-    const shown = expanded ? PARAGRAPHS : PARAGRAPHS.slice(0, VISIBLE_PARAGRAPHS);
+    const shown = expanded ? PARAGRAPHS : [t("founderTeaser.paragraph1"), t("founderTeaser.paragraph2")];
 
     return (
-        <section id="founders-story" className="scroll-mt-20 bg-white py-14 md:py-20">
+        <section id="founders-story" className="section-y scroll-mt-20 bg-white">
             <div className="container max-w-6xl px-4">
-                <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+                <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
                     <div className="lg:col-span-7">
-                        <h2 className="font-serif text-3xl font-bold text-primary-900 md:text-4xl">Our Founder&apos;s Story</h2>
-                        <p className="mt-2 text-lg font-medium text-primary-700">Sandeep Kumar, Founder and CEO</p>
+                        <p className="eyebrow">{t("founderTeaser.badge")}</p>
+                        <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-primary-900 md:text-4xl">{t("founderTeaser.heading")}</h2>
 
-                        <div className="mt-6 space-y-4 border-l-4 border-primary-200 pl-5 text-base leading-relaxed text-gray-700">
+                        <div className="mt-6 space-y-4 text-lg leading-relaxed text-gray-700">
                             {shown.map((paragraph) => (
                                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                             ))}
                         </div>
 
-                        <div className="mt-6 flex flex-wrap items-center gap-4">
-                            <button
-                                type="button"
-                                onClick={() => setExpanded(!expanded)}
-                                aria-expanded={expanded}
-                                className="inline-flex h-12 items-center gap-2 rounded-xl border-2 border-primary-600 px-5 text-base font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
-                            >
-                                {expanded ? (
-                                    <>Show less <ChevronUp className="h-4 w-4" aria-hidden="true" /></>
-                                ) : (
-                                    <>Read full story <ChevronDown className="h-4 w-4" aria-hidden="true" /></>
-                                )}
-                            </button>
-                            <Button asChild variant="donate" className="h-12 gap-2 rounded-xl px-7 text-base">
-                                <Link href="/donate">
-                                    <Heart className="h-4 w-4 fill-current" aria-hidden="true" /> {t("home.foundersDonate")}
-                                </Link>
-                            </Button>
-                        </div>
+                        <button
+                            type="button"
+                            onClick={() => setExpanded(!expanded)}
+                            aria-expanded={expanded}
+                            className="mt-6 inline-flex h-12 items-center gap-2 rounded-xl border-2 border-primary-600 px-5 text-base font-semibold text-primary-700 transition-colors hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                        >
+                            {expanded ? (
+                                <>{t("home.founderShowLess")} <ChevronUp className="h-4 w-4" aria-hidden="true" /></>
+                            ) : (
+                                <>{t("home.founderReadFull")} <ChevronDown className="h-4 w-4" aria-hidden="true" /></>
+                            )}
+                        </button>
                     </div>
 
                     <div className="lg:col-span-5">
@@ -65,9 +54,16 @@ export function FounderStory() {
                                 Your browser does not support the video tag.
                             </video>
                         </div>
-                        <p className="mt-3 text-center text-base font-medium text-primary-800">Why Sandeep Started DigiSwasthya</p>
+                        <p className="mt-3 text-center text-base font-medium text-primary-800">{t("home.founderVideoCaption")}</p>
                     </div>
                 </div>
+
+                <figure className="mt-14 border-l-4 border-primary-600 pl-6 md:mt-16 md:pl-8">
+                    <blockquote className="font-serif text-2xl font-medium italic leading-snug text-primary-900 md:text-3xl">
+                        &ldquo;{t("home.founderQuote")}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-4 text-base font-semibold text-primary-700">{t("founderTeaser.signature")}</figcaption>
+                </figure>
             </div>
         </section>
     );
