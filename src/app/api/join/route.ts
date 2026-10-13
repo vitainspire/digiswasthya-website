@@ -12,6 +12,7 @@ const DONOR_INTERESTS: Record<string, string> = {
     "give-monthly": "Giving every month",
     "sponsor-centre": "Sponsoring a centre or camp",
     csr: "CSR or corporate partnership",
+    "impact-investment": "Impact investment or strategic partnership",
     "learn-more": "Learning more about the work",
 };
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLanguage } from "@/context/LanguageContext";
 import { CheckboxField, ErrorBanner, Honeypot, SelectInput, SubmitButton, SuccessCard, TextArea, TextInput, useSignup } from "./fields";
@@ -16,7 +17,7 @@ interface DonorFormData {
     website: string;
 }
 
-const INTERESTS = ["give-once", "give-monthly", "sponsor-centre", "csr", "learn-more"];
+const INTERESTS = ["give-once", "give-monthly", "sponsor-centre", "csr", "impact-investment", "learn-more"];
 
 export function DonorForm() {
     const { t } = useLanguage();
@@ -25,8 +26,15 @@ export function DonorForm() {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors, isSubmitting },
     } = useForm<DonorFormData>({ defaultValues: { newsletter: false } });
+
+    // Links such as /join-us?interest=csr#donor (from the Partner page) preselect the reason.
+    useEffect(() => {
+        const interest = new URLSearchParams(window.location.search).get("interest");
+        if (interest && INTERESTS.includes(interest)) setValue("interest", interest);
+    }, [setValue]);
 
     if (submitted) {
         return (

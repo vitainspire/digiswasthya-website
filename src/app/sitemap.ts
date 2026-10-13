@@ -13,6 +13,7 @@ const routes = [
   { path: "/health-tools", priority: 0.5, changeFrequency: "monthly" as const },
   { path: "/contact-us", priority: 0.6, changeFrequency: "yearly" as const },
   { path: "/join-us", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "/partner", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" as const },
   { path: "/whatsapp-privacy-policy", priority: 0.2, changeFrequency: "yearly" as const },
   { path: "/terms-and-conditions", priority: 0.2, changeFrequency: "yearly" as const },
