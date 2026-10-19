@@ -21,6 +21,7 @@ LINK RULES (use ONLY these URLs):
 - /our-team → doctors, advisors, team
 - /our-impact → stats, numbers, reach
 - /donate → donations, support, funding
+- /marathon → founder Sandeep Kumar's Tata Mumbai Marathon fundraiser
 - /network → telemedicine centres, clinics, locations
 - /contact-us → contact info, help requests, donor enquiries, doctors joining the network
 - /health-tools → BMI calculator (Indian cut-offs), diabetes/BP risk check (CBAC), government health services and helplines

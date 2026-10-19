@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
+import { MarathonFeature } from "@/components/campaign/MarathonFeature";
 import { CareModel } from "@/components/sections/CareModel";
 import { FounderStory } from "@/components/sections/FounderStory";
 import { BeneficiaryStories } from "@/components/sections/BeneficiaryStories";
@@ -17,6 +18,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustStrip />
+      <MarathonFeature variant="home" />
       <CareModel />
       <FounderStory />
       <BeneficiaryStories />

@@ -25,6 +25,7 @@ import {
 import { STATIC_CENTRES as telemedicineCentres } from "./centreData";
 import { stories, testimonials } from "./beneficiaryData";
 import { partnerOrganizations } from "./partnersData";
+import { formatRaceDay, marathonCampaign } from "./marathonCampaign";
 
 export function getWebsiteContext(): string {
     const totalTeam = board.length + coreTeam.length + foundingTeam.length + advisoryBoard.length + doctors.length + onGroundTeam.length;
@@ -206,6 +207,14 @@ BMI Categories:
 - Normal (18.5–24.9) — Healthy range. Maintain balanced diet and regular exercise.
 - Overweight (25–29.9) — Small changes in diet and exercise can help.
 - Obese (BMI ≥ 30) — Consult a healthcare professional for a personalized health plan.
+
+══════════════════════════════════════
+CAMPAIGN: TATA MUMBAI MARATHON (/marathon)
+══════════════════════════════════════
+Founder Sandeep Kumar, a cancer survivor, is running the Tata Mumbai Marathon on ${formatRaceDay("en")} to raise ₹${marathonCampaign.goal.toLocaleString("en-IN")} for DigiSwasthya Foundation's telemedicine programme.
+Donations for the run are made on his United Way Mumbai fundraiser: ${marathonCampaign.fundraiserUrl}
+United Way Mumbai is the official philanthropy partner of the Tata Mumbai Marathon. People who prefer can still donate directly at /donate.
+Supporters who cannot give can share the campaign on WhatsApp from the /marathon page.
 
 ══════════════════════════════════════
 PAGE: BLOGS

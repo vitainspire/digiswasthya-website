@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Lora } from "next/font/google";
 import { AccessibilityToolbar } from "@/components/features/AccessibilityToolbar";
+import { CampaignBar } from "@/components/campaign/CampaignBar";
 import ChatBot from "@/components/chat/ChatBot";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { MobileDonateBar } from "@/components/layout/MobileDonateBar";
@@ -75,6 +76,7 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <LanguageProvider>
           <MotionProvider>
+            <CampaignBar />
             {children}
             <MobileDonateBar />
             <MilestoneManager />
