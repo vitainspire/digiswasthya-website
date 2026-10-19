@@ -47,7 +47,7 @@ export default function PartnerClient() {
                 .replace("{states}", centreStates.join(", ")),
             image: "/images/resources/rural-clinic.jpg",
             cta: t("partnerPage.ctaCentre"),
-            href: "/join-us?interest=sponsor-centre#donor",
+            href: "/contact-us?interest=sponsor-centre#donor",
         },
         {
             id: "campaign",
@@ -59,7 +59,7 @@ export default function PartnerClient() {
                 .replace("{camps}", kpiValue("cancer-screening-camps").toLocaleString("en-IN")),
             image: "/images/real-campaign.jpg",
             cta: t("partnerPage.ctaCampaign"),
-            href: "/join-us?interest=csr#donor",
+            href: "/contact-us?interest=csr#donor",
         },
         {
             id: "invest",
@@ -69,7 +69,7 @@ export default function PartnerClient() {
             proof: null,
             image: "/images/hero/hero-2.webp",
             cta: t("partnerPage.ctaInvest"),
-            href: "/join-us?interest=impact-investment#donor",
+            href: "/contact-us?interest=impact-investment#donor",
         },
         {
             id: "doctors",
@@ -79,7 +79,7 @@ export default function PartnerClient() {
             proof: null,
             image: "/images/resources/consultation.jpg",
             cta: t("hero.joinDoctor"),
-            href: "/join-us#doctor",
+            href: "/contact-us#doctor",
         },
     ];
 
@@ -226,7 +226,7 @@ export default function PartnerClient() {
                     <div>
                         <SectionHeader tone="dark" title={t("partnerPage.contactTitle")} lead={t("partnerPage.contactBody")} />
                         <Link
-                            href="/join-us?interest=csr#donor"
+                            href="/contact-us?interest=csr#donor"
                             className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-7 text-base font-bold text-primary-800 transition-colors hover:bg-primary-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
                         >
                             {t("partnerPage.contactForm")} <ArrowRight className="h-4 w-4" aria-hidden="true" />

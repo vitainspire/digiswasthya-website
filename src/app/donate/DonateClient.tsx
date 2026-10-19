@@ -306,7 +306,7 @@ export default function DonatePage() {
                                                     <Link href="/our-impact" className="inline-flex h-11 flex-1 items-center justify-center rounded-xl border-2 border-primary-600 text-base font-semibold text-primary-700 hover:bg-primary-50">
                                                         See our impact
                                                     </Link>
-                                                    <Link href="/join-us" className="inline-flex h-11 flex-1 items-center justify-center rounded-xl border-2 border-primary-600 text-base font-semibold text-primary-700 hover:bg-primary-50">
+                                                    <Link href="/contact-us#donor" className="inline-flex h-11 flex-1 items-center justify-center rounded-xl border-2 border-primary-600 text-base font-semibold text-primary-700 hover:bg-primary-50">
                                                         Join us
                                                     </Link>
                                                 </div>

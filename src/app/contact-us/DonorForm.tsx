@@ -30,7 +30,7 @@ export function DonorForm() {
         formState: { errors, isSubmitting },
     } = useForm<DonorFormData>({ defaultValues: { newsletter: false } });
 
-    // Links such as /join-us?interest=csr#donor (from the Partner page) preselect the reason.
+    // Links such as /contact-us?interest=csr#donor (from the Partner page) preselect the reason.
     useEffect(() => {
         const interest = new URLSearchParams(window.location.search).get("interest");
         if (interest && INTERESTS.includes(interest)) setValue("interest", interest);

@@ -22,7 +22,7 @@ export function ClosingCta() {
                         </Link>
                     </Button>
                     <Link
-                        href="/join-us"
+                        href="/contact-us#donor"
                         className="inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-xl border-2 border-white/70 px-7 text-base font-semibold text-white transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-900"
                     >
                         {t("nav.joinUs")} <ArrowRight className="h-4 w-4" aria-hidden="true" />

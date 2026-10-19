@@ -224,15 +224,11 @@ Head Office Address: ${websiteConfig.headOfficeAddress}
 Registered Address: ${websiteConfig.registeredAddress}
 Response Time: Team responds within 24–48 hours.
 
-Contact Types: General Inquiry, Donor/Supporter, Volunteer, Patient/Need Help.
-
-══════════════════════════════════════
-PAGE: JOIN US (/join-us)
-══════════════════════════════════════
-One page with two sign-up forms.
+The Contact Us page (/contact-us) has three forms, one per tab:
+- Ask a question or get help: general questions, patients needing medical help, and volunteers (volunteers are pointed to a separate volunteer form). Needs a phone number or an email address.
 - Donors and supporters: ask about giving once, giving monthly, sponsoring a centre or camp, or CSR partnerships. Optional tick box to receive impact updates by email.
 - Doctors: request to join the network by sharing medical registration number, council, qualification and speciality. The doctor onboarding team replies within 24–48 hours.
-Both forms need consent before they can be sent.
+All three forms need consent before they can be sent.
 
 ══════════════════════════════════════
 COLLABORATION & PARTNERS

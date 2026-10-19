@@ -112,7 +112,7 @@ export function Hero() {
                             <Link href="/partner" className="font-semibold underline underline-offset-4 hover:text-primary-200">
                                 {t("hero.partner")}
                             </Link>
-                            <Link href="/join-us#doctor" className="font-semibold underline underline-offset-4 hover:text-primary-200">
+                            <Link href="/contact-us#doctor" className="font-semibold underline underline-offset-4 hover:text-primary-200">
                                 {t("hero.joinDoctor")}
                             </Link>
                             <a

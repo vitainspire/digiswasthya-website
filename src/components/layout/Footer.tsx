@@ -92,7 +92,6 @@ export function Footer() {
                             <li><Link href="/our-impact" className="hover:text-primary-400">{t("nav.impact")}</Link></li>
                             <li><Link href="/network" className="hover:text-primary-400">{t("nav.network")}</Link></li>
                             <li><Link href="/partner" className="hover:text-primary-400">{t("nav.partner")}</Link></li>
-                            <li><Link href="/join-us" className="hover:text-primary-400">{t("nav.joinUs")}</Link></li>
                             <li><Link href="/our-team" className="hover:text-primary-400">{t("nav.team")}</Link></li>
                             <li><Link href="/media" className="hover:text-primary-400">{t("nav.media")}</Link></li>
                             <li><Link href="/health-tools" className="hover:text-primary-400">{t("nav.healthTools")}</Link></li>

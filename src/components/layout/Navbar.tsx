@@ -113,7 +113,6 @@ export function Navbar() {
             ],
         },
         { name: t("nav.partner"), href: "/partner" },
-        { name: t("nav.joinUs"), href: "/join-us" },
         { name: t("nav.contact"), href: "/contact-us" },
     ];
 

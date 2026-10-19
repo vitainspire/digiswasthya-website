@@ -22,7 +22,7 @@ LINK RULES (use ONLY these URLs):
 - /our-impact → stats, numbers, reach
 - /donate → donations, support, funding
 - /network → telemedicine centres, clinics, locations
-- /contact-us → contact info
+- /contact-us → contact info, help requests, donor enquiries, doctors joining the network
 - /health-tools → BMI calculator (Indian cut-offs), diabetes/BP risk check (CBAC), government health services and helplines
 - /blogs → articles, blogs
 

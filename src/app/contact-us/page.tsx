@@ -5,12 +5,12 @@ import { ogImages } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with DigiSwasthya Foundation — reach out for healthcare help, volunteering, partnerships, or general enquiries.",
+    "Get in touch with DigiSwasthya Foundation for healthcare help or general questions, ask about supporting rural healthcare, or request to join our network of doctors.",
   alternates: { canonical: "/contact-us" },
   openGraph: {
     images: ogImages,
     title: "Contact Us | DigiSwasthya Foundation",
-    description: "Reach out to DigiSwasthya Foundation for healthcare help, volunteering, or partnerships.",
+    description: "Get healthcare help, support rural healthcare as a donor, or join our network of volunteer doctors.",
     url: "/contact-us",
   },
 };
