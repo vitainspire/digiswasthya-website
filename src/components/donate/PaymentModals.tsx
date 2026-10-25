@@ -19,8 +19,6 @@ import {
     ArrowRight, Loader2, Heart, X, ChevronLeft,
     Search, Eye, EyeOff, Edit2, User, Mail, Repeat, CreditCard as CardIcon,
 } from "lucide-react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
 
 
 /* ─────────────────────────────────────────────────────────────

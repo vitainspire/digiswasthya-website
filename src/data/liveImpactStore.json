@@ -1,298 +1,114 @@
 {
-  "timestamp": "2026-08-07T12:10:37Z",
-  "metrics_count": 16,
-  "kpis": {
-    "total_patients": 43418,
-    "total_teleconsultations": 59674,
-    "total_camps": 5,
-    "total_doctors": 125,
-    "total_hospitals": 0
-  },
   "growth": [
     {
-      "year": "2020",
       "patients": 1,
+      "camps": 5,
       "teleconsultations": 1,
-      "camps": 5
+      "year": "2020"
     },
     {
       "year": "2024",
-      "patients": 2,
       "teleconsultations": 2,
+      "patients": 3,
       "camps": 1
     },
     {
-      "year": "2025",
-      "patients": 19823,
+      "patients": 19917,
       "teleconsultations": 20986,
-      "camps": 3
+      "camps": 3,
+      "year": "2025"
     },
     {
       "year": "2026",
-      "patients": 27708,
-      "teleconsultations": 38685,
+      "patients": 38460,
+      "teleconsultations": 56200,
       "camps": 5
     }
   ],
-  "departments": [
-    {
-      "department": "General Medicine",
-      "count": 16173
+  "kpis": {
+    "total_camps": 54,
+    "total_teleconsultations": 77189,
+    "total_doctors": 137,
+    "total_patients": 54080,
+    "total_hospitals": 0
+  },
+  "demographics": {
+    "age_groups": [
+      {
+        "count": 4095,
+        "range": "0-5"
+      },
+      {
+        "count": 6580,
+        "range": "6-12"
+      },
+      {
+        "count": 4707,
+        "range": "13-18"
+      },
+      {
+        "range": "19-35",
+        "count": 11734
+      },
+      {
+        "count": 17573,
+        "range": "36-60"
+      },
+      {
+        "count": 9297,
+        "range": "60+"
+      },
+      {
+        "count": 93,
+        "range": "Not recorded"
+      }
+    ],
+    "gender_split": {
+      "male": 22814,
+      "female": 31258,
+      "other": 7
     },
-    {
-      "department": "Dermatologist",
-      "count": 10385
-    },
-    {
-      "department": "Pediatrician",
-      "count": 3704
-    },
-    {
-      "department": "Gynaecologist",
-      "count": 3568
-    },
-    {
-      "department": "General Physician",
-      "count": 3355
-    },
-    {
-      "department": "Orthopaedics, Ms",
-      "count": 3323
-    },
-    {
-      "department": "Paediatrician",
-      "count": 3007
-    },
-    {
-      "department": "Dermatology",
-      "count": 2691
-    },
-    {
-      "department": "Orthopedic",
-      "count": 2166
-    },
-    {
-      "department": "General Physician, Gynaecologist",
-      "count": 2158
-    },
-    {
-      "department": "Orthopaedic",
-      "count": 1976
-    },
-    {
-      "department": "Ent",
-      "count": 1152
-    },
-    {
-      "department": "Homopathic",
-      "count": 498
-    },
-    {
-      "department": "Neurologist",
-      "count": 456
-    },
-    {
-      "department": "Ophthalmologist",
-      "count": 323
-    },
-    {
-      "department": "Dermatology And Leprosy",
-      "count": 241
-    },
-    {
-      "department": "Cardiology",
-      "count": 150
-    },
-    {
-      "department": "Opthalmologist",
-      "count": 147
-    },
-    {
-      "department": "Dentistry",
-      "count": 135
-    },
-    {
-      "department": "Dentist",
-      "count": 115
-    },
-    {
-      "department": "Ophthalmology",
-      "count": 68
-    },
-    {
-      "department": "Clinical Dietitian",
-      "count": 57
-    },
-    {
-      "department": "Gynecologist",
-      "count": 49
-    },
-    {
-      "department": "Medical Oncologist",
-      "count": 34
-    },
-    {
-      "department": "Oncologist",
-      "count": 25
-    },
-    {
-      "department": "General Surgeon, Gastrointestinal Endo Surgeons",
-      "count": 24
-    },
-    {
-      "department": "Diabetologist",
-      "count": 19
-    },
-    {
-      "department": "Gynecology & Obstetrics",
-      "count": 18
-    },
-    {
-      "department": "General Surgeon",
-      "count": 15
-    },
-    {
-      "department": "Physiotherapist",
-      "count": 15
-    },
-    {
-      "department": "Pulmonologist",
-      "count": 15
-    },
-    {
-      "department": "Clinical Nutritionist",
-      "count": 14
-    },
-    {
-      "department": "Nephrologist",
-      "count": 14
-    },
-    {
-      "department": "Oral And Dental Care",
-      "count": 10
-    },
-    {
-      "department": "Gastroenterologist",
-      "count": 6
-    },
-    {
-      "department": "Phychiatrist",
-      "count": 4
-    },
-    {
-      "department": "Nutritionist",
-      "count": 3
-    },
-    {
-      "department": "Orthopaedics",
-      "count": 3
-    },
-    {
-      "department": "Psychologist",
-      "count": 3
-    },
-    {
-      "department": "Cardiologist General",
-      "count": 2
-    },
-    {
-      "department": "Pediatric Hemato Oncology",
-      "count": 1
+    "patient_types": {
+      "notCategorised": 41341,
+      "new": 30024,
+      "followUp": 5824
     }
-  ],
-  "top_diseases": [
-    {
-      "disease": "Urti",
-      "count": 2618
-    },
-    {
-      "disease": "Htn",
-      "count": 2398
-    },
-    {
-      "disease": "Eczema",
-      "count": 1452
-    },
-    {
-      "disease": "Tinea",
-      "count": 1346
-    },
-    {
-      "disease": "Xerosis",
-      "count": 805
-    },
-    {
-      "disease": "Acute Febrile Illness",
-      "count": 786
-    },
-    {
-      "disease": "Lrti",
-      "count": 778
-    },
-    {
-      "disease": "Gastritis",
-      "count": 676
-    },
-    {
-      "disease": "Upper Respiratory Tract Inf",
-      "count": 658
-    },
-    {
-      "disease": "Gen Weakness",
-      "count": 627
-    },
-    {
-      "disease": "T2Dm",
-      "count": 607
-    },
-    {
-      "disease": "Joint Pain",
-      "count": 592
-    },
-    {
-      "disease": "Age",
-      "count": 534
-    },
-    {
-      "disease": "Acne",
-      "count": 509
-    },
-    {
-      "disease": "Knee Pain",
-      "count": 505
-    }
-  ],
+  },
   "doctor_specialties": [
     {
       "specialty": "General Physician",
-      "count": 21
+      "count": 23
     },
     {
-      "specialty": "Dermatologist",
-      "count": 8
+      "count": 10,
+      "specialty": "Gynaecologist"
+    },
+    {
+      "count": 9,
+      "specialty": "Dermatologist"
     },
     {
       "specialty": "General Medicine",
+      "count": 9
+    },
+    {
+      "specialty": "Paediatrician",
       "count": 7
     },
     {
-      "specialty": "Dentist",
-      "count": 6
+      "count": 6,
+      "specialty": "Dentist"
+    },
+    {
+      "count": 6,
+      "specialty": "Ent"
     },
     {
       "specialty": "Oncologist",
       "count": 6
     },
     {
-      "specialty": "Ent",
-      "count": 5
-    },
-    {
       "specialty": "Nutritionist",
-      "count": 5
-    },
-    {
-      "specialty": "Paediatrician",
       "count": 5
     },
     {
@@ -300,60 +116,60 @@
       "count": 5
     },
     {
-      "specialty": "Gynaecologist",
-      "count": 4
+      "count": 4,
+      "specialty": "Opthalmologist"
     },
     {
-      "specialty": "Not specified",
-      "count": 4
-    },
-    {
-      "specialty": "Opthalmologist",
-      "count": 4
-    },
-    {
-      "specialty": "Physiotherapist",
-      "count": 4
+      "count": 4,
+      "specialty": "Physiotherapist"
     },
     {
       "specialty": "Diabetologist",
       "count": 3
     },
     {
-      "specialty": "Medical Oncologist",
-      "count": 3
+      "count": 3,
+      "specialty": "Medical Oncologist"
     },
     {
-      "specialty": "Gynecologist",
-      "count": 2
-    },
-    {
-      "specialty": "Nephrologist",
-      "count": 2
-    },
-    {
-      "specialty": "Neurologist",
-      "count": 2
+      "count": 3,
+      "specialty": "Not specified"
     },
     {
       "specialty": "Orthopedic",
-      "count": 2
+      "count": 3
+    },
+    {
+      "count": 3,
+      "specialty": "Urologist"
+    },
+    {
+      "count": 2,
+      "specialty": "General Surgeon"
+    },
+    {
+      "count": 2,
+      "specialty": "Nephrologist"
+    },
+    {
+      "count": 2,
+      "specialty": "Neurologist"
     },
     {
       "specialty": "Pulmonologist",
       "count": 2
     },
     {
-      "specialty": "Urologist",
-      "count": 2
-    },
-    {
-      "specialty": "Cardiologist General",
+      "specialty": "Cardiologist",
       "count": 1
     },
     {
-      "specialty": "Cardiology",
-      "count": 1
+      "count": 1,
+      "specialty": "Cardiologist General"
+    },
+    {
+      "count": 1,
+      "specialty": "Cardiology"
     },
     {
       "specialty": "Clinical Dietitian",
@@ -364,48 +180,32 @@
       "count": 1
     },
     {
-      "specialty": "Dentistry",
-      "count": 1
+      "count": 1,
+      "specialty": "Dentistry"
     },
     {
-      "specialty": "Dermatology And Leprosy",
-      "count": 1
+      "count": 1,
+      "specialty": "Dermatology And Leprosy"
     },
     {
       "specialty": "Family Physician, A Surgeon Of Standing And Proctologist",
       "count": 1
     },
     {
-      "specialty": "Gastroenterologist",
-      "count": 1
-    },
-    {
-      "specialty": "General Physician, Gynaecologist",
-      "count": 1
-    },
-    {
-      "specialty": "General Surgeon",
-      "count": 1
+      "count": 1,
+      "specialty": "Gastroenterologist"
     },
     {
       "specialty": "General Surgeon, Gastrointestinal Endo Surgeons",
       "count": 1
     },
     {
-      "specialty": "Gynecologist, General Physician",
-      "count": 1
+      "count": 1,
+      "specialty": "Hepatologist"
     },
     {
-      "specialty": "Gynecology & Obstetrics",
-      "count": 1
-    },
-    {
-      "specialty": "Hepatologist",
-      "count": 1
-    },
-    {
-      "specialty": "Homopathic",
-      "count": 1
+      "count": 1,
+      "specialty": "Homopathic"
     },
     {
       "specialty": "Neurosurgeon",
@@ -420,15 +220,15 @@
       "count": 1
     },
     {
-      "specialty": "Orthopaedics, Ms",
+      "count": 1,
+      "specialty": "Orthopaedic"
+    },
+    {
+      "specialty": "Orthopaedics",
       "count": 1
     },
     {
       "specialty": "Pediatric Hemato Oncology",
-      "count": 1
-    },
-    {
-      "specialty": "Pediatrician",
       "count": 1
     },
     {
@@ -440,364 +240,331 @@
       "count": 1
     }
   ],
-  "demographics": {
-    "age_groups": [
-      {
-        "range": "0-5",
-        "count": 3101
-      },
-      {
-        "range": "6-12",
-        "count": 4722
-      },
-      {
-        "range": "13-18",
-        "count": 3669
-      },
-      {
-        "range": "19-35",
-        "count": 9458
-      },
-      {
-        "range": "36-60",
-        "count": 14423
-      },
-      {
-        "range": "60+",
-        "count": 7963
-      },
-      {
-        "range": "Not recorded",
-        "count": 81
-      }
-    ],
-    "patient_types": {
-      "followUp": 2735,
-      "new": 15635,
-      "notCategorised": 41304
-    },
-    "gender_split": {
-      "female": 25298,
-      "male": 18112,
-      "other": 7
-    }
-  },
+  "metrics_count": 16,
   "reach": {
     "districts": 60,
     "villages": [
       {
-        "label": "Borgaon Road S.O",
-        "count": 1296
+        "count": 1713,
+        "label": "Nagpur"
       },
       {
-        "label": "Nagpur",
-        "count": 862
+        "count": 1647,
+        "label": "Borgaon Road S.O"
       },
       {
-        "label": "Bagadganj S.O",
-        "count": 517
+        "count": 755,
+        "label": "Bagadganj S.O"
       },
       {
-        "label": "Narsala",
-        "count": 439
+        "count": 706,
+        "label": "Khalapur S.O"
       },
       {
-        "label": "Peth",
-        "count": 349
+        "count": 689,
+        "label": "Narsala"
       },
       {
-        "label": "Rajgurunagar S.O",
-        "count": 310
+        "count": 636,
+        "label": "Peth"
       },
       {
-        "label": "Chinchbhavan",
-        "count": 200
+        "count": 323,
+        "label": "Chinchbhavan"
       },
       {
-        "label": "Mahuli So",
-        "count": 187
+        "count": 311,
+        "label": "Rajgurunagar S.O"
       },
       {
-        "label": "Khed",
-        "count": 157
+        "count": 274,
+        "label": "Nagpur City H.O"
       },
       {
-        "label": "Congress Nagar S.O (Nagpur)",
-        "count": 152
+        "count": 255,
+        "label": "Congress Nagar S.O (Nagpur)"
       },
       {
-        "label": "Khalapur S.O",
-        "count": 150
+        "count": 252,
+        "label": "Khodale B.O"
       },
       {
-        "label": "Gadaila",
-        "count": 111
+        "count": 245,
+        "label": "Mhalginagar S.O"
       },
       {
-        "label": "Khodale B.O",
-        "count": 105
+        "count": 238,
+        "label": "Nandanwan"
       },
       {
-        "label": "Nagpur City H.O",
-        "count": 99
+        "count": 187,
+        "label": "Mahuli So"
       },
       {
-        "label": "Karanjawane B.O",
-        "count": 96
+        "count": 170,
+        "label": "Wathoda"
       },
       {
-        "label": "Wathoda",
-        "count": 88
+        "count": 158,
+        "label": "Khed"
       },
       {
-        "label": "Rampur",
-        "count": 76
+        "count": 150,
+        "label": "Bangali Panja"
       },
       {
-        "label": "Doolampur",
-        "count": 74
+        "count": 117,
+        "label": "Gadaila"
       },
       {
-        "label": "Rajgurunagar",
-        "count": 64
+        "count": 111,
+        "label": "Karanjawane B.O"
       },
       {
-        "label": "Ajrelpur",
-        "count": 57
+        "count": 91,
+        "label": "Wangani B.O"
       },
       {
-        "label": "Bangali Panja",
-        "count": 57
+        "count": 76,
+        "label": "Rampur"
       },
       {
-        "label": "Gorewada",
-        "count": 55
+        "count": 74,
+        "label": "Doolampur"
       },
       {
-        "label": "Wangani B.O",
-        "count": 49
+        "count": 66,
+        "label": "Ambavane B.O"
       },
       {
-        "label": "Ambavane B.O",
-        "count": 46
+        "count": 65,
+        "label": "Rajgurunagar"
       },
       {
-        "label": "Bhitukar",
-        "count": 46
+        "count": 61,
+        "label": "Adawali"
       },
       {
-        "label": "Ashraf Pur Bo",
-        "count": 44
+        "count": 60,
+        "label": "Savroli B.O"
       },
       {
-        "label": "Halupur",
-        "count": 42
+        "count": 57,
+        "label": "Ajrelpur"
       },
       {
-        "label": "Jamira",
-        "count": 41
+        "count": 57,
+        "label": "Shivangaon Punrwasan"
       },
       {
-        "label": "Muspipari",
-        "count": 41
+        "count": 56,
+        "label": "Sajgaon B.O"
       },
       {
-        "label": "Adawali",
-        "count": 37
+        "count": 55,
+        "label": "Ashraf Pur Bo"
       },
       {
-        "label": "Peth S.O (Pune)",
-        "count": 36
+        "count": 55,
+        "label": "Gorewada"
       },
       {
-        "label": "Sukrauli",
-        "count": 35
+        "count": 54,
+        "label": "Manish Nagar"
       },
       {
-        "label": "Tanda Peth",
-        "count": 31
+        "count": 54,
+        "label": "Tanda Peth"
       },
       {
-        "label": "Auradand Bo",
-        "count": 30
+        "count": 46,
+        "label": "Bhitukar"
       },
       {
-        "label": "Belhara",
-        "count": 30
+        "count": 46,
+        "label": "Margasni B.O"
       },
       {
-        "label": "Hanumant Pur",
-        "count": 30
+        "count": 45,
+        "label": "Pancholi"
       },
       {
-        "label": "Narsala Gaon",
-        "count": 30
+        "count": 43,
+        "label": "Halupur"
       },
       {
-        "label": "Mhalginagar S.O",
-        "count": 29
+        "count": 42,
+        "label": "Jamira"
       },
       {
-        "label": "Durjanpur",
-        "count": 28
+        "count": 42,
+        "label": "Nukta Bo"
       },
       {
-        "label": "Nandanwan",
-        "count": 28
+        "count": 41,
+        "label": "Muspipari"
       },
       {
-        "label": "Shantinagarpar",
-        "count": 27
+        "count": 40,
+        "label": "Ambazari"
       },
       {
-        "label": "Gadrahiya",
-        "count": 26
+        "count": 40,
+        "label": "Jagnath Budhwari"
       },
       {
-        "label": "Margasni B.O",
-        "count": 26
+        "count": 39,
+        "label": "Gandhi Nagar"
       },
       {
-        "label": "Raypur",
-        "count": 26
+        "count": 38,
+        "label": "Shivangaon"
       },
       {
-        "label": "New Narsala",
-        "count": 25
+        "count": 37,
+        "label": "Bahadura S.O"
       },
       {
-        "label": "Bahadura S.O",
-        "count": 23
+        "count": 37,
+        "label": "Gomghar B.O"
       },
       {
-        "label": "Netwa Pur",
-        "count": 23
+        "count": 37,
+        "label": "Ladpura"
       },
       {
-        "label": "Hansapurva",
-        "count": 22
+        "count": 36,
+        "label": "Chichbhavan"
       },
       {
-        "label": "Jagnath Budhwari",
-        "count": 22
+        "count": 35,
+        "label": "Peth S.O (Pune)"
       },
       {
-        "label": "Pindia Bazar Bo",
-        "count": 21
+        "count": 35,
+        "label": "Sukrauli"
       },
       {
-        "label": "Ladpura",
-        "count": 20
+        "count": 33,
+        "label": "New Narsala"
       },
       {
-        "label": "Shivangaon Punrwasan",
-        "count": 20
+        "count": 32,
+        "label": "Sonde"
       },
       {
-        "label": "Bhikhari Pur",
-        "count": 19
+        "count": 31,
+        "label": "Gopal Nagar"
       },
       {
-        "label": "Jayram Patti",
-        "count": 19
+        "count": 31,
+        "label": "Shankar Nagar"
       },
       {
-        "label": "Mangadari",
-        "count": 19
+        "count": 30,
+        "label": "Auradand Bo"
       },
       {
-        "label": "Saypur",
-        "count": 19
+        "count": 30,
+        "label": "Belhara"
       },
       {
-        "label": "Beraha",
-        "count": 18
+        "count": 30,
+        "label": "Hanumant Pur"
       },
       {
-        "label": "Velha",
-        "count": 18
+        "count": 30,
+        "label": "Mangadari"
       },
       {
-        "label": "Dughra Urf Khaira",
-        "count": 17
+        "count": 30,
+        "label": "Narsala Gaon"
       },
       {
-        "label": "Shivangaon",
-        "count": 17
+        "count": 29,
+        "label": "Kachori Patil Nagar"
       }
     ],
     "district_list": [
       {
         "name": "Nagpur",
-        "count": 14578
+        "count": 18716
       },
       {
         "name": "Pune",
-        "count": 6701
-      },
-      {
-        "name": "Sant Kabir Nagar",
-        "count": 2473
+        "count": 8488
       },
       {
         "name": "Lucknow",
-        "count": 1976
+        "count": 2524
       },
       {
-        "name": "Sant Kabeer Nagar",
-        "count": 968
+        "count": 2473,
+        "name": "Sant Kabir Nagar"
       },
       {
-        "name": "Barabanki",
-        "count": 484
+        "count": 1453,
+        "name": "Sant Kabeer Nagar"
+      },
+      {
+        "count": 1184,
+        "name": "Barabanki"
       },
       {
         "name": "Raigad",
-        "count": 269
+        "count": 968
       },
       {
-        "name": "Nashik",
-        "count": 195
+        "count": 470,
+        "name": "Nashik"
       },
       {
-        "name": "Palghar",
-        "count": 166
+        "count": 405,
+        "name": "Palghar"
       },
       {
         "name": "Gorakhpur",
-        "count": 60
+        "count": 61
       },
       {
-        "name": "Muzaffarpur",
-        "count": 27
+        "count": 31,
+        "name": "Muzaffarpur"
+      },
+      {
+        "count": 24,
+        "name": "Kolhapur"
       },
       {
         "name": "Jharkhand",
         "count": 19
       },
       {
-        "name": "Mumbai City",
-        "count": 18
+        "count": 18,
+        "name": "Mumbai City"
       },
       {
         "name": "Varanasi",
         "count": 18
       },
       {
-        "name": "New Delhi",
-        "count": 17
+        "count": 17,
+        "name": "New Delhi"
       },
       {
-        "name": "Nagaur",
-        "count": 16
+        "count": 16,
+        "name": "Nagaur"
       },
       {
-        "name": "Basti",
-        "count": 8
+        "count": 9,
+        "name": "Basti"
       },
       {
         "name": "Chandauli",
         "count": 8
+      },
+      {
+        "name": "Bhandara",
+        "count": 7
       },
       {
         "name": "Giridih",
@@ -809,6 +576,18 @@
       },
       {
         "name": "Patna",
+        "count": 5
+      },
+      {
+        "count": 4,
+        "name": "Aurangabad"
+      },
+      {
+        "name": "Chandrapur",
+        "count": 4
+      },
+      {
+        "name": "Nagpure",
         "count": 4
       },
       {
@@ -816,12 +595,8 @@
         "count": 4
       },
       {
-        "name": "Bhandara",
-        "count": 3
-      },
-      {
-        "name": "Bihar",
-        "count": 3
+        "count": 3,
+        "name": "Bihar"
       },
       {
         "name": "East Champaran",
@@ -832,8 +607,8 @@
         "count": 3
       },
       {
-        "name": "Ranchi",
-        "count": 3
+        "count": 3,
+        "name": "Ranchi"
       },
       {
         "name": "Sejalpur",
@@ -844,24 +619,32 @@
         "count": 3
       },
       {
-        "name": "Bengaluru Urban",
-        "count": 2
+        "name": "Wardha",
+        "count": 3
+      },
+      {
+        "count": 2,
+        "name": "Balaghat"
+      },
+      {
+        "count": 2,
+        "name": "Bengaluru Urban"
       },
       {
         "name": "Bkt",
         "count": 2
       },
       {
-        "name": "Chandrapur",
-        "count": 2
-      },
-      {
-        "name": "Gautam Buddha Nagar",
-        "count": 2
+        "count": 2,
+        "name": "Gautam Buddha Nagar"
       },
       {
         "name": "Gaya",
         "count": 2
+      },
+      {
+        "count": 2,
+        "name": "Gondia"
       },
       {
         "name": "Kanpur Nagar",
@@ -872,7 +655,15 @@
         "count": 2
       },
       {
-        "name": "Nagpure",
+        "count": 2,
+        "name": "Maharashtra"
+      },
+      {
+        "count": 2,
+        "name": "Mumbai Suburban"
+      },
+      {
+        "name": "Nandanwan",
         "count": 2
       },
       {
@@ -880,35 +671,51 @@
         "count": 2
       },
       {
-        "name": "Puri",
-        "count": 2
+        "count": 2,
+        "name": "Prayagraj"
       },
       {
-        "name": "Shahjahanpur",
-        "count": 2
+        "count": 2,
+        "name": "Puri"
       },
       {
-        "name": "Tehri Garhwal",
-        "count": 2
+        "count": 2,
+        "name": "Shahjahanpur"
       },
       {
-        "name": "West Champaran",
-        "count": 2
+        "count": 2,
+        "name": "Tehri Garhwal"
       },
       {
-        "name": "Agar Malwa",
+        "count": 2,
+        "name": "West Champaran"
+      },
+      {
+        "count": 2,
+        "name": "Yavatmal"
+      },
+      {
+        "count": 1,
+        "name": "Agar Malwa"
+      },
+      {
+        "count": 1,
+        "name": "Ajmer"
+      },
+      {
+        "name": "Akola",
         "count": 1
       },
       {
-        "name": "Ajmer",
-        "count": 1
-      },
-      {
-        "name": "Aligarh",
-        "count": 1
+        "count": 1,
+        "name": "Aligarh"
       },
       {
         "name": "Ambala",
+        "count": 1
+      },
+      {
+        "name": "Azamgarh",
         "count": 1
       },
       {
@@ -916,57 +723,230 @@
         "count": 1
       },
       {
-        "name": "Bhojpur",
-        "count": 1
-      },
-      {
-        "name": "Birbhum",
-        "count": 1
-      },
-      {
-        "name": "Central",
-        "count": 1
-      },
-      {
-        "name": "Central Delhi",
-        "count": 1
-      },
-      {
-        "name": "Chandigarh",
-        "count": 1
-      },
-      {
-        "name": "Deogarh",
-        "count": 1
-      },
-      {
-        "name": "Durg",
-        "count": 1
-      },
-      {
-        "name": "East Chmparan",
-        "count": 1
-      },
-      {
-        "name": "Gurugram",
-        "count": 1
-      },
-      {
-        "name": "Hazaribagh",
-        "count": 1
-      },
-      {
-        "name": "Jamm",
-        "count": 1
-      },
-      {
-        "name": "Javahar Palghar",
-        "count": 1
-      },
-      {
-        "name": "Maharashtra",
-        "count": 1
+        "count": 1,
+        "name": "Bhabdara"
       }
     ]
-  }
+  },
+  "departments": [
+    {
+      "count": 21146,
+      "department": "General Medicine"
+    },
+    {
+      "count": 14115,
+      "department": "Dermatologist"
+    },
+    {
+      "count": 10192,
+      "department": "Paediatrician"
+    },
+    {
+      "count": 7039,
+      "department": "Gynaecologist"
+    },
+    {
+      "department": "General Physician",
+      "count": 4980
+    },
+    {
+      "count": 3709,
+      "department": "Orthopaedics"
+    },
+    {
+      "count": 3569,
+      "department": "Orthopedic"
+    },
+    {
+      "count": 2709,
+      "department": "Not specified"
+    },
+    {
+      "count": 1979,
+      "department": "Orthopaedic"
+    },
+    {
+      "count": 1450,
+      "department": "Ent"
+    },
+    {
+      "count": 498,
+      "department": "Homopathic"
+    },
+    {
+      "department": "Neurologist",
+      "count": 463
+    },
+    {
+      "department": "Ophthalmologist",
+      "count": 323
+    },
+    {
+      "count": 275,
+      "department": "Opthalmologist"
+    },
+    {
+      "count": 243,
+      "department": "Dermatology And Leprosy"
+    },
+    {
+      "department": "Dentist",
+      "count": 179
+    },
+    {
+      "department": "Cardiology",
+      "count": 152
+    },
+    {
+      "count": 135,
+      "department": "Dentistry"
+    },
+    {
+      "count": 95,
+      "department": "Clinical Dietitian"
+    },
+    {
+      "department": "Ophthalmology",
+      "count": 81
+    },
+    {
+      "count": 43,
+      "department": "General Surgeon"
+    },
+    {
+      "department": "Medical Oncologist",
+      "count": 37
+    },
+    {
+      "department": "Nephrologist",
+      "count": 33
+    },
+    {
+      "count": 28,
+      "department": "General Surgeon, Gastrointestinal Endo Surgeons"
+    },
+    {
+      "count": 25,
+      "department": "Oncologist"
+    },
+    {
+      "department": "Diabetologist",
+      "count": 23
+    },
+    {
+      "count": 19,
+      "department": "Psychologist"
+    },
+    {
+      "count": 18,
+      "department": "Physiotherapist"
+    },
+    {
+      "count": 18,
+      "department": "Pulmonologist"
+    },
+    {
+      "count": 14,
+      "department": "Clinical Nutritionist"
+    },
+    {
+      "department": "Urologist",
+      "count": 13
+    },
+    {
+      "department": "Oral And Dental Care",
+      "count": 10
+    },
+    {
+      "count": 7,
+      "department": "Cardiologist General"
+    },
+    {
+      "department": "Gastroenterologist",
+      "count": 6
+    },
+    {
+      "count": 4,
+      "department": "Phychiatrist"
+    },
+    {
+      "department": "Nutritionist",
+      "count": 3
+    },
+    {
+      "count": 2,
+      "department": "Cardiologist"
+    },
+    {
+      "count": 1,
+      "department": "Hepatologist"
+    },
+    {
+      "count": 1,
+      "department": "Pediatric Hemato Oncology"
+    }
+  ],
+  "top_diseases": [
+    {
+      "count": 4020,
+      "disease": "Urti"
+    },
+    {
+      "disease": "Htn",
+      "count": 2641
+    },
+    {
+      "disease": "Tinea",
+      "count": 2062
+    },
+    {
+      "disease": "Eczema",
+      "count": 1925
+    },
+    {
+      "disease": "Xerosis",
+      "count": 1010
+    },
+    {
+      "count": 892,
+      "disease": "Afi + Urti"
+    },
+    {
+      "disease": "Upper Respiratory Tract Inf",
+      "count": 855
+    },
+    {
+      "disease": "Acute Febrile Illness",
+      "count": 853
+    },
+    {
+      "disease": "Lrti",
+      "count": 831
+    },
+    {
+      "disease": "Afi",
+      "count": 753
+    },
+    {
+      "count": 749,
+      "disease": "Gastritis"
+    },
+    {
+      "count": 732,
+      "disease": "Age"
+    },
+    {
+      "count": 676,
+      "disease": "T2Dm"
+    },
+    {
+      "disease": "Acne",
+      "count": 673
+    },
+    {
+      "disease": "Gen Weakness",
+      "count": 659
+    }
+  ],
+  "timestamp": "2026-10-25T04:25:27Z"
 }

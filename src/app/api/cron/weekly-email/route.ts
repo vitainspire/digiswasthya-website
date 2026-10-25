@@ -111,8 +111,8 @@ export async function GET(req: NextRequest) {
                         </div>
 
                         <div class="image-container">
-                            <p style="font-size: 12px; color: #64748b; font-weight: bold;">Real picture from our Telemedicine Centres this week:</p>
-                            <img class="story-image" src="https://digiswasthya-dc8a2.firebasestorage.app/o/weekly-photo.jpg?alt=media" alt="Digiswasthya rural checkup" onerror="this.style.display='none'" />
+                            <p style="font-size: 12px; color: #64748b; font-weight: bold;">A real picture from one of our Telemedicine Centres:</p>
+                            <img class="story-image" src="${appUrl}/images/resources/consultation.jpg" alt="Digiswasthya rural checkup" onerror="this.style.display='none'" />
                         </div>
 
                         <p>Every rupee you donate helps us consult one more patient, buy essential life-saving medications, or expand to one more village. Please consider supporting our work again.</p>

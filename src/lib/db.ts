@@ -1,16 +1,7 @@
-import { db } from "./firebase";
-import { 
-    collection, 
-    doc, 
-    setDoc, 
-    addDoc, 
-    getDoc, 
-    getDocs, 
-    query, 
-    where, 
-    serverTimestamp,
-    updateDoc
-} from "firebase/firestore";
+import { FieldValue } from "firebase-admin/firestore";
+import { getFirebaseAdminDb } from "./firebaseAdmin";
+
+// Server-only: uses the Admin SDK, so Firestore security rules can deny all direct browser access.
 
 export interface DonationRecord {
     id: string; // Razorpay payment ID or Mock ID
@@ -46,10 +37,10 @@ export interface InquiryRecord {
  */
 export async function saveDonation(record: DonationRecord) {
     try {
-        const docRef = doc(db, "donations", record.id);
-        await setDoc(docRef, {
+        const docRef = getFirebaseAdminDb().collection("donations").doc(record.id);
+        await docRef.set({
             ...record,
-            date: record.date || serverTimestamp()
+            date: record.date || FieldValue.serverTimestamp()
         });
         console.log(`[Firestore] Saved donation: ${record.id}`);
         return true;
@@ -65,16 +56,16 @@ export async function saveDonation(record: DonationRecord) {
 export async function enrollSubscriber(email: string, name: string) {
     try {
         const cleanEmail = email.trim().toLowerCase();
-        const docRef = doc(db, "subscribers", cleanEmail);
-        
-        // We use setDoc to create or merge, keeping their subscription active
-        await setDoc(docRef, {
+        const docRef = getFirebaseAdminDb().collection("subscribers").doc(cleanEmail);
+
+        // We use set with merge to create or merge, keeping their subscription active
+        await docRef.set({
             email: cleanEmail,
             name: name,
             isSubscribed: true,
-            createdAt: serverTimestamp()
+            createdAt: FieldValue.serverTimestamp()
         }, { merge: true });
-        
+
         console.log(`[Firestore] Enrolled subscriber: ${cleanEmail}`);
         return true;
     } catch (error) {
@@ -89,12 +80,12 @@ export async function enrollSubscriber(email: string, name: string) {
 export async function unsubscribeUser(email: string) {
     try {
         const cleanEmail = email.trim().toLowerCase();
-        const docRef = doc(db, "subscribers", cleanEmail);
-        
+        const docRef = getFirebaseAdminDb().collection("subscribers").doc(cleanEmail);
+
         // Verify if subscriber exists first
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            await updateDoc(docRef, {
+        const docSnap = await docRef.get();
+        if (docSnap.exists) {
+            await docRef.update({
                 isSubscribed: false
             });
             console.log(`[Firestore] Unsubscribed: ${cleanEmail}`);
@@ -114,13 +105,12 @@ export async function unsubscribeUser(email: string) {
  */
 export async function saveInquiry(record: InquiryRecord) {
     try {
-        const inquiriesCol = collection(db, "inquiries");
         const cleanRecord = Object.fromEntries(
             Object.entries(record).filter(([, value]) => value !== undefined)
         );
-        const docRef = await addDoc(inquiriesCol, {
+        const docRef = await getFirebaseAdminDb().collection("inquiries").add({
             ...cleanRecord,
-            createdAt: serverTimestamp()
+            createdAt: FieldValue.serverTimestamp()
         });
         console.log(`[Firestore] Saved inquiry: ${docRef.id}`);
         return docRef.id;
@@ -144,13 +134,13 @@ export interface SignupRecord {
  */
 export async function saveSignup(record: SignupRecord) {
     try {
-        const docRef = await addDoc(collection(db, "signups"), {
+        const docRef = await getFirebaseAdminDb().collection("signups").add({
             ...record,
             phone: record.phone || null,
             status: "new",
             consent: true,
-            consentAt: serverTimestamp(),
-            createdAt: serverTimestamp()
+            consentAt: FieldValue.serverTimestamp(),
+            createdAt: FieldValue.serverTimestamp()
         });
         console.log(`[Firestore] Saved ${record.type} signup: ${docRef.id}`);
         return docRef.id;
@@ -165,10 +155,11 @@ export async function saveSignup(record: SignupRecord) {
  */
 export async function getActiveSubscribers(): Promise<SubscriberRecord[]> {
     try {
-        const subscribersCol = collection(db, "subscribers");
-        const q = query(subscribersCol, where("isSubscribed", "==", true));
-        const querySnapshot = await getDocs(q);
-        
+        const querySnapshot = await getFirebaseAdminDb()
+            .collection("subscribers")
+            .where("isSubscribed", "==", true)
+            .get();
+
         const subscribers: SubscriberRecord[] = [];
         querySnapshot.forEach((docSnap) => {
             const data = docSnap.data();
@@ -179,12 +170,11 @@ export async function getActiveSubscribers(): Promise<SubscriberRecord[]> {
                 createdAt: data.createdAt
             });
         });
-        
+
         return subscribers;
     } catch (error) {
         console.error("[Firestore Error] Failed to fetch active subscribers:", error);
         throw error;
     }
 }
-
 

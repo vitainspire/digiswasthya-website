@@ -3,16 +3,14 @@ import fs from "fs";
 import path from "path";
 import { impactData } from "@/data/impactData";
 
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { getFirebaseAdminDb } from "@/lib/firebaseAdmin";
 
 export async function GET() {
   try {
     // 1. Attempt to fetch live metrics from Firebase Firestore
     try {
-      const docRef = doc(db, "impact_store", "latest");
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
+      const docSnap = await getFirebaseAdminDb().collection("impact_store").doc("latest").get();
+      if (docSnap.exists) {
         return NextResponse.json({
           success: true,
           source: "firebase_firestore",
