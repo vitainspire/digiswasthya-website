@@ -8,7 +8,7 @@ import { MarathonFeature } from "@/components/campaign/MarathonFeature";
 import { ShareCampaign } from "@/components/campaign/ShareCampaign";
 import { useLanguage } from "@/context/LanguageContext";
 import { impactAsOf, impactData } from "@/data/impactData";
-import { marathonCampaign } from "@/data/marathonCampaign";
+import { marathonCampaign, teamRunners } from "@/data/marathonCampaign";
 
 const IMPACT_KPI_IDS = ["total-consultations", "villages-covered", "health-camps", "cancer-screenings"];
 
@@ -99,6 +99,40 @@ export default function MarathonClient() {
                         <p className="mb-6 mt-2 leading-relaxed text-gray-700">{t("campaign.shareBody")}</p>
                         <ShareCampaign />
                     </div>
+                </div>
+            </section>
+
+            <section className="section-y bg-primary-50">
+                <div className="container max-w-6xl px-4">
+                    <div className="max-w-2xl">
+                        <p className="eyebrow">{t("campaign.teamEyebrow")}</p>
+                        <h2 className="mt-3 font-serif text-3xl font-bold leading-tight text-primary-900 md:text-4xl">{t("campaign.teamTitle")}</h2>
+                        <p className="mt-4 text-lg leading-relaxed text-gray-700">{t("campaign.teamBody")}</p>
+                    </div>
+                    <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {teamRunners.map(({ name, fundraiserUrl }) => (
+                            <li key={fundraiserUrl} className="flex items-center gap-4 rounded-2xl border border-primary-100 bg-white p-5">
+                                <span
+                                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-100 font-serif text-xl font-bold text-primary-800"
+                                    aria-hidden="true"
+                                >
+                                    {name[lang].charAt(0)}
+                                </span>
+                                <div className="min-w-0">
+                                    <p className="font-serif text-xl font-bold text-primary-900">{name[lang]}</p>
+                                    <a
+                                        href={fundraiserUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="mt-1 inline-flex items-center gap-1.5 font-semibold text-primary-700 underline underline-offset-4 hover:text-primary-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                                    >
+                                        {t("campaign.teamCta").replace("{name}", name[lang])} <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                                        <span className="sr-only">{t("campaign.opensUnitedWay")}</span>
+                                    </a>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </section>
 

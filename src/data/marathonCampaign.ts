@@ -8,6 +8,16 @@ export const marathonCampaign = {
     goal: 250000,
 };
 
+// Supporters running alongside Sandeep, each with their own United Way Mumbai fundraiser. Shown on /marathon.
+export const teamRunners = [
+    { name: { en: "Sameer", hi: "समीर" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/26277" },
+    { name: { en: "Ragini", hi: "रागिनी" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/26282" },
+    { name: { en: "Mandakini", hi: "मंदाकिनी" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/24364" },
+    { name: { en: "Ashok", hi: "अशोक" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/24362" },
+    { name: { en: "Aayush", hi: "आयुष" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/28325" },
+    { name: { en: "Rahul", hi: "राहुल" }, fundraiserUrl: "https://www.unitedwaymumbai.org/fundraiser/26281" },
+];
+
 const DAY_MS = 24 * 60 * 60 * 1000;
 const raceStart = new Date(`${marathonCampaign.raceDay}T00:00:00+05:30`).getTime();
 const promoteEnd = new Date(`${marathonCampaign.promoteUntil}T23:59:59+05:30`).getTime();
