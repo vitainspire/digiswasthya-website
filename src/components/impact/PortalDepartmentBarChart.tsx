@@ -20,8 +20,14 @@ export function PortalDepartmentBarChart({ data }: PortalDepartmentBarChartProps
 
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(5); // Default highlight General Physician
 
-    const maxY = 16000;
-    const ySteps = [16000, 12000, 8000, 4000, 0];
+    // Y-axis maximum: largest displayed count rounded up to a clean multiple of 4 equal steps,
+    // so the tallest bar always fits inside the chart.
+    const peak = Math.max(...displayData.map(d => d.count), 1);
+    const rawStep = peak / 4;
+    const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+    const niceStep = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map(m => m * magnitude).find(s => s >= rawStep) ?? rawStep;
+    const maxY = niceStep * 4;
+    const ySteps = [4, 3, 2, 1, 0].map(i => Math.round(niceStep * i));
 
     return (
         <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-100 h-full flex flex-col justify-between font-sans">
