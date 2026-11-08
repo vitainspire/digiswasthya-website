@@ -28,6 +28,21 @@ jobs:
           pip install playwright requests beautifulsoup4 gspread google-auth python-dotenv firebase-admin
           playwright install chromium --with-deps
 
+      # Google Sheets sync reads google-service-account.json from the repository root.
+      # The key comes from a GitHub secret via an environment variable and is never printed.
+      - name: Create Google Sheets credentials file
+        env:
+          GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY }}
+        run: |
+          if [ -z "$GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY" ]; then
+            echo "GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY is not set; Google Sheets sync will run in offline mode."
+          else
+            umask 077
+            printf '%s' "$GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY" > google-service-account.json
+            chmod 600 google-service-account.json
+            echo "Google Sheets credentials file created."
+          fi
+
       - name: Execute Live Scraper Pipeline
         id: scraper
         env:
@@ -40,6 +55,11 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_TEST_SERVICE_ACCOUNT_KEY }}
         run: |
           python src/scripts/agents/pipeline.py
+
+      # Always runs, even if the pipeline step fails: remove the temporary credentials file
+      - name: Remove Google Sheets credentials file
+        if: always()
+        run: rm -f google-service-account.json
 
       # Always runs — shows all files created during the run for extra visibility
       - name: List Generated Files (Debug)
