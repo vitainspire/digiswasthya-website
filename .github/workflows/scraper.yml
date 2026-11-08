@@ -11,19 +11,16 @@ jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          cache: 'pip'
 
       - name: Install Python Dependencies & Playwright Browsers
         run: |
@@ -38,20 +35,11 @@ jobs:
           MANAGEMENT_PORTAL_EMAIL: ${{ secrets.MANAGEMENT_PORTAL_EMAIL }}
           MANAGEMENT_PORTAL_PASSWORD: ${{ secrets.MANAGEMENT_PORTAL_PASSWORD }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          # TEST Firebase project only. The safety guard in firebase_sync.py also enforces an allow-list.
+          FIREBASE_EXPECTED_PROJECT_ID: ${{ vars.FIREBASE_EXPECTED_PROJECT_ID }}
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_TEST_SERVICE_ACCOUNT_KEY }}
         run: |
           python src/scripts/agents/pipeline.py
-
-      # Always runs — even if the pipeline step above fails
-      # This lets us download the screenshot and see exactly what the browser saw
-      - name: Upload Portal Debug Screenshot
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: portal-debug-screenshot
-          path: portal_debug.png
-          if-no-files-found: warn
-          retention-days: 7
 
       # Always runs — shows all files created during the run for extra visibility
       - name: List Generated Files (Debug)
