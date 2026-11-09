@@ -6,14 +6,11 @@ import { Footer } from "@/components/layout/Footer";
 import { TeamCard } from "@/components/ui/cards";
 import { VolunteerCTA } from "@/components/sections/VolunteerCTA";
 import { ogImages } from "@/lib/seo";
-import {
-    board,
-    coreTeam as core,
-    foundingTeam as founding,
-    advisoryBoard as advisory,
-    doctorGroups,
-    onGroundTeam as onGround,
-} from "@/data/teamData";
+import type { DoctorGroup } from "@/data/teamData";
+import { getTeamDirectory } from "@/lib/teamDirectory";
+
+// Re-generate this page from the Google Team Directory at most every 5 minutes.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
     title: "Our Team",
@@ -50,7 +47,7 @@ function slug(value: string) {
     return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-function DoctorsSection({ groups }: { groups: typeof doctorGroups }) {
+function DoctorsSection({ groups }: { groups: DoctorGroup[] }) {
     return (
         <section id="doctors" className="py-6 sm:py-8 border-b border-gray-200/60">
             <div className="text-center mb-5 sm:mb-6">
@@ -91,7 +88,10 @@ function DoctorsSection({ groups }: { groups: typeof doctorGroups }) {
     );
 }
 
-export default function OurTeam() {
+export default async function OurTeam() {
+    // Google Sheet + Drive photos, or the built-in teamData.ts fallback (the reader never throws).
+    const team = await getTeamDirectory();
+
     return (
         <main className="min-h-screen bg-surface">
             <Navbar />
@@ -123,12 +123,12 @@ export default function OurTeam() {
             </div>
 
             <div className="container">
-                <Section title="Board of Directors" members={board} />
-                <Section title="Core Team" members={core} />
-                <Section title="Founding Team" members={founding} />
-                <Section title="Advisory Board" members={advisory} />
-                <DoctorsSection groups={doctorGroups} />
-                <Section title="On-Ground Team" members={onGround} />
+                <Section title="Board of Directors" members={team.board} />
+                <Section title="Core Team" members={team.coreTeam} />
+                <Section title="Founding Team" members={team.foundingTeam} />
+                <Section title="Advisory Board" members={team.advisoryBoard} />
+                <DoctorsSection groups={team.doctorGroups} />
+                <Section title="On-Ground Team" members={team.onGroundTeam} />
             </div>
 
             {/* Volunteer CTA Section */}
