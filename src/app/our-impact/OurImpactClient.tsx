@@ -27,13 +27,13 @@ export default function OurImpact() {
         partnerHospitals: rawLiveStore?.kpis?.total_hospitals ?? 0
     };
 
-    const patientGrowthData = rawLiveStore?.growth ? rawLiveStore.growth.map((g: any) => ({ year: g.year, value: g.patients })) : [
+    const patientGrowthData = rawLiveStore?.growth ? rawLiveStore.growth.filter((g: any) => g.patients != null).map((g: any) => ({ year: g.year, value: g.patients })) : [
         { year: "2024", value: 2 },
         { year: "2025", value: 19823 },
         { year: "2026", value: 27223 }
     ];
 
-    const teleconsultationGrowthData = rawLiveStore?.growth ? rawLiveStore.growth.map((g: any) => ({ year: g.year, value: g.teleconsultations })) : [
+    const teleconsultationGrowthData = rawLiveStore?.growth ? rawLiveStore.growth.filter((g: any) => g.teleconsultations != null).map((g: any) => ({ year: g.year, value: g.teleconsultations })) : [
         { year: "2024", value: 2 },
         { year: "2025", value: 20986 },
         { year: "2026", value: 37880 }
@@ -174,11 +174,13 @@ export default function OurImpact() {
 
     const ptTypes = rawLiveStore?.demographics?.patient_types;
     const patientTypeSlices = ptTypes ? (() => {
-        const total = (ptTypes.followUp || 0) + (ptTypes.new || 0) + (ptTypes.notCategorised || 0);
+        // Third category: the API's `unknown` count when present, else the older `notCategorised` field.
+        const notCategorised = ptTypes.unknown ?? ptTypes.notCategorised ?? 0;
+        const total = (ptTypes.followUp || 0) + (ptTypes.new || 0) + notCategorised;
         return [
             { label: "Follow-up", percentage: total ? Math.round((ptTypes.followUp / total) * 100) : 0, count: ptTypes.followUp || 0, color: "#059669" },
             { label: "New", percentage: total ? Math.round((ptTypes.new / total) * 100) : 0, count: ptTypes.new || 0, color: "#2563eb" },
-            { label: "Not categorised", percentage: total ? Math.round((ptTypes.notCategorised / total) * 100) : 0, count: ptTypes.notCategorised || 0, color: "#d97706" }
+            { label: "Not categorised", percentage: total ? Math.round((notCategorised / total) * 100) : 0, count: notCategorised, color: "#d97706" }
         ];
     })() : [
         { label: "Follow-up", percentage: 5, count: 2603, color: "#059669" },
@@ -258,7 +260,6 @@ export default function OurImpact() {
                             data={patientGrowthData}
                             lineColor="#2563eb"
                             gradientFrom="#2563eb"
-                            maxScale={28000}
                         />
 
                         {/* Teleconsultation Growth Smooth Line Curve (Image 3) */}
@@ -268,7 +269,6 @@ export default function OurImpact() {
                             data={teleconsultationGrowthData}
                             lineColor="#059669"
                             gradientFrom="#059669"
-                            maxScale={38000}
                         />
                     </div>
 

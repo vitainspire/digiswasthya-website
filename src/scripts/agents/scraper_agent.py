@@ -1,7 +1,10 @@
 import os
+import re
 import sys
 import json
+import time
 import requests
+from urllib.parse import urlparse, parse_qs
 from bs4 import BeautifulSoup
 
 def load_dotenv():
@@ -19,6 +22,170 @@ def load_dotenv():
                         os.environ[k] = v
 
 load_dotenv()
+
+# The verified Management Portal endpoint that carries the dashboard data.
+# Keep in sync with extractor_agent.HEADLINE_ENDPOINT (kept separate so this module stays standalone).
+OUTREACH_ENDPOINT_PATH = "/api/v1/management/reports/outreach-summary"
+OUTREACH_WAIT_SECONDS = 60   # maximum time to wait for a valid response after login
+OUTREACH_POLL_MS = 250       # short polling step so Playwright can deliver events
+_SAFE_QUERY_PARAMS = ("start_date", "end_date", "granularity", "center_status")  # allowlist for logging
+# Reason recorded for a matching request that failed at the network level (no HTTP response exists for it).
+# Shared by the requestfailed handler and the error summary so network failures are never counted as responses.
+_NETWORK_FAILURE_REASON = "request failed at the network level"
+
+# --- Portal All-Time report (Management Portal "Reset to all time" button) -----------------------------------------
+# The dashboard first sends a request for its DEFAULT dated range. Clicking "Reset to all time" clears both date
+# fields and sends a second request with NO start_date / end_date parameters. That second request is the one we want.
+ALL_TIME_CONTROL_NAME = re.compile(r"^\s*reset to all time\s*$", re.I)
+ALL_TIME_CONTROL_WAIT_SECONDS = 20    # how long to wait for the button to be uniquely present, visible and enabled
+ALL_TIME_UI_WAIT_SECONDS = 5          # how long to wait for the date fields to clear after the click
+ALL_TIME_RESPONSE_WAIT_SECONDS = 60   # how long to wait for the all-time response after the click
+EXPECTED_CENTER_STATUS_LABEL = "Active centers"
+# Read-only DOM snapshot (the same snippet that was used successfully against the real dashboard): the values of the
+# visible date fields and, for each visible dropdown, its option texts and selected text. It changes nothing.
+_FILTER_STATE_JS = """() => {
+  const vis = e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); return r.width>0 && r.height>0 && s.visibility!=='hidden' && s.display!=='none'; };
+  const out = {dates: [], selects: []};
+  document.querySelectorAll('input[type="date"]').forEach(e => { if (vis(e)) out.dates.push(e.value || ''); });
+  document.querySelectorAll('select').forEach(s => { if (vis(s)) out.selects.push({
+      options: Array.from(s.options).slice(0,30).map(o => (o.text||'').trim().slice(0,40)),
+      selected: ((s.options[s.selectedIndex]||{}).text||'').trim().slice(0,40)}); });
+  return out;
+}"""
+
+
+class OutreachCaptureError(RuntimeError):
+    """Raised when the required outreach-summary API response is missing or invalid."""
+
+
+def _all_time_scope_problems(url: str) -> list:
+    """
+    Checks a request URL against the requested scope: Portal All-Time (NO start_date and NO end_date parameter at all,
+    not even an empty one), active centres only, granularity by year. Returns the list of failed conditions (names only,
+    never values); an empty list means the request matches the requested scope.
+    """
+    try:
+        query = parse_qs(urlparse(url).query, keep_blank_values=True)
+    except Exception:
+        return ["request URL could not be parsed"]
+    problems = []
+    if "start_date" in query:
+        problems.append("request has a start_date parameter")
+    if "end_date" in query:
+        problems.append("request has an end_date parameter")
+    if query.get("center_status") != ["active"]:
+        problems.append("center_status is not exactly 'active'")
+    if query.get("granularity") != ["year"]:
+        problems.append("granularity is not exactly 'year'")
+    return problems
+
+
+def _filter_state_problems(state) -> list:
+    """
+    Checks the read-only dashboard snapshot after 'Reset to all time': exactly two visible date fields, both empty,
+    and exactly one centre-status dropdown whose selection is 'Active centers'. Returns the failed conditions.
+    """
+    if not isinstance(state, dict):
+        return ["filter state could not be read"]
+    problems = []
+    dates = state.get("dates")
+    if not isinstance(dates, list) or len(dates) != 2:
+        problems.append(f"expected exactly 2 visible date fields, found {len(dates) if isinstance(dates, list) else 'none'}")
+    elif any(value != "" for value in dates):
+        problems.append("a date field is not empty")
+    selects = state.get("selects")
+    centre = [s for s in (selects if isinstance(selects, list) else [])
+              if isinstance(s, dict) and EXPECTED_CENTER_STATUS_LABEL in (s.get("options") or [])]
+    if len(centre) != 1:
+        problems.append(f"expected exactly 1 centre-status dropdown, found {len(centre)}")
+    elif centre[0].get("selected") != EXPECTED_CENTER_STATUS_LABEL:
+        problems.append(f"centre status is not '{EXPECTED_CENTER_STATUS_LABEL}'")
+    return problems
+
+
+def _safe_query_summary(url: str) -> dict:
+    """Returns only the allowlisted query parameters of a URL (never the full URL)."""
+    try:
+        query = parse_qs(urlparse(url).query)
+    except Exception:
+        return {}
+    return {name: query.get(name) for name in _SAFE_QUERY_PARAMS if name in query}
+
+
+def _format_outreach_attempt(attempt: dict) -> str:
+    """
+    Formats one recorded attempt for the error text. Wording only: shows the HTTP status when one was recorded,
+    uses a neutral label when the request number is unknown, and a neutral phrase when no reason was recorded
+    (it never invents a reason or implies a network failure that was not recorded).
+    """
+    label = f"request #{attempt['number']}" if attempt["number"] is not None else "unidentified request"
+    status = f"HTTP {attempt['status']}, " if attempt["status"] is not None else ""
+    reason = attempt["reason"] if attempt["reason"] else "response handling did not complete normally"
+    return f"{label}: {status}{reason}"
+
+
+def _describe_outreach_failure(requests_seen: int, attempts: list) -> str:
+    """Builds the timeout error text from safe diagnostics only (counts, statuses, reasons; no values)."""
+    # Network failures are NOT HTTP responses. Everything else recorded is a response event; it is counted
+    # once per request number (a response whose handling raised can leave two records for one request).
+    network_failures = sum(1 for a in attempts if a["reason"] == _NETWORK_FAILURE_REASON)
+    response_records = [a for a in attempts if a["reason"] != _NETWORK_FAILURE_REASON]
+    responses_received = (len({a["number"] for a in response_records if a["number"] is not None})
+                          + sum(1 for a in response_records if a["number"] is None))
+    message = (
+        f"[Agent 1 CRITICAL ERROR] No valid response from the required API endpoint '{OUTREACH_ENDPOINT_PATH}' "
+        f"arrived within {OUTREACH_WAIT_SECONDS} seconds. "
+        f"Requests observed: {requests_seen}; HTTP responses received: {responses_received}; "
+        f"network failures: {network_failures}."
+    )
+    if not requests_seen:
+        message += " No request to this endpoint was observed."
+    elif not attempts:
+        message += " The request(s) never received a response."
+    else:
+        shown = attempts[:10]
+        more = f" (+{len(attempts) - len(shown)} more)" if len(attempts) > len(shown) else ""
+        message += " Attempts: " + "; ".join(_format_outreach_attempt(a) for a in shown) + more + "."
+    return message + " No other response was used."
+
+
+def _describe_all_time_failure(requests_after_click: int, attempts_after_click: list, scope_mismatches: list) -> str:
+    """
+    Error text for: no valid response matching the All-Time scope arrived after 'Reset to all time' was clicked.
+    Safe diagnostics only (counts, statuses, reasons, names of failed scope conditions; never values or URLs).
+    """
+    message = (
+        f"[Agent 1 CRITICAL ERROR] No valid All-Time response from the required API endpoint '{OUTREACH_ENDPOINT_PATH}' "
+        f"arrived within {ALL_TIME_RESPONSE_WAIT_SECONDS} seconds after 'Reset to all time' was clicked. "
+        f"Requests made after the click: {requests_after_click}."
+    )
+    if not requests_after_click:
+        message += " No request to this endpoint was made after the click."
+    if attempts_after_click:
+        shown = attempts_after_click[:10]
+        more = f" (+{len(attempts_after_click) - len(shown)} more)" if len(attempts_after_click) > len(shown) else ""
+        message += " Attempts: " + "; ".join(_format_outreach_attempt(a) for a in shown) + more + "."
+    if scope_mismatches:
+        message += " Valid responses that did NOT match the All-Time scope: " + "; ".join(
+            f"request #{n}: " + ", ".join(problems) for n, problems in scope_mismatches[:10]) + "."
+    return message + " The initial dated response and every other response were NOT used."
+
+
+def _describe_unresolved_outreach(unresolved: list, requests_seen: int, attempts: list) -> str:
+    """
+    Error text for: a valid response exists, but earlier-numbered request(s) were still unresolved at the
+    deadline, so first-valid-by-request-order selection cannot be guaranteed. Safe diagnostics only.
+    """
+    shown = unresolved[:10]
+    more = f" (+{len(unresolved) - len(shown)} more)" if len(unresolved) > len(shown) else ""
+    return (
+        f"[Agent 1 CRITICAL ERROR] A valid response from the required API endpoint '{OUTREACH_ENDPOINT_PATH}' was received, "
+        f"but earlier request(s) {', '.join('#' + str(n) for n in shown)}{more} were still unresolved after "
+        f"{OUTREACH_WAIT_SECONDS} seconds (no response and no network failure was reported). "
+        f"First-valid-response-by-request-order selection could not be guaranteed. "
+        f"Requests observed: {requests_seen}; responses or failures recorded: {len(attempts)}. No response was used."
+    )
+
 
 def fetch_report_html(target_url: str, username: str = None, password: str = None) -> dict:
     """
@@ -90,6 +257,89 @@ def fetch_report_html(target_url: str, username: str = None, password: str = Non
 
             page.on("response", handle_response)
 
+            # Dedicated capture of the REQUIRED endpoint (exact path, HTTP 200, JSON object with a top-level
+            # 'headline' object). Independent of the generic listener above, which is left unchanged.
+            outreach_request_numbers = {}   # id(request) -> request number (order in which requests were made)
+            outreach_request_refs = []      # keeps request objects alive so id() values cannot be reused
+            outreach_attempts = []          # safe diagnostics for every matching response
+            outreach_valid = []             # valid candidates: {"number", "url", "data"}
+            outreach_resolved = set()       # request numbers that completed (response handled OR network failure)
+
+            def handle_outreach_request(request):
+                try:
+                    if urlparse(request.url).path == OUTREACH_ENDPOINT_PATH and id(request) not in outreach_request_numbers:
+                        outreach_request_refs.append(request)
+                        outreach_request_numbers[id(request)] = len(outreach_request_numbers) + 1
+                except Exception:
+                    pass
+
+            def handle_outreach_response(response):
+                number = None  # set once the request is identified; used by the `finally` below
+                try:
+                    if urlparse(response.url).path != OUTREACH_ENDPOINT_PATH:
+                        return
+                    request = response.request
+                    if id(request) not in outreach_request_numbers:
+                        outreach_request_refs.append(request)
+                        outreach_request_numbers[id(request)] = len(outreach_request_numbers) + 1
+                    number = outreach_request_numbers[id(request)]
+                    status = response.status
+                    attempt = {"number": number, "status": status, "reason": None}
+                    outreach_attempts.append(attempt)
+                    if status != 200:
+                        attempt["reason"] = "status is not 200"
+                        return
+                    if "application/json" not in response.headers.get("content-type", ""):
+                        attempt["reason"] = "content type is not JSON"
+                        return
+                    try:
+                        data = response.json()
+                    except Exception:
+                        attempt["reason"] = "body is not valid JSON"
+                        return
+                    if not isinstance(data, dict):
+                        attempt["reason"] = f"body is of type {type(data).__name__}, expected an object"
+                    elif not isinstance(data.get("headline"), dict):
+                        attempt["reason"] = "body has no top-level 'headline' object"
+                    else:
+                        outreach_valid.append({"number": number, "url": response.url, "data": data})
+                except Exception as outreach_err:
+                    outreach_attempts.append({"number": number, "status": None,
+                                              "reason": f"unexpected error while reading response ({type(outreach_err).__name__})"})
+                finally:
+                    # Every handling path (valid, invalid, early return, exception) resolves the request,
+                    # so a handler problem can never leave it permanently unresolved.
+                    if number is not None:
+                        outreach_resolved.add(number)
+
+            def handle_outreach_requestfailed(request):
+                # A matching request that failed at the network level will never get a response: it is resolved.
+                # Only a safe reason is recorded (no URL, no error text).
+                try:
+                    if urlparse(request.url).path != OUTREACH_ENDPOINT_PATH:
+                        return
+                    number = outreach_request_numbers.get(id(request))
+                    if number is None:
+                        return
+                    if number not in outreach_resolved:
+                        outreach_attempts.append({"number": number, "status": None,
+                                                  "reason": _NETWORK_FAILURE_REASON})
+                    outreach_resolved.add(number)
+                except Exception:
+                    pass
+
+            def outreach_blocking_requests():
+                """Numbers of matching requests that are lower than the lowest valid response but still unresolved."""
+                if not outreach_valid:
+                    return []
+                lowest_valid = min(candidate["number"] for candidate in outreach_valid)
+                return sorted(n for n in outreach_request_numbers.values()
+                              if n < lowest_valid and n not in outreach_resolved)
+
+            page.on("request", handle_outreach_request)
+            page.on("response", handle_outreach_response)
+            page.on("requestfailed", handle_outreach_requestfailed)
+
             print(f"[Agent 1] Authenticating at {target_url} with user '{username}'...")
             page.goto(target_url, wait_until="networkidle")
 
@@ -123,28 +373,137 @@ def fetch_report_html(target_url: str, username: str = None, password: str = Non
 
             # Portal lands DIRECTLY on Outreach & Impact after login — no tab navigation needed
 
-            # Step 1: Wait for initial network to settle
-            print("[Agent 1] Waiting for page network to settle...")
-            try:
-                page.wait_for_load_state("networkidle", timeout=20000)
-            except Exception:
-                pass
+            # Step 1: Wait for the REQUIRED API response. The dashboard requests its data automatically after
+            # login (observed to happen AFTER networkidle has already returned), so neither networkidle nor a
+            # fixed sleep is used as proof. We poll with short waits (which let Playwright deliver events)
+            # until a valid response from the exact endpoint exists, or the time limit is reached.
+            print(f"[Agent 1] Waiting up to {OUTREACH_WAIT_SECONDS}s for a valid response from the required endpoint...")
+            outreach_deadline = time.monotonic() + OUTREACH_WAIT_SECONDS
+            # Stop only when a valid response exists AND every earlier-numbered matching request has resolved
+            # (responded or failed). Otherwise a lower-numbered valid response could still arrive and must win.
+            while time.monotonic() < outreach_deadline:
+                if outreach_valid and not outreach_blocking_requests():
+                    break
+                page.wait_for_timeout(OUTREACH_POLL_MS)
+            if not outreach_valid:
+                raise OutreachCaptureError(
+                    _describe_outreach_failure(len(outreach_request_numbers), outreach_attempts)
+                )
+            unresolved_requests = outreach_blocking_requests()
+            if unresolved_requests:
+                raise OutreachCaptureError(
+                    _describe_unresolved_outreach(unresolved_requests, len(outreach_request_numbers), outreach_attempts)
+                )
+            print("[Agent 1] A valid response from the required endpoint has been received "
+                  "and no earlier-numbered request is unresolved (the dashboard has loaded).")
 
-            # Step 2: Click Apply button — this triggers the actual data API calls
-            print("[Agent 1] Clicking Apply button to trigger data load...")
+            # Step 1b: select the portal's explicit All-Time report. The response received above belongs to the
+            # dashboard's DEFAULT dated range and is never used. Click 'Reset to all time' exactly once (never
+            # forced, never retried), confirm the filter state, then capture the request it triggers.
+            reset_control = None
+            control_deadline = time.monotonic() + ALL_TIME_CONTROL_WAIT_SECONDS
+            while time.monotonic() < control_deadline:
+                reset_locator = page.get_by_role("button", name=ALL_TIME_CONTROL_NAME)
+                if reset_locator.count() == 1 and reset_locator.first.is_visible() and reset_locator.first.is_enabled():
+                    reset_control = reset_locator.first
+                    break
+                page.wait_for_timeout(OUTREACH_POLL_MS)
+            if reset_control is None:
+                raise OutreachCaptureError(
+                    "[Agent 1 CRITICAL ERROR] The 'Reset to all time' button was not found exactly once, visible and "
+                    f"enabled within {ALL_TIME_CONTROL_WAIT_SECONDS} seconds. The initial dated response was NOT used."
+                )
+            reset_baseline = len(outreach_request_numbers)   # requests numbered after this belong to the reset
             try:
-                apply_btn = page.get_by_role("button", name="Apply").first
-                apply_btn.wait_for(state="visible", timeout=8000)
-                apply_btn.click()
-                print("[Agent 1] Apply button clicked. Waiting for data API calls to complete...")
-                try:
-                    page.wait_for_load_state("networkidle", timeout=30000)
-                except Exception:
-                    pass
-                page.wait_for_timeout(5000)  # Extra wait for data to render
+                reset_control.click(timeout=5000)
+            except Exception as reset_err:
+                raise OutreachCaptureError(
+                    f"[Agent 1 CRITICAL ERROR] 'Reset to all time' could not be clicked ({type(reset_err).__name__}); "
+                    "it was not retried. The initial dated response was NOT used."
+                )
+            print("[Agent 1] Clicked 'Reset to all time' once.")
+
+            # Confirm: both date fields empty and the centre status is 'Active centers'.
+            ui_deadline = time.monotonic() + ALL_TIME_UI_WAIT_SECONDS
+            while True:
+                ui_problems = _filter_state_problems(page.evaluate(_FILTER_STATE_JS))
+                if not ui_problems or time.monotonic() >= ui_deadline:
+                    break
+                page.wait_for_timeout(OUTREACH_POLL_MS)
+            if ui_problems:
+                raise OutreachCaptureError(
+                    "[Agent 1 CRITICAL ERROR] The filter state after 'Reset to all time' is not as required: "
+                    + "; ".join(ui_problems) + ". The initial dated response was NOT used."
+                )
+            print("[Agent 1] Confirmed: both date fields are empty and the centre status is 'Active centers'.")
+
+            # Wait for the response that matches the requested All-Time scope: a valid response to a request made
+            # AFTER the click, with no start_date/end_date parameter, center_status=active and granularity=year.
+            def all_time_candidates():
+                return [c for c in outreach_valid
+                        if c["number"] > reset_baseline and not _all_time_scope_problems(c["url"])]
+
+            def all_time_blocking(candidates):
+                """Requests made after the click, numbered below the lowest candidate, that are still unresolved."""
+                if not candidates:
+                    return []
+                lowest = min(c["number"] for c in candidates)
+                return sorted(n for n in outreach_request_numbers.values()
+                              if reset_baseline < n < lowest and n not in outreach_resolved)
+
+            print(f"[Agent 1] Waiting up to {ALL_TIME_RESPONSE_WAIT_SECONDS}s for the All-Time response...")
+            all_time_deadline = time.monotonic() + ALL_TIME_RESPONSE_WAIT_SECONDS
+            while time.monotonic() < all_time_deadline:
+                candidates = all_time_candidates()
+                if candidates and not all_time_blocking(candidates):
+                    break
+                page.wait_for_timeout(OUTREACH_POLL_MS)
+            candidates = all_time_candidates()
+            if not candidates:
+                mismatch_info = [(c["number"], _all_time_scope_problems(c["url"]))
+                                 for c in outreach_valid
+                                 if c["number"] > reset_baseline and _all_time_scope_problems(c["url"])]
+                mismatch_numbers = {n for n, _ in mismatch_info}
+                attempts_after_click = [a for a in outreach_attempts
+                                        if a["number"] is not None and a["number"] > reset_baseline
+                                        and a["number"] not in mismatch_numbers]
+                requests_after_click = sum(1 for n in outreach_request_numbers.values() if n > reset_baseline)
+                raise OutreachCaptureError(
+                    _describe_all_time_failure(requests_after_click, attempts_after_click, mismatch_info)
+                )
+            blocking_after_click = all_time_blocking(candidates)
+            if blocking_after_click:
+                raise OutreachCaptureError(
+                    _describe_unresolved_outreach(blocking_after_click, len(outreach_request_numbers), outreach_attempts)
+                )
+            # If several requests match the scope, the earliest-numbered one wins (request order, not arrival order).
+            selected_outreach = min(candidates, key=lambda candidate: candidate["number"])
+            print(f"[Agent 1] All-Time response received: request #{selected_outreach['number']} "
+                  f"(no date parameters, center_status=active, granularity=year).")
+
+            # Step 2: Apply button — READ-ONLY inspection. It is never clicked (and never force-clicked):
+            # the data loads without it, and what changing filters + Apply does has not been established.
+            try:
+                apply_locator = page.get_by_role("button", name="Apply")
+                apply_count = apply_locator.count()
+                if apply_count == 0:
+                    print("[Agent 1] Apply button: no matching button on the page (not needed; data loads automatically).")
+                else:
+                    any_enabled = False
+                    for apply_index in range(apply_count):
+                        apply_item = apply_locator.nth(apply_index)
+                        apply_visible = apply_item.is_visible()
+                        apply_enabled = apply_item.is_enabled()
+                        any_enabled = any_enabled or (apply_visible and apply_enabled)
+                        print(f"[Agent 1] Apply button #{apply_index}: visible={apply_visible}, enabled={apply_enabled}")
+                    if apply_count > 1:
+                        print(f"[Agent 1 Note] {apply_count} buttons match 'Apply'; the target would be ambiguous.")
+                    if any_enabled:
+                        print("[Agent 1] Apply is enabled but was NOT clicked: its behavior remains unverified.")
+                    else:
+                        print("[Agent 1] Apply is not clickable (disabled or hidden); skipped. It is never clicked.")
             except Exception as apply_err:
-                print(f"[Agent 1 Note] Apply button not found ({apply_err}). Waiting 12s for auto-load...")
-                page.wait_for_timeout(12000)
+                print(f"[Agent 1 Note] Apply button inspection skipped ({type(apply_err).__name__}).")
 
             # Step 3: Final wait for all charts and tooltips to fully render
             page.wait_for_timeout(3000)
@@ -194,11 +553,30 @@ def fetch_report_html(target_url: str, username: str = None, password: str = Non
                 else:
                     keys = type(p_data).__name__
                 print(f"  [Payload {idx}] URL: {p.get('url','?')[:80]} | keys: {keys}")
+            # The All-Time response was selected above (by requested scope, then request order). Report what was
+            # ignored (for example the dashboard's initial dated response), using allowlisted parameters only.
+            extra_valid = [c for c in outreach_valid if c is not selected_outreach]
+            print(f"[Agent 1] Selected required API response: request #{selected_outreach['number']} "
+                  f"(valid responses observed: {len(outreach_valid)}).")
+            if extra_valid:
+                print(f"[Agent 1] {len(extra_valid)} other valid response(s) from the required endpoint were not used. "
+                      f"Selected request #{selected_outreach['number']} params: {_safe_query_summary(selected_outreach['url'])}; "
+                      f"not used: " + "; ".join(
+                          f"request #{c['number']} params: {_safe_query_summary(c['url'])}" for c in extra_valid[:5]))
             return {
                 "html": html_content,
-                "json_payloads": captured_api_payloads
+                "json_payloads": captured_api_payloads,
+                "outreach_summary": {
+                    "url": selected_outreach["url"],
+                    "data": selected_outreach["data"],
+                    "request_number": selected_outreach["number"]
+                }
             }
 
+    except OutreachCaptureError:
+        # A missing/invalid required API response must fail clearly. Do NOT swallow it and fall through
+        # to the requests-based fallback below.
+        raise
     except Exception as e:
         print(f"[Agent 1 Warning] Playwright execution failed: {e}. Falling back to requests Session auth...")
         session = requests.Session()

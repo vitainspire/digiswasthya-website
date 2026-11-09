@@ -17,7 +17,13 @@ export function PortalTopDiseasesChart({ data }: PortalTopDiseasesChartProps) {
     const displayData = data.slice(0, 8);
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(2);
 
-    const maxScale = 2600;
+    // X-axis maximum: largest displayed count rounded up to a clean multiple of 2 equal steps
+    // (the chart shows three labels: 0, midpoint, maximum), so the longest bar always fits.
+    const peak = Math.max(...displayData.map(d => d.count), 1);
+    const rawStep = peak / 2;
+    const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+    const niceStep = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map(m => m * magnitude).find(s => s >= rawStep) ?? rawStep;
+    const maxScale = niceStep * 2;
 
     return (
         <motion.div
@@ -103,8 +109,8 @@ export function PortalTopDiseasesChart({ data }: PortalTopDiseasesChartProps) {
                 {/* X Axis scale labels */}
                 <div className="flex justify-between text-[9.5px] font-semibold text-slate-400 mt-4 pl-40 pr-2">
                     <span>0</span>
-                    <span>1,300</span>
-                    <span>2,600</span>
+                    <span>{Math.round(maxScale / 2).toLocaleString("en-US")}</span>
+                    <span>{maxScale.toLocaleString("en-US")}</span>
                 </div>
             </div>
         </motion.div>

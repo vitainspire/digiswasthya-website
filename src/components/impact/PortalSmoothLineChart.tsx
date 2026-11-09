@@ -26,7 +26,7 @@ export function PortalSmoothLineChart({
     lineColor = "#2563eb",
     gradientFrom = "#2563eb",
     gradientTo = "#ffffff",
-    maxScale = 28000
+    maxScale
 }: PortalSmoothLineChartProps) {
     const [hoveredIdx, setHoveredIdx] = useState<number | null>(data.length > 0 ? data.length - 1 : null);
 
@@ -47,7 +47,15 @@ export function PortalSmoothLineChart({
     const chartWidth = svgWidth - paddingLeft - paddingRight;
     const chartHeight = svgHeight - paddingTop - paddingBottom;
 
-    const maxY = maxScale || Math.max(...data.map(d => d.value), 100);
+    // Y-axis maximum: an explicit maxScale wins; otherwise round the largest value up to a clean
+    // multiple of 4 equal ticks so that no point is drawn above the chart.
+    const maxY = maxScale || (() => {
+        const peak = Math.max(...data.map(d => d.value), 100);
+        const rawStep = peak / 4;
+        const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+        const niceStep = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].map(m => m * magnitude).find(s => s >= rawStep) ?? rawStep;
+        return niceStep * 4;
+    })();
 
     const points = data.map((d, idx) => {
         const x = data.length > 1 
